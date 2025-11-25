@@ -1,0 +1,41 @@
+{
+  "stock_data_dir": "stock_data",
+  "news_db_path": "news_database.db",
+  "processed_news_dir": "processed_news_data",
+  "goscraper_articles": "GoScraper/articles.json",
+
+  "tickers": [
+    "INFY.NS",
+    "ITC.NS",
+    "BHARTIARTL.NS",
+    "TCS.NS",
+    "HINDUNILVR.NS",
+    "LICI.NS",
+    "SBIN.NS",
+    "RELIANCE.NS",
+    "ICICIBANK.NS",
+    "HDFCBANK.NS"
+  ],
+
+  "lookback_days": 60,
+  "epochs": 100,
+  "model_type": "attention",
+
+  "use_finbert": true,
+  "sentiment_batch_size": 16,
+
+  "collect_historical_news": true,
+  "train_all_stocks": false,
+
+  "skip_steps": [],
+  "stop_on_error": false,
+
+  "newsapi_key": null,
+
+  "_comments": {
+    "model_type": "Options: 'simple', 'attention', 'bidirectional'",
+    "use_finbert": "Set to false to use VADER (faster, less accurate)",
+    "skip_steps": "List of step numbers to skip: [1, 2, 3, 4]",
+    "newsapi_key": "Optional NewsAPI key for recent news (last 30 days)"
+  }
+}
