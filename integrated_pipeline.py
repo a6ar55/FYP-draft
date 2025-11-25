@@ -16,16 +16,11 @@ from typing import List, Dict, Optional
 from datetime import datetime
 import json
 
-# Setup logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('pipeline.log'),
-        logging.StreamHandler(sys.stdout)
-    ]
-)
-logger = logging.getLogger(__name__)
+# Import centralized logging
+from logger_config import setup_logging, log_section, log_subsection
+
+# Setup logging (logs to both log.txt and console)
+logger = setup_logging("log.txt", level=logging.INFO, capture_stdout=False)
 
 
 class IntegratedPipeline:

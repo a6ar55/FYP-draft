@@ -62,6 +62,32 @@ class StartupManager:
         self.news_dir = self.project_dir / 'processed_news_data'
         self.logs_dir = self.project_dir / 'logs'
 
+        # Setup logging to file
+        self.log_file = self.project_dir / 'log.txt'
+        self._setup_file_logging()
+
+    def _setup_file_logging(self):
+        """Setup logging to file"""
+        # Write startup header to log file
+        with open(self.log_file, 'a', encoding='utf-8') as f:
+            f.write("\n" + "="*80 + "\n")
+            f.write(f"Startup Script Executed: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write(f"Platform: {platform.system()} {platform.release()}\n")
+            f.write(f"Python: {sys.version.split()[0]}\n")
+            f.write(f"Directory: {self.project_dir}\n")
+            f.write("="*80 + "\n\n")
+
+    def _log_to_file(self, message: str):
+        """Log message to file"""
+        try:
+            with open(self.log_file, 'a', encoding='utf-8') as f:
+                # Remove color codes for file logging
+                import re
+                clean_msg = re.sub(r'\033\[[0-9;]+m', '', message)
+                f.write(f"{datetime.now().strftime('%H:%M:%S')} - {clean_msg}\n")
+        except Exception:
+            pass  # Silently fail if logging fails
+
     def print_banner(self):
         """Print welcome banner"""
         banner = f"""
@@ -86,18 +112,22 @@ Directory: {self.project_dir}{Colors.RESET}
     def print_success(self, message: str):
         """Print success message"""
         print(f"{Colors.SUCCESS}✓ {message}{Colors.RESET}")
+        self._log_to_file(f"✓ {message}")
 
     def print_error(self, message: str):
         """Print error message"""
         print(f"{Colors.ERROR}✗ {message}{Colors.RESET}")
+        self._log_to_file(f"✗ {message}")
 
     def print_warning(self, message: str):
         """Print warning message"""
         print(f"{Colors.WARNING}⚠ {message}{Colors.RESET}")
+        self._log_to_file(f"⚠ {message}")
 
     def print_info(self, message: str):
         """Print info message"""
         print(f"{Colors.INFO}ℹ {message}{Colors.RESET}")
+        self._log_to_file(f"ℹ {message}")
 
     def print_step(self, step: int, total: int, message: str):
         """Print step indicator"""

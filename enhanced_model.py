@@ -28,10 +28,10 @@ import tensorflow as tf
 
 from data_preprocessing import StockDataPreprocessor
 from gpu_config import setup_gpu
+from logger_config import setup_logging, log_section, log_subsection, log_metrics
 
-# Setup logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+# Setup logging (will log to both console and log.txt)
+logger = setup_logging("log.txt", level=logging.INFO, capture_stdout=False)
 
 # Configure GPU for optimal performance
 gpu_config = setup_gpu(mixed_precision=True, memory_growth=True, verbose=True)
@@ -362,15 +362,16 @@ class EnhancedStockPredictor:
             'directional_accuracy': directional_accuracy
         }
 
-        logger.info(f"\n{'='*60}")
-        logger.info(f"Evaluation Metrics for {ticker}")
-        logger.info(f"{'='*60}")
+        log_section(logger, f"Evaluation Metrics for {ticker}")
         logger.info(f"RMSE: {rmse:.4f}")
         logger.info(f"MAE: {mae:.4f}")
         logger.info(f"MAPE: {mape:.2f}%")
         logger.info(f"R² Score: {r2:.4f}")
         logger.info(f"Directional Accuracy: {directional_accuracy:.2f}%")
-        logger.info(f"{'='*60}")
+
+        # Save metrics to eval.txt
+        log_metrics(metrics, output_file="eval.txt", append=True)
+        logger.info(f"Metrics saved to eval.txt")
 
         return metrics
 
@@ -574,17 +575,19 @@ def train_all_stocks(model_type: str = 'attention', lookback_days: int = 60,
     summary_df = pd.DataFrame([r['metrics'] for r in all_results])
     summary_df.to_csv('results/training_summary.csv', index=False)
 
-    logger.info("\n" + "="*60)
-    logger.info("Training Summary")
-    logger.info("="*60)
+    log_section(logger, "Training Summary")
     logger.info(summary_df.to_string(index=False))
 
     # Calculate average metrics
-    logger.info("\n" + "="*60)
-    logger.info("Average Metrics Across All Stocks")
-    logger.info("="*60)
+    log_subsection(logger, "Average Metrics Across All Stocks")
     for col in ['rmse', 'mae', 'mape', 'r2_score', 'directional_accuracy']:
         logger.info(f"{col}: {summary_df[col].mean():.4f}")
+
+    # Save summary to eval.txt
+    from logger_config import log_summary_metrics
+    all_metrics = [r['metrics'] for r in all_results]
+    log_summary_metrics(all_metrics, output_file="eval.txt")
+    logger.info("\nAll metrics saved to eval.txt")
 
     return all_results
 
