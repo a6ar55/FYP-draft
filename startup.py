@@ -13,6 +13,7 @@ import time
 import shutil
 from pathlib import Path
 from typing import Optional, List, Tuple
+from datetime import datetime
 
 # Try to import colorama for cross-platform colors
 try:
