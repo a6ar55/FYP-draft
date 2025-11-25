@@ -22,6 +22,14 @@ warnings.filterwarnings('ignore')
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
+# Import GPU configuration
+try:
+    from gpu_config import setup_gpu
+    gpu_config = setup_gpu(mixed_precision=False, memory_growth=True, verbose=False)
+except ImportError:
+    logger.warning("gpu_config not found, using default settings")
+    gpu_config = None
+
 
 class FinancialSentimentAnalyzer:
     """
@@ -107,14 +115,75 @@ class FinancialSentimentAnalyzer:
             logger.error(f"Error analyzing text: {e}")
             return 0.0, 'neutral'
 
-    def analyze_database_articles(self, batch_size: int = 16, update_existing: bool = False):
+    def analyze_batch(self, texts: List[str], max_length: int = 512) -> List[Tuple[float, str]]:
         """
-        Analyze all articles in the database and update sentiment scores
+        Analyze sentiment for multiple texts in batch (GPU-optimized)
 
         Args:
-            batch_size: Number of articles to process in each batch
+            texts: List of texts to analyze
+            max_length: Maximum token length
+
+        Returns:
+            List of (sentiment_score, sentiment_label) tuples
+        """
+        if not texts:
+            return []
+
+        try:
+            # Tokenize all texts at once
+            inputs = self.tokenizer(
+                texts,
+                return_tensors='pt',
+                truncation=True,
+                max_length=max_length,
+                padding=True
+            )
+            inputs = {k: v.to(self.device) for k, v in inputs.items()}
+
+            # Get predictions for all texts
+            with torch.no_grad():
+                outputs = self.model(**inputs)
+                logits = outputs.logits
+                probabilities = torch.softmax(logits, dim=1).cpu().numpy()
+
+            # Process results
+            results = []
+            for probs in probabilities:
+                predicted_class = np.argmax(probs)
+                sentiment_label = self.label_mapping[predicted_class]
+
+                # Calculate sentiment score
+                sentiment_score = (
+                    probs[0] * -1.0 +  # negative
+                    probs[1] * 0.0 +    # neutral
+                    probs[2] * 1.0      # positive
+                )
+
+                results.append((float(sentiment_score), sentiment_label))
+
+            return results
+
+        except Exception as e:
+            logger.error(f"Error in batch analysis: {e}")
+            # Fallback to individual processing
+            return [self.analyze_text(text) for text in texts]
+
+    def analyze_database_articles(self, batch_size: int = None, update_existing: bool = False):
+        """
+        Analyze all articles in the database and update sentiment scores (GPU-optimized)
+
+        Args:
+            batch_size: Number of articles to process in each batch (None = auto-detect)
             update_existing: If True, re-analyze articles that already have sentiment
         """
+        # Auto-detect optimal batch size
+        if batch_size is None:
+            if gpu_config and gpu_config.gpu_available:
+                batch_size = gpu_config.get_optimal_batch_size('sentiment')
+                logger.info(f"Auto-detected optimal batch size: {batch_size}")
+            else:
+                batch_size = 16
+
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
 
@@ -133,19 +202,25 @@ class FinancialSentimentAnalyzer:
             return
 
         logger.info(f"Analyzing sentiment for {len(articles)} articles...")
+        logger.info(f"Using GPU batch processing with batch size: {batch_size}")
 
-        # Process in batches
+        # Process in batches (GPU-optimized)
         for i in tqdm(range(0, len(articles), batch_size), desc="Processing batches"):
             batch = articles[i:i + batch_size]
 
+            # Prepare texts for batch processing
+            texts = []
+            article_ids = []
             for article_id, title, content in batch:
-                # Combine title and content for analysis
                 text = f"{title}. {content}" if content else title
+                texts.append(text)
+                article_ids.append(article_id)
 
-                # Analyze sentiment
-                sentiment_score, sentiment_label = self.analyze_text(text)
+            # Analyze entire batch at once (much faster on GPU)
+            results = self.analyze_batch(texts)
 
-                # Update database
+            # Update database
+            for article_id, (sentiment_score, sentiment_label) in zip(article_ids, results):
                 cursor.execute('''
                     UPDATE news_articles
                     SET sentiment_score = ?, sentiment_label = ?
@@ -154,9 +229,18 @@ class FinancialSentimentAnalyzer:
 
             conn.commit()
 
+            # Clear GPU cache periodically
+            if i % (batch_size * 10) == 0 and torch.cuda.is_available():
+                torch.cuda.empty_cache()
+
         logger.info("Sentiment analysis completed successfully")
         self.print_sentiment_statistics(conn)
         conn.close()
+
+        # Final GPU cleanup
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+            logger.info("GPU memory cleared")
 
     def print_sentiment_statistics(self, conn: sqlite3.Connection):
         """Print statistics about sentiment distribution"""

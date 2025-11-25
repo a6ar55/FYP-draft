@@ -22,15 +22,19 @@ import json
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from tensorflow.keras.models import Model, Sequential, load_model
 from tensorflow.keras.layers import LSTM, Dense, Dropout, Input, Attention, Concatenate, Layer, Bidirectional
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
+from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau, TensorBoard
 from tensorflow.keras.optimizers import Adam
 import tensorflow as tf
 
 from data_preprocessing import StockDataPreprocessor
+from gpu_config import setup_gpu
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
+# Configure GPU for optimal performance
+gpu_config = setup_gpu(mixed_precision=True, memory_growth=True, verbose=True)
 
 # Set random seeds for reproducibility
 np.random.seed(42)
@@ -72,19 +76,30 @@ class EnhancedStockPredictor:
     """
 
     def __init__(self, lookback_days: int = 60, epochs: int = 100,
-                 batch_size: int = 32, learning_rate: float = 0.001):
+                 batch_size: int = None, learning_rate: float = 0.001):
         """
         Initialize model
 
         Args:
             lookback_days: Number of days to look back
             epochs: Maximum training epochs
-            batch_size: Batch size for training
+            batch_size: Batch size for training (None = auto-detect optimal size)
             learning_rate: Learning rate for optimizer
         """
         self.lookback_days = lookback_days
         self.epochs = epochs
-        self.batch_size = batch_size
+
+        # Auto-detect optimal batch size for GPU if not specified
+        if batch_size is None:
+            if gpu_config.gpu_available:
+                self.batch_size = gpu_config.get_optimal_batch_size('lstm', sequence_length=lookback_days)
+                logger.info(f"Auto-detected optimal batch size: {self.batch_size}")
+            else:
+                self.batch_size = 32
+                logger.info("GPU not available, using default batch size: 32")
+        else:
+            self.batch_size = batch_size
+
         self.learning_rate = learning_rate
         self.model = None
         self.history = None
@@ -237,18 +252,60 @@ class EnhancedStockPredictor:
             verbose=1
         )
 
-        # Train model
-        logger.info(f"Training model for up to {self.epochs} epochs...")
-        self.history = self.model.fit(
-            X_train, y_train,
-            validation_data=(X_val, y_val),
-            epochs=self.epochs,
-            batch_size=self.batch_size,
-            callbacks=[early_stopping, model_checkpoint, reduce_lr],
-            verbose=1
+        # TensorBoard callback for GPU monitoring
+        log_dir = f"logs/fit/{datetime.now().strftime('%Y%m%d-%H%M%S')}"
+        tensorboard_callback = TensorBoard(
+            log_dir=log_dir,
+            histogram_freq=1,
+            profile_batch='10,20',
+            update_freq='epoch'
         )
 
+        callbacks = [early_stopping, model_checkpoint, reduce_lr]
+
+        # Add TensorBoard only if GPU is available (for performance monitoring)
+        if gpu_config.gpu_available:
+            callbacks.append(tensorboard_callback)
+            logger.info(f"TensorBoard logs will be saved to: {log_dir}")
+            logger.info("Run 'tensorboard --logdir logs/fit' to monitor training")
+
+        # Train model with GPU-optimized settings
+        logger.info(f"Training model for up to {self.epochs} epochs...")
+        logger.info(f"Batch size: {self.batch_size} (GPU-optimized)" if gpu_config.gpu_available else f"Batch size: {self.batch_size}")
+
+        # Use tf.data for better GPU utilization
+        if gpu_config.gpu_available and len(X_train) > 10000:
+            # Create tf.data.Dataset for large datasets (better GPU pipelining)
+            train_dataset = tf.data.Dataset.from_tensor_slices((X_train, y_train))
+            train_dataset = train_dataset.batch(self.batch_size).prefetch(tf.data.AUTOTUNE)
+
+            val_dataset = tf.data.Dataset.from_tensor_slices((X_val, y_val))
+            val_dataset = val_dataset.batch(self.batch_size).prefetch(tf.data.AUTOTUNE)
+
+            self.history = self.model.fit(
+                train_dataset,
+                validation_data=val_dataset,
+                epochs=self.epochs,
+                callbacks=callbacks,
+                verbose=1
+            )
+        else:
+            # Standard training for smaller datasets
+            self.history = self.model.fit(
+                X_train, y_train,
+                validation_data=(X_val, y_val),
+                epochs=self.epochs,
+                batch_size=self.batch_size,
+                callbacks=callbacks,
+                verbose=1
+            )
+
         logger.info("Training completed!")
+
+        # Clear GPU memory after training
+        if gpu_config.gpu_available:
+            gpu_config.clear_gpu_memory()
+            logger.info("GPU memory cleared")
 
     def predict(self, X: np.ndarray) -> np.ndarray:
         """
