@@ -21,10 +21,11 @@ requests>=2.31.0
 beautifulsoup4>=4.12.0
 
 # Database
-sqlite3  # Built-in with Python
+# sqlite3 is built-in with Python
 
-# Progress bars
+# Progress bars & UI
 tqdm>=4.65.0
+colorama>=0.4.6
 
 # Additional utilities
 python-dateutil>=2.8.0
