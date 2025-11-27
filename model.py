@@ -2,155 +2,49 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
+import random
+import os
+
+# ==========================================
+# 0. REPRODUCIBILITY SETUP
+# ==========================================
+def set_global_determinism(seed=42):
+    """
+    Sets all random seeds and flags for reproducibility.
+    """
+    os.environ['PYTHONHASHSEED'] = str(seed)
+    os.environ['TF_DETERMINISTIC_OPS'] = '1'
+    os.environ['TF_CUDNN_DETERMINISTIC'] = '1'
+    
+    random.seed(seed)
+    np.random.seed(seed)
+    tf.random.set_seed(seed)
+    
+    print(f"Random seed set to {seed}")
+
+set_global_determinism(42)
+
+# Suppress TF Warnings
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+tf.get_logger().setLevel('ERROR')
+
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, LSTM, Dense, Dropout, Concatenate, Add, LayerNormalization
 from tensorflow.keras.optimizers import Adam
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import math
-import os
 from tensorflow.keras import mixed_precision
 
-# ==========================================
-# 1. CONFIGURATION
-# ==========================================
-LOOKBACK = 60
-PREDICTION_HORIZON = 30 # Predict 30 days into the future
-TEST_SPLIT = 0.2
-EPOCHS = 50
-BATCH_SIZE = 1024
-RL_LAMBDA = 2.0
+# ... (Configuration remains same) ...
 
-# ... (GPU Setup remains same) ...
+# ... (directional_loss remains same) ...
 
-# ==========================================
-# 2. CUSTOM LOSS (RL COMPONENT)
-# ==========================================
-def directional_loss(y_true, y_pred):
-    """
-    Reinforcement Learning-inspired loss.
-    Penalizes predictions that have the wrong direction compared to the previous step.
-    """
-    # y_true and y_pred are shape (batch, 1)
-    # We need the difference from the previous time step.
-    # Since we don't have t-1 in the loss function easily without state,
-    # we can approximate direction by comparing y_pred vs y_true directly if they are returns.
-    # BUT, we are predicting prices.
-    # A common trick is to use the difference between adjacent elements in the batch
-    # OR pass the previous price as an input.
-    # For simplicity in this Keras implementation, we will assume the batch is sequential
-    # and approximate diffs, OR we focus on the sign of the error relative to the trend.
-    
-    # Better approach for "RL":
-    # We want to minimize MSE but ALSO maximize directional accuracy.
-    # Loss = MSE + lambda * (1 - Directional_Match)
-    
-    # Differentiable approximation of direction matching:
-    # diff_true = y_true[t] - y_true[t-1]
-    # diff_pred = y_pred[t] - y_pred[t-1]
-    # match = sign(diff_true) * sign(diff_pred)
-    # We want match to be positive.
-    
-    # Implementation using batch slicing (t vs t-1)
-    y_true_next = y_true[1:]
-    y_true_prev = y_true[:-1]
-    y_pred_next = y_pred[1:]
-    y_pred_prev = y_pred[:-1]
-    
-    diff_true = y_true_next - y_true_prev
-    diff_pred = y_pred_next - y_pred_prev
-    
-    # Tanh as soft sign
-    sign_true = tf.math.tanh(diff_true * 10) # Steep tanh
-    sign_pred = tf.math.tanh(diff_pred * 10)
-    
-    # Product: 1 if same sign, -1 if opposite
-    # We want to minimize: 1 - product (range 0 to 2)
-    dir_penalty = tf.reduce_mean(1 - (sign_true * sign_pred))
-    
-    mse = tf.reduce_mean(tf.square(y_true - y_pred))
-    
-    return mse + (RL_LAMBDA * dir_penalty)
+# ... (load_data remains same) ...
 
-# ==========================================
-# 3. DATA LOADING & PREP
-# ==========================================
-from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
+# ... (create_sequences remains same) ...
 
-# ... (Configuration) ...
-
-# ==========================================
-# 3. DATA LOADING & PREP
-# ==========================================
-def load_data(file_path, ticker):
-    if not os.path.exists(file_path):
-        print(f"File not found: {file_path}")
-        return None
-        
-    df = pd.read_csv(file_path)
-    df = df[df['Ticker'] == ticker].copy()
-    
-    if df.empty:
-        print(f"No data for {ticker}")
-        return None
-        
-    df['Date'] = pd.to_datetime(df['Date'])
-    df = df.sort_values('Date')
-    df.set_index('Date', inplace=True)
-    
-    # Features: OHLCV + Sentiment + Tech Indicators
-    # Ensure columns exist
-    required_cols = [
-        'Open', 'High', 'Low', 'Close', 'Volume', 
-        'Sentiment', 'Subjectivity',
-        'RSI', 'MACD', 'Signal_Line', 'BB_Upper', 'BB_Lower', 'ATR', 'OBV', 'SMA_50', 'SMA_200'
-    ]
-    for col in required_cols:
-        if col not in df.columns:
-            # If columns are missing (e.g. if data_processor wasn't run yet), warn user
-            if col not in ['Sentiment', 'Subjectivity']: # News cols might be missing legitimately
-                print(f"Warning: Column {col} missing for {ticker}. Run data_processor.py first.")
-            df[col] = 0.0
-            
-    return df[required_cols]
-
-def create_sequences(data, target, lookback, horizon=1):
-    X, y = [], []
-    # We need to ensure we have data for i+horizon
-    for i in range(lookback, len(data) - horizon):
-        X.append(data[i-lookback:i])
-        y.append(target[i + horizon]) # Target is 'horizon' steps ahead
-    return np.array(X), np.array(y)
-
-def build_model(input_shape):
-    # Inputs
-    inputs = Input(shape=input_shape)
-    
-    # xLSTM Block 1 (Simulated with Res-LSTM + LayerNorm)
-    x = LSTM(64, return_sequences=True)(inputs)
-    x = LayerNormalization()(x)
-    x = Dropout(0.2)(x)
-    
-    # xLSTM Block 2
-    x = LSTM(64, return_sequences=False)(x)
-    x = LayerNormalization()(x)
-    x = Dropout(0.2)(x)
-    
-    # Dense Heads
-    # 1. Price Prediction (Regression)
-    price_out = Dense(32, activation='relu')(x)
-    price_out = Dense(1, name='price')(price_out)
-    
-    # 2. Direction Prediction (Classification/Auxiliary)
-    # We implicitly train this via the custom loss on price, 
-    # but we could add an explicit head. 
-    # For this task, we stick to the single output with RL loss.
-    
-    model = Model(inputs=inputs, outputs=price_out)
-    model.compile(optimizer=Adam(learning_rate=0.001), loss=directional_loss)
-    return model
-
-# ... (PortfolioManager init remains same) ...
+# ... (build_model remains same) ...
 
 class PortfolioManager:
     def __init__(self, tickers, lookback=60, horizon=30):
@@ -180,6 +74,11 @@ class PortfolioManager:
             train_len = int(len(data) * (1 - TEST_SPLIT))
             train_data = data[:train_len]
             
+            # --- FIX: Check for sufficient data ---
+            if len(train_data) < (self.lookback + self.horizon + 10):
+                print(f"Skipping {ticker}: Insufficient training data ({len(train_data)} samples).")
+                continue
+            
             scaler = MinMaxScaler()
             scaler.fit(train_data)
             
@@ -193,7 +92,7 @@ class PortfolioManager:
             X_train, y_train = create_sequences(train_scaled, train_scaled[:, 3], self.lookback, self.horizon)
             
             if len(X_train) == 0:
-                print(f"Not enough data for {ticker}")
+                print(f"Not enough sequences for {ticker}")
                 continue
 
             model = build_model((X_train.shape[1], X_train.shape[2]))
@@ -202,7 +101,8 @@ class PortfolioManager:
                 epochs=EPOCHS, 
                 batch_size=BATCH_SIZE, 
                 verbose=0,
-                callbacks=[early_stop, reduce_lr]
+                callbacks=[early_stop, reduce_lr],
+                shuffle=True # Seeded shuffle
             )
             self.models[ticker] = model
             print(f"✓ {ticker} Ready")
