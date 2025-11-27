@@ -98,33 +98,36 @@ The inputs are concatenated before entering the network:
 $$ X_t = [ \text{Price}_t, \text{Volume}_t, \text{Sentiment}_t, \text{Subjectivity}_t ] $$
 This allows the LSTM gates (Input, Forget, Output) to condition their state updates on both market technicals and news sentiment simultaneously.
 
-## 4. Portfolio Optimization Strategy (Daily Selection)
+## 4. Portfolio Optimization Strategy (Long-Term Trend Following)
 
-To maximize daily profit, we extend the pipeline from single-stock prediction to **Cross-Sectional Portfolio Ranking**.
+To mitigate the noise inherent in daily price movements, we shift from a daily-trading approach to a **Long-Term Trend Following** strategy.
 
 ### Objective
-Identify the single most profitable asset to **Buy** (Long) and the single most likely asset to drop to **Sell** (Short) for each trading day $t$.
+Identify assets with the strongest **30-Day Forward Return Potential**. Instead of frequent churning, we allocate capital to the asset with the most robust medium-term growth trajectory.
 
 ### Mathematical Formulation
-Let $\mathcal{S}$ be the set of available tickers (e.g., INFY, TCS, RELIANCE).
-For each stock $i \in \mathcal{S}$, the model predicts the closing price $\hat{P}_{i,t}$.
+We modify the prediction target. Instead of predicting $P_{t+1}$, the model now predicts the price at horizon $H$ (e.g., $H=30$ days).
 
-We calculate the **Expected Return** $\hat{r}_{i,t}$:
-$$ \hat{r}_{i,t} = \frac{\hat{P}_{i,t} - P_{i, t-1}}{P_{i, t-1}} $$
+$$ \hat{P}_{i, t+H} = f_\theta(X_t) $$
 
-### Selection Policy (Greedy Max-Min)
-The RL agent's policy $\pi(s_t)$ selects actions $a_t = (\text{Buy}_i, \text{Sell}_j)$ to maximize the daily reward $R_t$.
+The **Expected Horizon Return** is:
+$$ \hat{R}_{i, t \to t+H} = \frac{\hat{P}_{i, t+H} - P_{i, t}}{P_{i, t}} $$
 
-1.  **Buy Signal (Long)**: Select the stock with the highest positive expected return.
-    $$ i^*_{buy} = \operatorname*{argmax}_{i \in \mathcal{S}} (\hat{r}_{i,t}) $$
-    *Constraint*: $\hat{r}_{i^*_{buy}, t} > \tau$ (Threshold, e.g., 0)
+### Selection Policy (Rolling Best-Idea)
+At each time step $t$, we rank all available assets based on their forecasted 30-day return.
 
-2.  **Sell Signal (Short)**: Select the stock with the lowest (most negative) expected return.
-    $$ j^*_{sell} = \operatorname*{argmin}_{j \in \mathcal{S}} (\hat{r}_{j,t}) $$
-    *Constraint*: $\hat{r}_{j^*_{sell}, t} < -\tau$
+1.  **Ranking**:
+    $$ \text{Rank}_t = \operatorname*{argsort}_{i \in \mathcal{S}} (\hat{R}_{i, t \to t+H}) $$
 
-### Portfolio Reward Function
-The refined RL objective is to maximize the **Realized Portfolio Return**:
-$$ J(\theta) = \sum_{t} \left( r_{i^*_{buy}, t} - r_{j^*_{sell}, t} \right) $$
-Where $r_{i,t}$ is the *actual* return of stock $i$ at time $t$. This transforms the problem from minimizing individual regression errors to maximizing the spread between the best and worst performers.
+2.  **Allocation**:
+    We invest 100% of the portfolio into the Top-1 ranked asset ($i^*$).
+    $$ i^*_t = \operatorname*{argmax}_{i \in \mathcal{S}} (\hat{R}_{i, t \to t+H}) $$
+
+3.  **Holding Logic**:
+    This naturally implements a "hold" strategy. Since 30-day trends evolve slowly, $i^*_t$ is likely to remain $i^*_{t+1}$ for many consecutive days. We only switch assets (sell old, buy new) when a new asset overtakes the current holding in terms of predicted medium-term potential.
+
+### Reward Function
+The simulation tracks the **Daily Realized Return** of the selected asset:
+$$ \text{Profit}_t = \frac{P_{i^*_t, t+1} - P_{i^*_t, t}}{P_{i^*_t, t}} $$
+*Note: Even though we predict 30 days out, we re-evaluate daily to ensure we are always in the best asset.*
 
