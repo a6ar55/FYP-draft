@@ -36,7 +36,15 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import math
 from tensorflow.keras import mixed_precision
 
-# ... (Configuration remains same) ...
+# ==========================================
+# 1. CONFIGURATION
+# ==========================================
+LOOKBACK = 60
+PREDICTION_HORIZON = 30 # Predict 30 days into the future
+TEST_SPLIT = 0.2
+EPOCHS = 50
+BATCH_SIZE = 1024
+RL_LAMBDA = 2.0
 
 # ... (directional_loss remains same) ...
 
