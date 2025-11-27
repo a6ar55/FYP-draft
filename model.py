@@ -9,6 +9,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import math
 import os
+from tensorflow.keras import mixed_precision
 
 # ==========================================
 # 1. CONFIGURATION
@@ -16,8 +17,27 @@ import os
 LOOKBACK = 60
 TEST_SPLIT = 0.2
 EPOCHS = 50
-BATCH_SIZE = 32
-RL_LAMBDA = 2.0  # Weight for directional loss
+BATCH_SIZE = 1024  # Increased for L4 GPU (24GB VRAM)
+RL_LAMBDA = 2.0
+
+# ==========================================
+# GPU SETUP (L4 Optimization)
+# ==========================================
+gpus = tf.config.list_physical_devices('GPU')
+if gpus:
+    try:
+        for gpu in gpus:
+            tf.config.experimental.set_memory_growth(gpu, True)
+        print(f"Found {len(gpus)} GPU(s). Using GPU acceleration.")
+        
+        # Enable Mixed Precision for L4 (Ada Lovelace) to use Tensor Cores
+        policy = mixed_precision.Policy('mixed_float16')
+        mixed_precision.set_global_policy(policy)
+        print("Mixed Precision (float16) enabled.")
+    except RuntimeError as e:
+        print(f"GPU Error: {e}")
+else:
+    print("No GPU found. Using CPU.")
 
 # ==========================================
 # 2. CUSTOM LOSS (RL COMPONENT)
@@ -209,21 +229,181 @@ def train_and_evaluate(ticker):
         'DirAcc': dir_acc
     }
 
+# ==========================================
+# 6. PORTFOLIO OPTIMIZATION
+# ==========================================
+class PortfolioManager:
+    def __init__(self, tickers, lookback=60):
+        self.tickers = tickers
+        self.lookback = lookback
+        self.models = {}
+        self.scalers = {}
+        self.data_store = {}
+        
+    def train_all(self):
+        print("\n" + "="*50)
+        print("TRAINING PHASE")
+        print("="*50)
+        for ticker in self.tickers:
+            print(f"Training model for {ticker}...")
+            # Load and prep data
+            df = load_data('combined_data.csv', ticker)
+            if df is None: continue
+            
+            data = df.values
+            train_len = int(len(data) * (1 - TEST_SPLIT))
+            train_data = data[:train_len]
+            
+            scaler = MinMaxScaler()
+            scaler.fit(train_data)
+            
+            # Store for inference
+            self.scalers[ticker] = scaler
+            self.data_store[ticker] = df # Store full DF for validation
+            
+            # Train
+            train_scaled = scaler.transform(train_data)
+            X_train, y_train = create_sequences(train_scaled, train_scaled[:, 3], self.lookback)
+            
+            model = build_model((X_train.shape[1], X_train.shape[2]))
+            model.fit(X_train, y_train, epochs=EPOCHS, batch_size=BATCH_SIZE, verbose=0)
+            self.models[ticker] = model
+            print(f"✓ {ticker} Ready")
+
+    def simulate_trading(self):
+        print("\n" + "="*50)
+        print("PORTFOLIO SIMULATION (TEST PHASE)")
+        print("="*50)
+        
+        # We need to align dates across all tickers in the test set
+        # Find common dates in test range
+        common_dates = None
+        
+        for ticker in self.tickers:
+            if ticker not in self.data_store: continue
+            df = self.data_store[ticker]
+            train_len = int(len(df) * (1 - TEST_SPLIT))
+            test_dates = df.index[train_len:]
+            
+            if common_dates is None:
+                common_dates = test_dates
+            else:
+                common_dates = common_dates.intersection(test_dates)
+        
+        if common_dates is None or len(common_dates) == 0:
+            print("No overlapping test dates found.")
+            return
+
+        print(f"Simulating over {len(common_dates)} trading days...")
+        
+        total_profit = 0.0
+        history = []
+        
+        # Simulation Loop
+        for date in common_dates:
+            daily_predictions = []
+            
+            for ticker in self.tickers:
+                if ticker not in self.models: continue
+                
+                # Get sequence for this date
+                # We need lookback window ending at 'date'
+                df = self.data_store[ticker]
+                
+                # Find integer location of date
+                try:
+                    loc = df.index.get_loc(date)
+                except KeyError:
+                    continue
+                    
+                if loc < self.lookback: continue
+                
+                # Extract sequence
+                raw_seq = df.iloc[loc-self.lookback:loc].values
+                prev_close = raw_seq[-1, 3] # Close is index 3
+                
+                # Scale
+                scaler = self.scalers[ticker]
+                seq_scaled = scaler.transform(raw_seq)
+                X_in = seq_scaled.reshape(1, self.lookback, seq_scaled.shape[1])
+                
+                # Predict
+                pred_scaled = self.models[ticker].predict(X_in, verbose=0)
+                
+                # Inverse scale target only
+                dummy = np.zeros((1, raw_seq.shape[1]))
+                dummy[:, 3] = pred_scaled
+                pred_price = scaler.inverse_transform(dummy)[0, 3]
+                
+                # Calculate Expected Return
+                exp_return = (pred_price - prev_close) / prev_close
+                
+                daily_predictions.append({
+                    'ticker': ticker,
+                    'pred_return': exp_return,
+                    'prev_close': prev_close,
+                    'actual_close': df.iloc[loc]['Close'] # Cheating? No, this is for evaluation "after the fact"
+                })
+            
+            if not daily_predictions: continue
+            
+            # RANKING / SELECTION POLICY
+            # Sort by expected return
+            daily_predictions.sort(key=lambda x: x['pred_return'], reverse=True)
+            
+            best_buy = daily_predictions[0]
+            best_sell = daily_predictions[-1]
+            
+            # Calculate Realized Profit
+            # Buy Profit = (Actual - Prev) / Prev
+            buy_profit = (best_buy['actual_close'] - best_buy['prev_close']) / best_buy['prev_close']
+            
+            # Sell Profit = (Prev - Actual) / Prev  [Short Selling]
+            sell_profit = (best_sell['prev_close'] - best_sell['actual_close']) / best_sell['prev_close']
+            
+            daily_total = buy_profit + sell_profit
+            total_profit += daily_total
+            
+            history.append({
+                'Date': date,
+                'Buy': best_buy['ticker'],
+                'Buy_Pred%': best_buy['pred_return']*100,
+                'Buy_Actual%': buy_profit*100,
+                'Sell': best_sell['ticker'],
+                'Sell_Pred%': best_sell['pred_return']*100,
+                'Sell_Actual%': sell_profit*100,
+                'Daily_Profit%': daily_total*100
+            })
+        
+        # Summary
+        hist_df = pd.DataFrame(history)
+        print("\nSimulation Results (Sample):")
+        print(hist_df.head())
+        print(f"\nTotal Cumulative Return: {total_profit*100:.2f}%")
+        print(f"Average Daily Return: {(total_profit/len(common_dates))*100:.2f}%")
+        
+        # Plot
+        plt.figure(figsize=(12, 6))
+        plt.plot(hist_df['Date'], hist_df['Daily_Profit%'].cumsum(), label='Cumulative Portfolio Strategy')
+        plt.title('Portfolio Optimization: Cumulative Profit (Long Best + Short Worst)')
+        plt.xlabel('Date')
+        plt.ylabel('Return (%)')
+        plt.legend()
+        plt.grid(True)
+        plt.savefig('portfolio_performance.png')
+        print("Performance plot saved to portfolio_performance.png")
+
 if __name__ == "__main__":
-    # Get list of tickers from CSV
     try:
         df = pd.read_csv('combined_data.csv')
         tickers = df['Ticker'].unique()
         
-        results = []
-        for ticker in tickers:
-            res = train_and_evaluate(ticker)
-            if res: results.append(res)
-            
-        print("\nFinal Summary:")
-        for r in results:
-            print(f"{r['Ticker']}: DirAcc={r['DirAcc']:.2f}%, RMSE={r['RMSE']:.2f}")
+        pm = PortfolioManager(tickers)
+        pm.train_all()
+        pm.simulate_trading()
             
     except Exception as e:
         print(f"Error: {e}")
+        import traceback
+        traceback.print_exc()
 
