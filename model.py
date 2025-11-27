@@ -122,7 +122,33 @@ def create_sequences(data, target, lookback, horizon=1):
         y.append(target[i + horizon]) # Target is 'horizon' steps ahead
     return np.array(X), np.array(y)
 
-# ... (build_model remains same) ...
+def build_model(input_shape):
+    # Inputs
+    inputs = Input(shape=input_shape)
+    
+    # xLSTM Block 1 (Simulated with Res-LSTM + LayerNorm)
+    x = LSTM(64, return_sequences=True)(inputs)
+    x = LayerNormalization()(x)
+    x = Dropout(0.2)(x)
+    
+    # xLSTM Block 2
+    x = LSTM(64, return_sequences=False)(x)
+    x = LayerNormalization()(x)
+    x = Dropout(0.2)(x)
+    
+    # Dense Heads
+    # 1. Price Prediction (Regression)
+    price_out = Dense(32, activation='relu')(x)
+    price_out = Dense(1, name='price')(price_out)
+    
+    # 2. Direction Prediction (Classification/Auxiliary)
+    # We implicitly train this via the custom loss on price, 
+    # but we could add an explicit head. 
+    # For this task, we stick to the single output with RL loss.
+    
+    model = Model(inputs=inputs, outputs=price_out)
+    model.compile(optimizer=Adam(learning_rate=0.001), loss=directional_loss)
+    return model
 
 # ... (PortfolioManager init remains same) ...
 
