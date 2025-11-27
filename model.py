@@ -31,7 +31,30 @@ RL_LAMBDA = 2.0
 # ==========================================
 # 3. DATA LOADING & PREP
 # ==========================================
-# ... (load_data remains same) ...
+def load_data(file_path, ticker):
+    if not os.path.exists(file_path):
+        print(f"File not found: {file_path}")
+        return None
+        
+    df = pd.read_csv(file_path)
+    df = df[df['Ticker'] == ticker].copy()
+    
+    if df.empty:
+        print(f"No data for {ticker}")
+        return None
+        
+    df['Date'] = pd.to_datetime(df['Date'])
+    df = df.sort_values('Date')
+    df.set_index('Date', inplace=True)
+    
+    # Features: OHLCV + Sentiment
+    # Ensure columns exist
+    required_cols = ['Open', 'High', 'Low', 'Close', 'Volume', 'Sentiment', 'Subjectivity']
+    for col in required_cols:
+        if col not in df.columns:
+            df[col] = 0.0
+            
+    return df[required_cols]
 
 def create_sequences(data, target, lookback, horizon=1):
     X, y = [], []
