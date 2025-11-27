@@ -26,7 +26,51 @@ RL_LAMBDA = 2.0
 # ==========================================
 # 2. CUSTOM LOSS (RL COMPONENT)
 # ==========================================
-# ... (Loss function remains same) ...
+def directional_loss(y_true, y_pred):
+    """
+    Reinforcement Learning-inspired loss.
+    Penalizes predictions that have the wrong direction compared to the previous step.
+    """
+    # y_true and y_pred are shape (batch, 1)
+    # We need the difference from the previous time step.
+    # Since we don't have t-1 in the loss function easily without state,
+    # we can approximate direction by comparing y_pred vs y_true directly if they are returns.
+    # BUT, we are predicting prices.
+    # A common trick is to use the difference between adjacent elements in the batch
+    # OR pass the previous price as an input.
+    # For simplicity in this Keras implementation, we will assume the batch is sequential
+    # and approximate diffs, OR we focus on the sign of the error relative to the trend.
+    
+    # Better approach for "RL":
+    # We want to minimize MSE but ALSO maximize directional accuracy.
+    # Loss = MSE + lambda * (1 - Directional_Match)
+    
+    # Differentiable approximation of direction matching:
+    # diff_true = y_true[t] - y_true[t-1]
+    # diff_pred = y_pred[t] - y_pred[t-1]
+    # match = sign(diff_true) * sign(diff_pred)
+    # We want match to be positive.
+    
+    # Implementation using batch slicing (t vs t-1)
+    y_true_next = y_true[1:]
+    y_true_prev = y_true[:-1]
+    y_pred_next = y_pred[1:]
+    y_pred_prev = y_pred[:-1]
+    
+    diff_true = y_true_next - y_true_prev
+    diff_pred = y_pred_next - y_pred_prev
+    
+    # Tanh as soft sign
+    sign_true = tf.math.tanh(diff_true * 10) # Steep tanh
+    sign_pred = tf.math.tanh(diff_pred * 10)
+    
+    # Product: 1 if same sign, -1 if opposite
+    # We want to minimize: 1 - product (range 0 to 2)
+    dir_penalty = tf.reduce_mean(1 - (sign_true * sign_pred))
+    
+    mse = tf.reduce_mean(tf.square(y_true - y_pred))
+    
+    return mse + (RL_LAMBDA * dir_penalty)
 
 # ==========================================
 # 3. DATA LOADING & PREP
