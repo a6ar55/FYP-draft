@@ -60,6 +60,8 @@ print(f"  ✓ Loaded {len(aggregated_sentiment)} sentiment records")
 # Convert to DataFrame for easier merging
 sentiment_df = pd.DataFrame(aggregated_sentiment)
 sentiment_df['date'] = pd.to_datetime(sentiment_df['date'], utc=True)
+# Normalize to date only (remove time component) for matching
+sentiment_df['date'] = sentiment_df['date'].dt.normalize()
 
 # Select only the features we need
 sentiment_features = ['ticker', 'date', 'sentiment_score', 'article_count',
@@ -86,6 +88,8 @@ for ticker, filename in TICKER_FILES.items():
     # Load stock data
     stock_df = pd.read_csv(filepath)
     stock_df['Date'] = pd.to_datetime(stock_df['Date'], utc=True)
+    # Normalize to date only (remove time component) for matching
+    stock_df['Date'] = stock_df['Date'].dt.normalize()
     stock_df = stock_df.sort_values('Date').reset_index(drop=True)
 
     # Select OHLCV features
@@ -101,6 +105,12 @@ for ticker, filename in TICKER_FILES.items():
 
     # Get sentiment for this ticker
     ticker_sentiment = sentiment_df[sentiment_df['ticker'] == ticker].copy()
+
+    # Debug: Show date range of sentiment data for this ticker
+    if len(ticker_sentiment) > 0:
+        sentiment_dates = ticker_sentiment['date'].min(), ticker_sentiment['date'].max()
+        # print(f"    {ticker} sentiment dates: {sentiment_dates[0].date()} to {sentiment_dates[1].date()}")
+
     ticker_sentiment = ticker_sentiment.drop('ticker', axis=1)
     ticker_sentiment.rename(columns={'date': 'Date'}, inplace=True)
 
@@ -110,10 +120,10 @@ for ticker, filename in TICKER_FILES.items():
     # Fill missing sentiment values (days without news)
     # Forward fill first, then fill remaining with 0
     sentiment_cols = ['sentiment_score', 'article_count', 'positive_ratio', 'negative_ratio']
-    merged_df[sentiment_cols] = merged_df[sentiment_cols].fillna(method='ffill').fillna(0)
+    merged_df[sentiment_cols] = merged_df[sentiment_cols].ffill().fillna(0)
 
     # Fill any remaining NaN values
-    merged_df = merged_df.fillna(method='bfill').fillna(0)
+    merged_df = merged_df.bfill().fillna(0)
 
     # Add ticker column
     merged_df['ticker'] = ticker
