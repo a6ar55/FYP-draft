@@ -4,7 +4,10 @@
       "Bash(find:*)",
       "Bash(cat:*)",
       "Bash(chmod:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(pip install:*)",
+      "Bash(python3 -m pip install:*)",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []

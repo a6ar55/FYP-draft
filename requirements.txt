@@ -1,32 +1,18 @@
-# Core Data Science
+# Minimal dependencies for xLSTM + RL Stock Prediction Pipeline
+
+# Core libraries
 numpy>=1.24.0
 pandas>=2.0.0
-scikit-learn>=1.3.0
 
-# Deep Learning
+# Machine learning
+scikit-learn>=1.3.0
 tensorflow>=2.13.0
-keras>=2.13.0
 
 # Visualization
 matplotlib>=3.7.0
-seaborn>=0.12.0
 
-# Natural Language Processing & Sentiment Analysis
-transformers>=4.30.0
-torch>=2.0.0
-vaderSentiment>=3.3.2
-
-# Web Scraping & Data Collection
+# Optional (if using real news API)
 requests>=2.31.0
-beautifulsoup4>=4.12.0
 
-# Database
-# sqlite3 is built-in with Python
-
-# Progress bars & UI
-tqdm>=4.65.0
-colorama>=0.4.6
-
-# Additional utilities
-python-dateutil>=2.8.0
-pytz>=2023.3
+# Sentiment analysis
+textblob>=0.17.0
