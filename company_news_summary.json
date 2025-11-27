@@ -1,0 +1,86 @@
+{
+  "summary": [
+    {
+      "ticker": "INFY.NS",
+      "total_articles": 15,
+      "date_count": 2,
+      "date_range": {
+        "min": "2025-10-09",
+        "max": "2025-10-10"
+      }
+    },
+    {
+      "ticker": "TCS.NS",
+      "total_articles": 72,
+      "date_count": 2,
+      "date_range": {
+        "min": "2025-10-09",
+        "max": "2025-10-10"
+      }
+    },
+    {
+      "ticker": "HDFCBANK.NS",
+      "total_articles": 17,
+      "date_count": 2,
+      "date_range": {
+        "min": "2025-10-09",
+        "max": "2025-10-10"
+      }
+    },
+    {
+      "ticker": "ICICIBANK.NS",
+      "total_articles": 11,
+      "date_count": 2,
+      "date_range": {
+        "min": "2025-10-09",
+        "max": "2025-10-10"
+      }
+    },
+    {
+      "ticker": "RELIANCE.NS",
+      "total_articles": 22,
+      "date_count": 2,
+      "date_range": {
+        "min": "2025-10-09",
+        "max": "2025-10-10"
+      }
+    },
+    {
+      "ticker": "BHARTIARTL.NS",
+      "total_articles": 3,
+      "date_count": 1,
+      "date_range": {
+        "min": "2025-10-09",
+        "max": "2025-10-09"
+      }
+    },
+    {
+      "ticker": "HINDUNILVR.NS",
+      "total_articles": 1,
+      "date_count": 1,
+      "date_range": {
+        "min": "2025-10-09",
+        "max": "2025-10-09"
+      }
+    },
+    {
+      "ticker": "ITC.NS",
+      "total_articles": 3,
+      "date_count": 2,
+      "date_range": {
+        "min": "2025-10-09",
+        "max": "2025-10-10"
+      }
+    },
+    {
+      "ticker": "SBIN.NS",
+      "total_articles": 16,
+      "date_count": 2,
+      "date_range": {
+        "min": "2025-10-09",
+        "max": "2025-10-10"
+      }
+    }
+  ],
+  "total_companies_with_news": 9
+}

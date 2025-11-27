@@ -1,0 +1,1022 @@
+{
+  "generated_at": "2025-11-27T14:41:57.223240",
+  "stock_date_range": {
+    "min": "2015-01-01T00:00:00+05:30",
+    "max": "2025-11-04T00:00:00+05:30"
+  },
+  "total_articles": 404,
+  "matched_articles": 160,
+  "company_news": {
+    "INFY.NS": {
+      "2025-10-09": [
+        {
+          "title": "Explained: Reliance Industries is India’s most valuable company but why isn’t it No.1 in Nifty50 weight?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/explained-reliance-industries-is-indias-most-valuable-company-but-why-isnt-it-no-1-in-nifty50-weight/articleshow/124403406.cms",
+          "content": "SynopsisReliance Industries, despite its massive market capitalization, ranks third in Nifty 50 index weight due to its lower free-float shares. Banks like HDFC Bank and ICICI Bank hold higher weights because a larger portion of their stock is available for public trading, influencing the index more significantly.ETMarkets.comReliance Industries Ltd, India's largest company, holds third place in the Nifty 50 index.Reliance Industries Ltd (RIL) may tower over India’s corporate landscape with the ",
+          "scraped_at": "2025-10-09T09:15:02.131134831+05:30"
+        },
+        {
+          "title": "TCS to announce Q2 results today: 10 things to track and how to trade",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/earnings/tcs-to-announce-q2-results-today-10-things-to-track-and-how-to-trade/articleshow/124403310.cms",
+          "content": "Tata Consultancy Services (TCS) reports its Q2 results today with investors bracing for tepid growth and razor-thin margin movements as the country's largest software exporter navigates headwinds from a planned 12,000-employee separation program, wage revisions, an uncertain US demand and H-1B visa issue.“We expect muted growth from TCS in Q2 as positive momentum in BFSI and tech will be largely offset due to weakness in life science & healthcare and communications. We are also building in a 10b",
+          "scraped_at": "2025-10-09T09:15:02.488589374+05:30"
+        },
+        {
+          "title": "Infosys Share Price Live Updates: Infosys Trading Volume Insights",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/infosys-stock-price-live-updates-09-oct-2025/liveblog/124403062.cms",
+          "content": "09 Oct 2025 | 08:42:26 AM ISTInfosys share price live updatesWelcome to the Infosys Stock Liveblog, your ultimate source for real-time updates and analysis of one of the most prominent stocks in the market. Stay on top of the game with our comprehensive coverage, featuring the latest details on Infosys stock, including: Last traded price 1495.0, Market capitalization: 621063.76, Volume: 4657192, Price-to-earnings ratio 22.78, Earnings per share 65.63. Get a holistic view of Infosys with our expe",
+          "scraped_at": "2025-10-09T09:15:06.859948992+05:30"
+        }
+      ],
+      "2025-10-10": [
+        {
+          "title": "Trade Setup for October 10: Nifty bulls aim to break above the 25,250 barrier after TCS results",
+          "url": "https://www.cnbctv18.com/market/trade-setup-october-10-nifty-50-key-levels-midcap-banks-it-stocks-tcs-tata-elxsi-lg-wework-afcons-share-price-19710133.htm",
+          "content": "HomeMarket NewsTrade Setup for October 10: Nifty bulls aim to break above the 25,250 barrier after TCS resultsThe surge in IT stocks has taken the spotlight away from the Nifty Bank, which has remained away from the limelight for a better part of this week. Although the index made a lower high on the charts on Thursday, it made a higher low, and also managed to sustain above the 56,000 mark, which remains level on the downside for the index.While writing the setup for Thursday's trade, we told y",
+          "scraped_at": "2025-10-10T02:09:43.497488402+05:30"
+        },
+        {
+          "title": "TCS results, AI bets and metals rally: Parag Thakkar sees value across IT, metals and banking sector",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-results-ai-bets-and-metals-rally-parag-thakkar-sees-value-across-it-metals-and-banking-sector/articleshow/124447741.cms",
+          "content": "In an exclusive conversation with ET Now, Parag Thakkar, from Fort Capital shared his perspective on Tata Consultancy Services’ (TCS) latest quarterly results, the company’s strategic shift towards AI and data centre investments, and his bullish stance on the metals and banking sectors. “We have 2.5% weight in TCS and we are not going to sell at this price,” Thakkar began, making his position clear. “Whether we will add more depends... See, the two-three things which are positive is first of all",
+          "scraped_at": "2025-10-10T20:44:07.589746607+05:30"
+        },
+        {
+          "title": "TCS taking a balanced, low risk Path on AI Investments: Sandip Agarwal",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-taking-a-balanced-low-risk-path-on-ai-investments-sandip-agarwal/articleshow/124447361.cms",
+          "content": "India’s largest software exporter, Tata Consultancy Services (TCS), has announced a $7 billion investment in data centres and AI-linked infrastructure — a move that marks one of its most ambitious strategic shifts in recent years. The announcement comes alongside a 3% fall in employee headcount, which the company attributes to efficiency gains from automation and AI integration.Speaking to ET Now, Sandip Agarwal, from Sowilo Investment Managers, said he was not concerned about the decline in sta",
+          "scraped_at": "2025-10-10T20:44:08.029683987+05:30"
+        },
+        {
+          "title": "Infosys unveils Customer Experience Suite for Salesforce to accelerate agentic AI adoption",
+          "url": "https://www.cnbctv18.com/market/stocks/infosys-share-price-unveils-customer-experience-suite-for-salesforce-to-accelerate-agentic-ai-adoption-19711322.htm",
+          "content": "HomeMarket NewsStocks NewsInfosys unveils Customer Experience Suite for Salesforce to accelerate agentic AI adoptionInfosys deployed Agentforce SDR to revolutionise the sales process for a leading research institute, addressing inefficiencies and reducing response time. Infosys also helped a renowned media house in transforming its customer service operations. Shares of Infosys Ltd ended at ₹1,511.90, up by ₹2.60, or 0.17%, on the BSE.IT services company Infosys Ltd on Friday (October 10) launch",
+          "scraped_at": "2025-10-10T20:44:10.519587987+05:30"
+        },
+        {
+          "title": "TCS Share Price Live Updates: Stock falls to the day's lows; Goldman Sachs says 'buy'",
+          "url": "https://www.cnbctv18.com/market/tcs-share-price-live-updates-q2-results-margins-deal-wins-acquisitions-ai-data-centre-targets-liveblog-19710223.htm",
+          "content": "HomeMarket NewsTCS Share Price Live Updates: Stock falls to the day's lows; Goldman Sachs says 'buy'TCS Share Price Live Updates: Shares of India's largest IT services company, Tata Consultancy Service (TCS), will be in focus on Friday, October 10, as they will be reacting to their quarterly results reported after market hours on Wednesday. The results were better than expectations on most fronts, but there were multiple announcements made along with the results that could grab the spotlight. Wa",
+          "scraped_at": "2025-10-10T20:44:10.960442451+05:30"
+        },
+        {
+          "title": "Infosys unveils Customer Experience Suite for Salesforce to accelerate agentic AI adoption",
+          "url": "https://www.cnbctv18.com/market/stocks/infosys-share-price-unveils-customer-experience-suite-for-salesforce-to-accelerate-agentic-ai-adoption-19711322.htm",
+          "content": "HomeMarket NewsStocks NewsInfosys unveils Customer Experience Suite for Salesforce to accelerate agentic AI adoptionInfosys deployed Agentforce SDR to revolutionise the sales process for a leading research institute, addressing inefficiencies and reducing response time. Infosys also helped a renowned media house in transforming its customer service operations. Shares of Infosys Ltd ended at ₹1,511.90, up by ₹2.60, or 0.17%, on the BSE.IT services company Infosys Ltd on Friday (October 10) launch",
+          "scraped_at": "2025-10-10T20:44:11.312041987+05:30"
+        },
+        {
+          "title": "TCS results, AI bets and metals rally: Parag Thakkar sees value across IT, metals and banking sector",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-results-ai-bets-and-metals-rally-parag-thakkar-sees-value-across-it-metals-and-banking-sector/articleshow/124447741.cms",
+          "content": "In an exclusive conversation with ET Now, Parag Thakkar, from Fort Capital shared his perspective on Tata Consultancy Services’ (TCS) latest quarterly results, the company’s strategic shift towards AI and data centre investments, and his bullish stance on the metals and banking sectors. “We have 2.5% weight in TCS and we are not going to sell at this price,” Thakkar began, making his position clear. “Whether we will add more depends... See, the two-three things which are positive is first of all",
+          "scraped_at": "2025-10-10T20:48:00.896733491+05:30"
+        },
+        {
+          "title": "TCS taking a balanced, low risk Path on AI Investments: Sandip Agarwal",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-taking-a-balanced-low-risk-path-on-ai-investments-sandip-agarwal/articleshow/124447361.cms",
+          "content": "India’s largest software exporter, Tata Consultancy Services (TCS), has announced a $7 billion investment in data centres and AI-linked infrastructure — a move that marks one of its most ambitious strategic shifts in recent years. The announcement comes alongside a 3% fall in employee headcount, which the company attributes to efficiency gains from automation and AI integration.Speaking to ET Now, Sandip Agarwal, from Sowilo Investment Managers, said he was not concerned about the decline in sta",
+          "scraped_at": "2025-10-10T20:48:01.056786897+05:30"
+        },
+        {
+          "title": "Infosys unveils Customer Experience Suite for Salesforce to accelerate agentic AI adoption",
+          "url": "https://www.cnbctv18.com/market/stocks/infosys-share-price-unveils-customer-experience-suite-for-salesforce-to-accelerate-agentic-ai-adoption-19711322.htm",
+          "content": "HomeMarket NewsStocks NewsInfosys unveils Customer Experience Suite for Salesforce to accelerate agentic AI adoptionInfosys deployed Agentforce SDR to revolutionise the sales process for a leading research institute, addressing inefficiencies and reducing response time. Infosys also helped a renowned media house in transforming its customer service operations. Shares of Infosys Ltd ended at ₹1,511.90, up by ₹2.60, or 0.17%, on the BSE.IT services company Infosys Ltd on Friday (October 10) launch",
+          "scraped_at": "2025-10-10T20:48:03.480278368+05:30"
+        },
+        {
+          "title": "TCS Share Price Live Updates: Stock falls to the day's lows; Goldman Sachs says 'buy'",
+          "url": "https://www.cnbctv18.com/market/tcs-share-price-live-updates-q2-results-margins-deal-wins-acquisitions-ai-data-centre-targets-liveblog-19710223.htm",
+          "content": "HomeMarket NewsTCS Share Price Live Updates: Stock falls to the day's lows; Goldman Sachs says 'buy'TCS Share Price Live Updates: Shares of India's largest IT services company, Tata Consultancy Service (TCS), will be in focus on Friday, October 10, as they will be reacting to their quarterly results reported after market hours on Wednesday. The results were better than expectations on most fronts, but there were multiple announcements made along with the results that could grab the spotlight. Wa",
+          "scraped_at": "2025-10-10T20:48:04.406991829+05:30"
+        },
+        {
+          "title": "Trade Setup for October 10: Nifty bulls aim to break above the 25,250 barrier after TCS results",
+          "url": "https://www.cnbctv18.com/market/trade-setup-october-10-nifty-50-key-levels-midcap-banks-it-stocks-tcs-tata-elxsi-lg-wework-afcons-share-price-19710133.htm",
+          "content": "HomeMarket NewsTrade Setup for October 10: Nifty bulls aim to break above the 25,250 barrier after TCS resultsThe surge in IT stocks has taken the spotlight away from the Nifty Bank, which has remained away from the limelight for a better part of this week. Although the index made a lower high on the charts on Thursday, it made a higher low, and also managed to sustain above the 56,000 mark, which remains level on the downside for the index.While writing the setup for Thursday's trade, we told y",
+          "scraped_at": "2025-10-10T20:48:04.701131938+05:30"
+        },
+        {
+          "title": "Infosys unveils Customer Experience Suite for Salesforce to accelerate agentic AI adoption",
+          "url": "https://www.cnbctv18.com/market/stocks/infosys-share-price-unveils-customer-experience-suite-for-salesforce-to-accelerate-agentic-ai-adoption-19711322.htm",
+          "content": "HomeMarket NewsStocks NewsInfosys unveils Customer Experience Suite for Salesforce to accelerate agentic AI adoptionInfosys deployed Agentforce SDR to revolutionise the sales process for a leading research institute, addressing inefficiencies and reducing response time. Infosys also helped a renowned media house in transforming its customer service operations. Shares of Infosys Ltd ended at ₹1,511.90, up by ₹2.60, or 0.17%, on the BSE.IT services company Infosys Ltd on Friday (October 10) launch",
+          "scraped_at": "2025-10-10T20:48:08.241967424+05:30"
+        }
+      ]
+    },
+    "TCS.NS": {
+      "2025-10-09": [
+        {
+          "title": "TCS shares in focus ahead of Q2FY26 results today",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/tcs-shares-in-focus-ahead-of-q2fy26-results-today/articleshow/124403360.cms",
+          "content": "Shares of Tata Consultancy Services (TCS), India’s largest IT services company, will be in sharp focus on Thursday, October 9, ahead of the company’s Q2FY26 results announcement later in the day.Brokerages have released a wide range of estimates for the quarter, projecting net profit growth between 3.7% and 9.6% year-on-year (YoY). Profit after tax (PAT) is expected to fall in the range of Rs 12,346 crore to Rs 13,058 crore, while revenue estimates span from Rs 64,200 crore to Rs 65,700 crore, r",
+          "scraped_at": "2025-10-09T09:15:02.242613406+05:30"
+        },
+        {
+          "title": "TCS to announce Q2 results today: 10 things to track and how to trade",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/earnings/tcs-to-announce-q2-results-today-10-things-to-track-and-how-to-trade/articleshow/124403310.cms",
+          "content": "Tata Consultancy Services (TCS) reports its Q2 results today with investors bracing for tepid growth and razor-thin margin movements as the country's largest software exporter navigates headwinds from a planned 12,000-employee separation program, wage revisions, an uncertain US demand and H-1B visa issue.“We expect muted growth from TCS in Q2 as positive momentum in BFSI and tech will be largely offset due to weakness in life science & healthcare and communications. We are also building in a 10b",
+          "scraped_at": "2025-10-09T09:15:02.488589374+05:30"
+        },
+        {
+          "title": "TCS Share Price Live Updates: TCS Volume Analysis",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/tcs-share-price-live-09-oct-2025/liveblog/124403046.cms",
+          "content": "09 Oct 2025 | 08:43:01 AM ISTTCS share price live updatesDiscover the TCS Stock Liveblog, your go-to destination for real-time updates and comprehensive analysis of a top-performing stock. Keep track of TCS's latest details, including: Last traded price 3027.2, Market capitalization: 1095267.45, Volume: 4121889, Price-to-earnings ratio 22.23, Earnings per share 136.19. Our liveblog offers a holistic view of TCS by examining both fundamental and technical indicators. Stay ahead of market trends w",
+          "scraped_at": "2025-10-09T09:15:09.968741566+05:30"
+        }
+      ],
+      "2025-10-10": [
+        {
+          "title": "TCS Q2 results: Top 10 takeaways from September quarter earnings",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/earnings/tcs-q2-results-top-10-takeaways-from-september-quarter-earnings/articleshow/124416997.cms",
+          "content": "India's largest IT services company by market capitalisation Tata Consultancy Services on Thursday reported its September quarter earnings on Thursday after market hours. The company's topline beat Street's estimates while the bottomline was below expectations.Here are top 10 takeaways from its earnings:1) PATTCS's net profit for Q2 stood at Rs 12,075 crore versus Rs 11,909 crore in the year ago period. It was a 1.4% year-on-year jump but below Street's estimates of Rs 12,573 core. The profit af",
+          "scraped_at": "2025-10-10T01:50:44.272495147+05:30"
+        },
+        {
+          "title": "TCS declares Rs 11 per share dividend, record date announced",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/earnings/tcs-declares-rs-11-per-share-dividend-record-date-announced/articleshow/124413574.cms",
+          "content": "Tata Consultancy Services on Thursday has announced an interim dividend of Rs 11 per equity share of Re 1 each of the company. According to the filing with exchange, the interim dividend shall be paid on Tuesday, November 4, 2025.The fling with the exchange said, “We enclose the audited standalone financial results of the Company and audited consolidated financial results of the Company and its subsidiaries for the quarter and six-month period ended September 30, 2025, under Indian Accounting St",
+          "scraped_at": "2025-10-10T01:50:44.608305703+05:30"
+        },
+        {
+          "title": "TCS Q2 Results: Cons PAT rises 1.4% YoY to Rs 12,075 crore, misses street estimates",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/earnings/tcs-q2-results-cons-pat-up-1-4-to-rs-12075-crore-misses-estimates/articleshow/124412115.cms",
+          "content": "Indian IT bellwether Tata Consultancy Services on Thursday reported a 1.4% growth in its Q2 net profit at Rs 12,075 crore versus Rs 11,909 crore in the year ago period. The profit after tax (PAT) is attributable to the shareholders of the company and was below Street's estimates of Rs 12,573 crore.The revenue from operations stood at Rs 65,799 crore, up 2.4% over Rs 64,259 crore posted in the corresponding quarter of the last financial year.The company announced a second interim dividend of Rs 1",
+          "scraped_at": "2025-10-10T01:50:44.844456948+05:30"
+        },
+        {
+          "title": "TCS Q2 Results Live Updates: PAT at Rs 12,075 cr vs St est of Rs 12,573 cr; Rs 11 per share dividend declared",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/live-blog/tcs-q2-results-tata-consultancy-services-q2-fy26-revenue-earning-net-profit-dividend-date-time-09-october-2025/liveblog/124408861.cms",
+          "content": "09 Oct 2025 | 04:22:41 PM ISTTCS Q2 earnings preview: modest growth expected, brokerages split on outlook.SynopsisTCS Q2 Results FY26 Live: Indian IT leader Tata Consultancy Services reported a 1.3% YoY rise in Q2 net profit, reaching ₹12,075 crore compared with ₹11,909 crore a year earlier. The PAT attributable to shareholders fell short of analysts’ expectations, which had projected ₹12,573 crore.TCS Q2 Results FY26 Live: Revenue from operations rose 2.4% YoY to ₹65,799 crore, up from ₹64,259 ",
+          "scraped_at": "2025-10-10T01:50:46.264254881+05:30"
+        },
+        {
+          "title": "TCS Q2 Results Highlights: Profit up 1.4% y-o-y",
+          "url": "https://www.thehindubusinessline.com/markets/tata-consultancy-service-q2-results-fy26-highlights/article70142762.ece",
+          "content": "SENSEX   82,172.10\n        + 398.44\n        \n        NIFTY   25,181.80\n        + 135.65\n        \n        CRUDEOIL   5,540.00\n         -36.00\n        \n        GOLD   123,280.00\n        + 71.00\n        \n        SILVER   149,827.00\n         -28.00\n        \n                 \n                 \n                       \n                         \n        SENSEX   82,172.10\n        + 398.44\n        \n        NIFTY   25,181.80\n        + 135.65\n        \n                       \n                       \n       ",
+          "scraped_at": "2025-10-10T01:50:54.522600098+05:30"
+        },
+        {
+          "title": "TCS Q2 results: Top 10 takeaways from September quarter earnings",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/earnings/tcs-q2-results-top-10-takeaways-from-september-quarter-earnings/articleshow/124416997.cms",
+          "content": "India's largest IT services company by market capitalisation Tata Consultancy Services on Thursday reported its September quarter earnings on Thursday after market hours. The company's topline beat Street's estimates while the bottomline was below expectations.Here are top 10 takeaways from its earnings:1) PATTCS's net profit for Q2 stood at Rs 12,075 crore versus Rs 11,909 crore in the year ago period. It was a 1.4% year-on-year jump but below Street's estimates of Rs 12,573 core. The profit af",
+          "scraped_at": "2025-10-10T01:50:59.71546765+05:30"
+        },
+        {
+          "title": "TCS declares Rs 11 per share dividend, record date announced",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/earnings/tcs-declares-rs-11-per-share-dividend-record-date-announced/articleshow/124413574.cms",
+          "content": "Tata Consultancy Services on Thursday has announced an interim dividend of Rs 11 per equity share of Re 1 each of the company. According to the filing with exchange, the interim dividend shall be paid on Tuesday, November 4, 2025.The fling with the exchange said, “We enclose the audited standalone financial results of the Company and audited consolidated financial results of the Company and its subsidiaries for the quarter and six-month period ended September 30, 2025, under Indian Accounting St",
+          "scraped_at": "2025-10-10T01:51:00.458255489+05:30"
+        },
+        {
+          "title": "TCS Q2 Results: Cons PAT rises 1.4% YoY to Rs 12,075 crore, misses street estimates",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/earnings/tcs-q2-results-cons-pat-up-1-4-to-rs-12075-crore-misses-estimates/articleshow/124412115.cms",
+          "content": "Indian IT bellwether Tata Consultancy Services on Thursday reported a 1.4% growth in its Q2 net profit at Rs 12,075 crore versus Rs 11,909 crore in the year ago period. The profit after tax (PAT) is attributable to the shareholders of the company and was below Street's estimates of Rs 12,573 crore.The revenue from operations stood at Rs 65,799 crore, up 2.4% over Rs 64,259 crore posted in the corresponding quarter of the last financial year.The company announced a second interim dividend of Rs 1",
+          "scraped_at": "2025-10-10T01:51:00.921629284+05:30"
+        },
+        {
+          "title": "TCS Q2 Results Live Updates: PAT at Rs 12,075 cr vs St est of Rs 12,573 cr; Rs 11 per share dividend declared",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/live-blog/tcs-q2-results-tata-consultancy-services-q2-fy26-revenue-earning-net-profit-dividend-date-time-09-october-2025/liveblog/124408861.cms",
+          "content": "09 Oct 2025 | 04:22:41 PM ISTTCS Q2 earnings preview: modest growth expected, brokerages split on outlook.SynopsisTCS Q2 Results FY26 Live: Indian IT leader Tata Consultancy Services reported a 1.3% YoY rise in Q2 net profit, reaching ₹12,075 crore compared with ₹11,909 crore a year earlier. The PAT attributable to shareholders fell short of analysts’ expectations, which had projected ₹12,573 crore.TCS Q2 Results FY26 Live: Revenue from operations rose 2.4% YoY to ₹65,799 crore, up from ₹64,259 ",
+          "scraped_at": "2025-10-10T01:51:01.906408349+05:30"
+        },
+        {
+          "title": "TCS Q2 results: Top 10 takeaways from September quarter earnings",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/earnings/tcs-q2-results-top-10-takeaways-from-september-quarter-earnings/articleshow/124416997.cms",
+          "content": "India's largest IT services company by market capitalisation Tata Consultancy Services on Thursday reported its September quarter earnings on Thursday after market hours. The company's topline beat Street's estimates while the bottomline was below expectations.Here are top 10 takeaways from its earnings:1) PATTCS's net profit for Q2 stood at Rs 12,075 crore versus Rs 11,909 crore in the year ago period. It was a 1.4% year-on-year jump but below Street's estimates of Rs 12,573 core. The profit af",
+          "scraped_at": "2025-10-10T02:09:40.391711357+05:30"
+        },
+        {
+          "title": "TCS declares Rs 11 per share dividend, record date announced",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/earnings/tcs-declares-rs-11-per-share-dividend-record-date-announced/articleshow/124413574.cms",
+          "content": "Tata Consultancy Services on Thursday has announced an interim dividend of Rs 11 per equity share of Re 1 each of the company. According to the filing with exchange, the interim dividend shall be paid on Tuesday, November 4, 2025.The fling with the exchange said, “We enclose the audited standalone financial results of the Company and audited consolidated financial results of the Company and its subsidiaries for the quarter and six-month period ended September 30, 2025, under Indian Accounting St",
+          "scraped_at": "2025-10-10T02:09:40.523375518+05:30"
+        },
+        {
+          "title": "TCS Q2 Results: Cons PAT rises 1.4% YoY to Rs 12,075 crore, misses street estimates",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/earnings/tcs-q2-results-cons-pat-up-1-4-to-rs-12075-crore-misses-estimates/articleshow/124412115.cms",
+          "content": "Indian IT bellwether Tata Consultancy Services on Thursday reported a 1.4% growth in its Q2 net profit at Rs 12,075 crore versus Rs 11,909 crore in the year ago period. The profit after tax (PAT) is attributable to the shareholders of the company and was below Street's estimates of Rs 12,573 crore.The revenue from operations stood at Rs 65,799 crore, up 2.4% over Rs 64,259 crore posted in the corresponding quarter of the last financial year.The company announced a second interim dividend of Rs 1",
+          "scraped_at": "2025-10-10T02:09:40.645530386+05:30"
+        },
+        {
+          "title": "TCS Q2 Results Live Updates: PAT at Rs 12,075 cr vs St est of Rs 12,573 cr; Rs 11 per share dividend declared",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/live-blog/tcs-q2-results-tata-consultancy-services-q2-fy26-revenue-earning-net-profit-dividend-date-time-09-october-2025/liveblog/124408861.cms",
+          "content": "09 Oct 2025 | 04:22:41 PM ISTTCS Q2 earnings preview: modest growth expected, brokerages split on outlook.SynopsisTCS Q2 Results FY26 Live: Indian IT leader Tata Consultancy Services reported a 1.3% YoY rise in Q2 net profit, reaching ₹12,075 crore compared with ₹11,909 crore a year earlier. The PAT attributable to shareholders fell short of analysts’ expectations, which had projected ₹12,573 crore.TCS Q2 Results FY26 Live: Revenue from operations rose 2.4% YoY to ₹65,799 crore, up from ₹64,259 ",
+          "scraped_at": "2025-10-10T02:09:41.594974415+05:30"
+        },
+        {
+          "title": "Trade Setup for October 10: Nifty bulls aim to break above the 25,250 barrier after TCS results",
+          "url": "https://www.cnbctv18.com/market/trade-setup-october-10-nifty-50-key-levels-midcap-banks-it-stocks-tcs-tata-elxsi-lg-wework-afcons-share-price-19710133.htm",
+          "content": "HomeMarket NewsTrade Setup for October 10: Nifty bulls aim to break above the 25,250 barrier after TCS resultsThe surge in IT stocks has taken the spotlight away from the Nifty Bank, which has remained away from the limelight for a better part of this week. Although the index made a lower high on the charts on Thursday, it made a higher low, and also managed to sustain above the 56,000 mark, which remains level on the downside for the index.While writing the setup for Thursday's trade, we told y",
+          "scraped_at": "2025-10-10T02:09:43.497488402+05:30"
+        },
+        {
+          "title": "Stocks to Watch: TCS, Tata Motors, NTPC Green, ICICI Prudential Life and more",
+          "url": "https://www.cnbctv18.com/photos/market/stocks-to-watch-tcs-tata-motors-ntpc-green-icici-prudential-life-and-more-19709728.htm",
+          "content": "TCS reported a Q2 net profit of ₹12,075 crore and announced major AI investments, including a 1 GW data center in India. Tata Elxsi’s profit rose 7.2% QoQ, while Afcons secured a ₹576 crore infra contract. NATCO Pharma won court approval to launch a generic SMA drug, and NTPC Green signed an MoU with Gujarat for 15 GW of renewables. Meanwhile, RailTel, Subex, Lloyds Engineering, and Jana SFB announced new contracts and capital plans. Here are few stocks to watch ahead of Friday's trading session",
+          "scraped_at": "2025-10-10T02:09:43.632282562+05:30"
+        },
+        {
+          "title": "TCS workforce falls below 6 lakh for the first time in over three years",
+          "url": "https://www.cnbctv18.com/market/tcs-workforce-falls-below-6-lakh-for-the-first-time-in-over-three-years-ws-l-19710076.htm",
+          "content": "HomeMarket NewsTCS workforce falls below 6 lakh for the first time in over three yearsTata Consultancy Services’ headcount fell below six lakh for the first time in over three years amid AI-focused restructuring, while quarterly revenue and margins beat expectations.Tata Consultancy Services (TCS) has seen its total workforce fall below the six-lakh mark for the first time in over three years, as India’s largest IT services firm accelerates its shift towards artificial intelligence (AI) and auto",
+          "scraped_at": "2025-10-10T02:09:43.74417959+05:30"
+        },
+        {
+          "title": "TCS acquires US-based ListEngage for $72.8 million to strengthen Salesforce and AI capabilities",
+          "url": "https://www.cnbctv18.com/market/stocks/tcs-share-price-acquires-us-based-listengage-for-72-8-million-to-strengthen-salesforce-and-ai-capabilities-19709564.htm",
+          "content": "HomeMarket NewsStocks NewsTCS acquires US-based ListEngage for $72.8 million to strengthen Salesforce and AI capabilitiesListEngage, a Delaware-based Salesforce Summit partner, specialises in digital marketing transformation through Salesforce platforms such as Marketing Cloud, Data Cloud, and Agentforce, along with AI advisory services. Shares of Tata Consultancy Services Ltd ended at ₹3,060.20, up by ₹33.00, or 1.09%, on the BSE.India's largest IT services firm, Tata Consultancy Services Ltd (",
+          "scraped_at": "2025-10-10T02:09:43.968872465+05:30"
+        },
+        {
+          "title": "TCS Dividend: Management announces second payout of ₹11 per share; check record date",
+          "url": "https://www.cnbctv18.com/market/tcs-dividend-q2-result-announces-second-payout-of-rs-11-per-share-check-record-date-ws-l-19709455.htm",
+          "content": "HomeMarket NewsTCS Dividend: Management announces second payout of ₹11 per share; check record dateTata Consultancy Services has declared a second interim dividend of ₹11 per share for FY26. The company made the announcement alongside its Q2 results. Read on for more details.\n\nTata Consultancy Services Ltd. (TCS) on Thursday declared a second interim dividend of ₹11 per equity share of ₹1 each. \n\nThe dividend will be paid on November 4, 2025, to shareholders whose names appear on the company’s r",
+          "scraped_at": "2025-10-10T02:09:44.082838116+05:30"
+        },
+        {
+          "title": "TCS Q2 Results: Revenue grows in constant currency terms for the first time in three quarters",
+          "url": "https://www.cnbctv18.com/market/tcs-q2-results-revenue-us-dollar-constant-currency-ebit-margins-deal-wins-layoffs-h1b-share-price-19709364.htm",
+          "content": "HomeMarket NewsTCS Q2 Results: Revenue grows in constant currency terms for the first time in three quartersTCS' revenue in rupee terms rose by 3.7% quarter-on-quarter to ₹65,799 crore. The CNBC-TV18 poll had projected a figure of ₹65,114 crore.Tata Consultancy Services Ltd. (TCS), the largest Indian IT services company, reported constant currency revenue growth for the September quarter for the first time in three quarters.\n\nRevenue growth in constant currency terms stood at 0.8% sequentially a",
+          "scraped_at": "2025-10-10T02:09:44.203890928+05:30"
+        },
+        {
+          "title": "Sensex, Nifty extend rebound as IT, metals shine; TCS up before Q2 results",
+          "url": "https://www.cnbctv18.com/market/sensex-nifty-extend-rebound-as-it-metals-shine-tcs-up-before-q2-results-19709410.htm",
+          "content": "HomeMarket NewsSensex, Nifty extend rebound as IT, metals shine; TCS up before Q2 resultsIT shares extended gains for a second straight session ahead of Tata Consultancy Services’ (TCS) September-quarter results, with the Nifty IT index up 1%. TCS rose 1% to end at the day’s high.The stock market ended higher on Thursday, led by gains in information technology and metal stocks, as investors positioned themselves ahead of TCS earnings and took comfort from a broad-based rebound across sectors.\n\nT",
+          "scraped_at": "2025-10-10T02:09:44.332210534+05:30"
+        },
+        {
+          "title": "TCS Q2 Results Highlights: USD revenue yet to be declared; deal wins in-line with estimates",
+          "url": "https://www.cnbctv18.com/market/tcs-q2-results-live-updates-fy26-deal-wins-margins-revenue-growth-outlook-dividend-share-price-reaction-liveblog-19708612.htm",
+          "content": "HomeMarket NewsTCS Q2 Results Highlights: USD revenue yet to be declared; deal wins in-line with estimatesTCS Q2 Results Highlights: Tata Consultancy Services Ltd. (TCS), the largest Indian IT services company, reported constant currency revenue growth for the September quarter for the first time in three quarters. Revenue growth in constant currency terms stood at 0.8% sequentially after two quarters of decline. Watch this space for all the live updates.TCS Q2 Results Highlights: Tata Consultan",
+          "scraped_at": "2025-10-10T02:09:44.608911451+05:30"
+        },
+        {
+          "title": "Top Stories | TCS Q2 beats lull, Tata Trusts close ranks, LG IPO smashes records and more",
+          "url": "https://www.cnbctv18.com/business/top-10-stories-today-tcs-q2-beats-lull-tata-trusts-close-ranks-lg-ipo-smashes-records-19710107.htm",
+          "content": "HomeBusiness NewsTop Stories | TCS Q2 beats lull, Tata Trusts close ranks, LG IPO smashes records and moreTop 10@10—CNBC-TV18’s daily newsletter featuring the top 10 stories on markets, corporate updates, economic insights, and financial highlights—delivered at 10 pm.A busy Thursday for markets and corporates—Tata Trusts insiders say members are optimistic about resolving their recent differences and moving forward with unity.\n\nMeanwhile, TCS returned to growth momentum, reporting a 0.8% sequent",
+          "scraped_at": "2025-10-10T02:09:44.995711411+05:30"
+        },
+        {
+          "title": "TCS acquires US-based ListEngage for $72.8 million to strengthen Salesforce and AI capabilities",
+          "url": "https://www.cnbctv18.com/market/stocks/tcs-share-price-acquires-us-based-listengage-for-72-8-million-to-strengthen-salesforce-and-ai-capabilities-19709564.htm",
+          "content": "HomeMarket NewsStocks NewsTCS acquires US-based ListEngage for $72.8 million to strengthen Salesforce and AI capabilitiesListEngage, a Delaware-based Salesforce Summit partner, specialises in digital marketing transformation through Salesforce platforms such as Marketing Cloud, Data Cloud, and Agentforce, along with AI advisory services. Shares of Tata Consultancy Services Ltd ended at ₹3,060.20, up by ₹33.00, or 1.09%, on the BSE.India's largest IT services firm, Tata Consultancy Services Ltd (",
+          "scraped_at": "2025-10-10T02:09:45.272758534+05:30"
+        },
+        {
+          "title": "TCS Q2 Results Highlights: Profit up 1.4% y-o-y",
+          "url": "https://www.thehindubusinessline.com/markets/tata-consultancy-service-q2-results-fy26-highlights/article70142762.ece",
+          "content": "SENSEX   82,172.10\n        + 398.44\n        \n        NIFTY   25,181.80\n        + 135.65\n        \n        CRUDEOIL   5,540.00\n         -36.00\n        \n        GOLD   123,280.00\n        + 71.00\n        \n        SILVER   149,827.00\n         -28.00\n        \n                 \n                 \n                       \n                         \n        SENSEX   82,172.10\n        + 398.44\n        \n        NIFTY   25,181.80\n        + 135.65\n        \n                       \n                       \n       ",
+          "scraped_at": "2025-10-10T02:09:45.781039639+05:30"
+        },
+        {
+          "title": "TCS Q2 results: Top 10 takeaways from September quarter earnings",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/earnings/tcs-q2-results-top-10-takeaways-from-september-quarter-earnings/articleshow/124416997.cms",
+          "content": "India's largest IT services company by market capitalisation Tata Consultancy Services on Thursday reported its September quarter earnings on Thursday after market hours. The company's topline beat Street's estimates while the bottomline was below expectations.Here are top 10 takeaways from its earnings:1) PATTCS's net profit for Q2 stood at Rs 12,075 crore versus Rs 11,909 crore in the year ago period. It was a 1.4% year-on-year jump but below Street's estimates of Rs 12,573 core. The profit af",
+          "scraped_at": "2025-10-10T02:09:45.983751796+05:30"
+        },
+        {
+          "title": "TCS declares Rs 11 per share dividend, record date announced",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/earnings/tcs-declares-rs-11-per-share-dividend-record-date-announced/articleshow/124413574.cms",
+          "content": "Tata Consultancy Services on Thursday has announced an interim dividend of Rs 11 per equity share of Re 1 each of the company. According to the filing with exchange, the interim dividend shall be paid on Tuesday, November 4, 2025.The fling with the exchange said, “We enclose the audited standalone financial results of the Company and audited consolidated financial results of the Company and its subsidiaries for the quarter and six-month period ended September 30, 2025, under Indian Accounting St",
+          "scraped_at": "2025-10-10T02:09:46.094183477+05:30"
+        },
+        {
+          "title": "TCS Q2 Results: Cons PAT rises 1.4% YoY to Rs 12,075 crore, misses street estimates",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/earnings/tcs-q2-results-cons-pat-up-1-4-to-rs-12075-crore-misses-estimates/articleshow/124412115.cms",
+          "content": "Indian IT bellwether Tata Consultancy Services on Thursday reported a 1.4% growth in its Q2 net profit at Rs 12,075 crore versus Rs 11,909 crore in the year ago period. The profit after tax (PAT) is attributable to the shareholders of the company and was below Street's estimates of Rs 12,573 crore.The revenue from operations stood at Rs 65,799 crore, up 2.4% over Rs 64,259 crore posted in the corresponding quarter of the last financial year.The company announced a second interim dividend of Rs 1",
+          "scraped_at": "2025-10-10T02:09:46.200903806+05:30"
+        },
+        {
+          "title": "TCS Q2 Results Live Updates: PAT at Rs 12,075 cr vs St est of Rs 12,573 cr; Rs 11 per share dividend declared",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/live-blog/tcs-q2-results-tata-consultancy-services-q2-fy26-revenue-earning-net-profit-dividend-date-time-09-october-2025/liveblog/124408861.cms",
+          "content": "09 Oct 2025 | 04:22:41 PM ISTTCS Q2 earnings preview: modest growth expected, brokerages split on outlook.SynopsisTCS Q2 Results FY26 Live: Indian IT leader Tata Consultancy Services reported a 1.3% YoY rise in Q2 net profit, reaching ₹12,075 crore compared with ₹11,909 crore a year earlier. The PAT attributable to shareholders fell short of analysts’ expectations, which had projected ₹12,573 crore.TCS Q2 Results FY26 Live: Revenue from operations rose 2.4% YoY to ₹65,799 crore, up from ₹64,259 ",
+          "scraped_at": "2025-10-10T02:09:46.712397528+05:30"
+        },
+        {
+          "title": "TCS' AI-skilled workforce doubles to 1.6 lakh; 18,500 new hires in Q2 with focus on future-ready skills",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-ai-skilled-workforce-doubles-to-1-6-lakh-18500-new-hires-in-q2-with-focus-on-future-ready-skills/articleshow/124453937.cms",
+          "content": "India’s largest IT services company, Tata Consultancy Services (TCS), is making a major pivot towards artificial intelligence (AI) and digital infrastructure, with plans to invest $5–6 billion over the next few years in building data centres and AI capabilities. The company aims to transform itself into the world’s largest AI-led technology services firm, said Samir Seksaria, Chief Financial Officer (CFO) of TCS.TCS is reskilling its workforce for the next phase of technology, focusing on high-s",
+          "scraped_at": "2025-10-10T20:44:06.258818382+05:30"
+        },
+        {
+          "title": "TCS bets big on AI and data centres; every project will be AI-led, says CEO K Krithivasan",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-bets-big-on-ai-and-data-centres-every-project-will-be-ai-led-says-ceo-k-krithivasan/articleshow/124451159.cms",
+          "content": "Tata Consultancy Services (TCS) is doubling down on its artificial intelligence (AI)-driven transformation strategy while expanding into adjacencies such as data centres and sovereign cloud infrastructure. The company’s leadership says this multi-pronged approach will position TCS as the world’s largest AI-led technology services provider in the coming years.In an interaction with ET Now, K Krithivasan, CEO & Managing Director, and Aarthi Subramanian, Executive Director, President & COO, outline",
+          "scraped_at": "2025-10-10T20:44:06.615794456+05:30"
+        },
+        {
+          "title": "TCS results, AI bets and metals rally: Parag Thakkar sees value across IT, metals and banking sector",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-results-ai-bets-and-metals-rally-parag-thakkar-sees-value-across-it-metals-and-banking-sector/articleshow/124447741.cms",
+          "content": "In an exclusive conversation with ET Now, Parag Thakkar, from Fort Capital shared his perspective on Tata Consultancy Services’ (TCS) latest quarterly results, the company’s strategic shift towards AI and data centre investments, and his bullish stance on the metals and banking sectors. “We have 2.5% weight in TCS and we are not going to sell at this price,” Thakkar began, making his position clear. “Whether we will add more depends... See, the two-three things which are positive is first of all",
+          "scraped_at": "2025-10-10T20:44:07.589746607+05:30"
+        },
+        {
+          "title": "TCS taking a balanced, low risk Path on AI Investments: Sandip Agarwal",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-taking-a-balanced-low-risk-path-on-ai-investments-sandip-agarwal/articleshow/124447361.cms",
+          "content": "India’s largest software exporter, Tata Consultancy Services (TCS), has announced a $7 billion investment in data centres and AI-linked infrastructure — a move that marks one of its most ambitious strategic shifts in recent years. The announcement comes alongside a 3% fall in employee headcount, which the company attributes to efficiency gains from automation and AI integration.Speaking to ET Now, Sandip Agarwal, from Sowilo Investment Managers, said he was not concerned about the decline in sta",
+          "scraped_at": "2025-10-10T20:44:08.029683987+05:30"
+        },
+        {
+          "title": "TCS bets $6 billion on AI data centers: Bold pivot or costly detour?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/tcs-bets-6-billion-on-ai-data-centers-bold-pivot-or-costly-detour/articleshow/124446232.cms",
+          "content": "India's IT bellwether Tata Consultancy Services has kicked off one of its most ambitious bets yet — a $6 billion foray into artificial intelligence infrastructure that marks a decisive pivot from its traditional services-led model toward the capital-heavy world of AI data centres. Just when India's IT services giants were being blamed widely for having been left out in the AI boom, TCS declared ambitions to become the world's largest AI-led technology services company.The company plans to build ",
+          "scraped_at": "2025-10-10T20:44:08.584370313+05:30"
+        },
+        {
+          "title": "TCS shares get an upgrade from Avendus, but others remain cautiously optimistic",
+          "url": "https://www.cnbctv18.com/market/tcs-share-price-upgrade-avendus-citi-sell-rating-target-upside-q2-results-reaction-outlook-19710235.htm",
+          "content": "HomeMarket NewsTCS shares get an upgrade from Avendus, but others remain cautiously optimisticOut of the 51 analysts that have coverage on TCS, 33 have a \"buy\" rating, 13 say \"hold\", while five have a \"sell\" recommendation.Shares of Tata Consultancy Services Ltd. (TCS) have been upgraded by brokerage firm Avendus Spark after its September quarter results on Friday, October 10. The stock will react to the results that were reported after market hours on Thursday.\n\nAvendus Spark upgraded shares of",
+          "scraped_at": "2025-10-10T20:44:10.706509827+05:30"
+        },
+        {
+          "title": "TCS Share Price Live Updates: Stock falls to the day's lows; Goldman Sachs says 'buy'",
+          "url": "https://www.cnbctv18.com/market/tcs-share-price-live-updates-q2-results-margins-deal-wins-acquisitions-ai-data-centre-targets-liveblog-19710223.htm",
+          "content": "HomeMarket NewsTCS Share Price Live Updates: Stock falls to the day's lows; Goldman Sachs says 'buy'TCS Share Price Live Updates: Shares of India's largest IT services company, Tata Consultancy Service (TCS), will be in focus on Friday, October 10, as they will be reacting to their quarterly results reported after market hours on Wednesday. The results were better than expectations on most fronts, but there were multiple announcements made along with the results that could grab the spotlight. Wa",
+          "scraped_at": "2025-10-10T20:44:10.960442451+05:30"
+        },
+        {
+          "title": "TCS Q2 miss fails to rattle market; volatility stays low",
+          "url": "https://www.thehindubusinessline.com/markets/muted-market-reaction-to-tcs-results-traders-brace-for-calm-earnings-season/article70147470.ece",
+          "content": "TCS posted a 1.4% rise in net profit to ₹12,075 crore, missing estimates due to soft IT demand and concerns over US visa changes impacting outsourcing.\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t| Photo Credit:\n\t\t\t\t\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Tata Consultancy Services Ltd.’s earnings disappointment has failed to spook the market as traders bet on subdued moves among companies in India’s main equity index this reporting season.On the eve of TCS’s release, options were implying an average 2.3% earnings-day m",
+          "scraped_at": "2025-10-10T20:44:13.367989414+05:30"
+        },
+        {
+          "title": "Sensex gains over 540 pts intraday, realty & banking stocks lift market sentiment, TCS declines post Q2 results",
+          "url": "https://www.thehindubusinessline.com/markets/stock-markets/sensex-gains-over-540-pts-intraday-realty-banking-stocks-lift-market-sentiment-tcs-declines-post-q2-results/article70147261.ece",
+          "content": "Home \n                    \n                        Markets\n                    \n                        Stocks\n                    Cipla, SBI, Axis Bank, Maruti Suzuki and Bajaj Auto top Nifty 50 gainers, while Tata Steel, TCS, JSW Steel, Tech Mahindra and Hindalco become major losers Updated - October 10, 2025  at 01:06 PM.\n \n | \n         Bengaluru\n     \n\t\t\t\t\t\t\t\t\t\t Majority of the sectoral indices traded in the positive territory, except IT and metal. \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tThe equity ma",
+          "scraped_at": "2025-10-10T20:44:13.483288749+05:30"
+        },
+        {
+          "title": "TCS shares drop 1.45% despite strong Q2 results; analysts remain bullish on AI strategy",
+          "url": "https://www.thehindubusinessline.com/markets/stock-markets/tcs-shares-drop-145-despite-strong-q2-results-analysts-remain-bullish-on-ai-strategy/article70147169.ece",
+          "content": "Home \n                    \n                        Markets\n                    \n                        Stocks\n                    The stock, which opened at ₹3,050 against the previous close of ₹3,061.70, has recorded a traded volume of 63.45 lakh shares worth ₹1,925.53 crore  Updated - October 10, 2025  at 01:09 PM.\n\t\t\t\t\t\t\t\t\t\tTCS  plans to create 5,000 new jobs in the UK over the next three years, while launching an AI Experience Zone in London\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t| Photo Credit:\n\t\t",
+          "scraped_at": "2025-10-10T20:44:13.600894255+05:30"
+        },
+        {
+          "title": "Q2 Results Highlights: Elecon drops 8%, Indosolar surges; TCS, Tata Elxsi, GM Breweries shares fall",
+          "url": "https://www.thehindubusinessline.com/markets/q2-results-highlights-tcs-waaree-renewable-technologies-elecon-engineering-company-gk-energy-yash-highvoltage-bizotic-commercial-10-october-2025/article70146718.ece",
+          "content": "Home \n                    \n                        Markets\n                    \n Q2 Results October 10, 2025 highlights: Find all the latest Q2 results 2025 updates \n Updated - October 10, 2025  at 05:29 PM.2 Results October 10, 2025 highlights: Find all the latest Q2 results 2025 updates of companies such as Waaree Renewable Technologies, Elecon Engineering Company, GK Energy, Yash Highvoltage, Bizotic Commercial, Pro Fin Capital Services, Intense Technologies, Affordable Robotic & Automation, ",
+          "scraped_at": "2025-10-10T20:44:13.723478095+05:30"
+        },
+        {
+          "title": "TCS bets $6 billion on AI data centers: Bold pivot or costly detour?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/tcs-bets-6-billion-on-ai-data-centers-bold-pivot-or-costly-detour/articleshow/124446232.cms",
+          "content": "India's IT bellwether Tata Consultancy Services has kicked off one of its most ambitious bets yet — a $6 billion foray into artificial intelligence infrastructure that marks a decisive pivot from its traditional services-led model toward the capital-heavy world of AI data centres. Just when India's IT services giants were being blamed widely for having been left out in the AI boom, TCS declared ambitions to become the world's largest AI-led technology services company.The company plans to build ",
+          "scraped_at": "2025-10-10T20:44:14.150140264+05:30"
+        },
+        {
+          "title": "Buy, Sell or Hold: JM Financial recommends buy on TCS post Q2 results; Motilal Oswal recommends Sell on Ta",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/buy-sell-or-hold-jm-financial-recommends-buy-on-tcs-post-q2-results-motilal-oswal-recommends-sell-on-tata-elxsi/articleshow/124443692.cms",
+          "content": "Brokerages have released their latest views on key companies across sectors, offering a mix of bullish and cautious tones. JM Financial remains optimistic on TCS, citing strong international growth prospects, margin improvement, and strategic investments in AI and digital infrastructure. Morgan Stanley continues to back Muthoot Finance with an Overweight rating, projecting robust loan growth and improved efficiency metrics. On the other hand, Motilal Oswal has turned cautious on Tata Elxsi, main",
+          "scraped_at": "2025-10-10T20:44:14.474709017+05:30"
+        },
+        {
+          "title": "Sensex climbs 300 pts, Nifty tops 25,250 as FPIs return to D-St; TCS caps gains",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/sensex-climbs-100-pts-nifty-tops-25200-as-fpis-return-to-d-st-tcs-caps-gains/articleshow/124443582.cms",
+          "content": "India’s equity indices Sensex and Nifty opened higher on Friday, driven by renewed foreign portfolio investor buying over the past three sessions. Gains were, however, tempered by losses in TCS after the company reported a weaker-than-expected September-quarter profit.The S&P BSE Sensex rose 162.33 points, or 0.2%, to 82,334.43, while the NSE Nifty 50 added 40.25 points, or 0.16%, to 25,222.05. At around 9:45 AM, BSE Sensex traded 340 pts or 0.42% to Rs 82, 513 where Nifty50 rose 92 or 0.37% to ",
+          "scraped_at": "2025-10-10T20:44:14.952679716+05:30"
+        },
+        {
+          "title": "TCS shares fall 2% after Q2 miss; brokerages see up to 20% upside. Should you buy, sell or hold?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/tcs-shares-in-focus-after-q2-miss-brokerages-see-up-to-20-upside-should-you-buy-sell-or-hold/articleshow/124443444.cms",
+          "content": "Shares of Tata Consultancy Services edged lower by 1.5% to their day's low of Rs 3,014 per share on the NSE on Friday after India’s largest IT services exporter posted a weaker-than-expected September-quarter profit but announced an ambitious foray into artificial intelligence (AI) infrastructure. While the results fell short of analysts’ estimates, several brokerages maintained bullish views, citing long-term strategic positioning and new growth levers that could lift the stock by as much as 21",
+          "scraped_at": "2025-10-10T20:44:15.106763809+05:30"
+        },
+        {
+          "title": "TCS' AI-skilled workforce doubles to 1.6 lakh; 18,500 new hires in Q2 with focus on future-ready skills",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-ai-skilled-workforce-doubles-to-1-6-lakh-18500-new-hires-in-q2-with-focus-on-future-ready-skills/articleshow/124453937.cms",
+          "content": "India’s largest IT services company, Tata Consultancy Services (TCS), is making a major pivot towards artificial intelligence (AI) and digital infrastructure, with plans to invest $5–6 billion over the next few years in building data centres and AI capabilities. The company aims to transform itself into the world’s largest AI-led technology services firm, said Samir Seksaria, Chief Financial Officer (CFO) of TCS.TCS is reskilling its workforce for the next phase of technology, focusing on high-s",
+          "scraped_at": "2025-10-10T20:47:59.865548839+05:30"
+        },
+        {
+          "title": "TCS bets big on AI and data centres; every project will be AI-led, says CEO K Krithivasan",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-bets-big-on-ai-and-data-centres-every-project-will-be-ai-led-says-ceo-k-krithivasan/articleshow/124451159.cms",
+          "content": "Tata Consultancy Services (TCS) is doubling down on its artificial intelligence (AI)-driven transformation strategy while expanding into adjacencies such as data centres and sovereign cloud infrastructure. The company’s leadership says this multi-pronged approach will position TCS as the world’s largest AI-led technology services provider in the coming years.In an interaction with ET Now, K Krithivasan, CEO & Managing Director, and Aarthi Subramanian, Executive Director, President & COO, outline",
+          "scraped_at": "2025-10-10T20:48:00.54814479+05:30"
+        },
+        {
+          "title": "TCS results, AI bets and metals rally: Parag Thakkar sees value across IT, metals and banking sector",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-results-ai-bets-and-metals-rally-parag-thakkar-sees-value-across-it-metals-and-banking-sector/articleshow/124447741.cms",
+          "content": "In an exclusive conversation with ET Now, Parag Thakkar, from Fort Capital shared his perspective on Tata Consultancy Services’ (TCS) latest quarterly results, the company’s strategic shift towards AI and data centre investments, and his bullish stance on the metals and banking sectors. “We have 2.5% weight in TCS and we are not going to sell at this price,” Thakkar began, making his position clear. “Whether we will add more depends... See, the two-three things which are positive is first of all",
+          "scraped_at": "2025-10-10T20:48:00.896733491+05:30"
+        },
+        {
+          "title": "TCS taking a balanced, low risk Path on AI Investments: Sandip Agarwal",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-taking-a-balanced-low-risk-path-on-ai-investments-sandip-agarwal/articleshow/124447361.cms",
+          "content": "India’s largest software exporter, Tata Consultancy Services (TCS), has announced a $7 billion investment in data centres and AI-linked infrastructure — a move that marks one of its most ambitious strategic shifts in recent years. The announcement comes alongside a 3% fall in employee headcount, which the company attributes to efficiency gains from automation and AI integration.Speaking to ET Now, Sandip Agarwal, from Sowilo Investment Managers, said he was not concerned about the decline in sta",
+          "scraped_at": "2025-10-10T20:48:01.056786897+05:30"
+        },
+        {
+          "title": "TCS bets $6 billion on AI data centers: Bold pivot or costly detour?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/tcs-bets-6-billion-on-ai-data-centers-bold-pivot-or-costly-detour/articleshow/124446232.cms",
+          "content": "India's IT bellwether Tata Consultancy Services has kicked off one of its most ambitious bets yet — a $6 billion foray into artificial intelligence infrastructure that marks a decisive pivot from its traditional services-led model toward the capital-heavy world of AI data centres. Just when India's IT services giants were being blamed widely for having been left out in the AI boom, TCS declared ambitions to become the world's largest AI-led technology services company.The company plans to build ",
+          "scraped_at": "2025-10-10T20:48:01.177760765+05:30"
+        },
+        {
+          "title": "TCS shares get an upgrade from Avendus, but others remain cautiously optimistic",
+          "url": "https://www.cnbctv18.com/market/tcs-share-price-upgrade-avendus-citi-sell-rating-target-upside-q2-results-reaction-outlook-19710235.htm",
+          "content": "HomeMarket NewsTCS shares get an upgrade from Avendus, but others remain cautiously optimisticOut of the 51 analysts that have coverage on TCS, 33 have a \"buy\" rating, 13 say \"hold\", while five have a \"sell\" recommendation.Shares of Tata Consultancy Services Ltd. (TCS) have been upgraded by brokerage firm Avendus Spark after its September quarter results on Friday, October 10. The stock will react to the results that were reported after market hours on Thursday.\n\nAvendus Spark upgraded shares of",
+          "scraped_at": "2025-10-10T20:48:03.725775078+05:30"
+        },
+        {
+          "title": "TCS Share Price Live Updates: Stock falls to the day's lows; Goldman Sachs says 'buy'",
+          "url": "https://www.cnbctv18.com/market/tcs-share-price-live-updates-q2-results-margins-deal-wins-acquisitions-ai-data-centre-targets-liveblog-19710223.htm",
+          "content": "HomeMarket NewsTCS Share Price Live Updates: Stock falls to the day's lows; Goldman Sachs says 'buy'TCS Share Price Live Updates: Shares of India's largest IT services company, Tata Consultancy Service (TCS), will be in focus on Friday, October 10, as they will be reacting to their quarterly results reported after market hours on Wednesday. The results were better than expectations on most fronts, but there were multiple announcements made along with the results that could grab the spotlight. Wa",
+          "scraped_at": "2025-10-10T20:48:04.406991829+05:30"
+        },
+        {
+          "title": "Trade Setup for October 10: Nifty bulls aim to break above the 25,250 barrier after TCS results",
+          "url": "https://www.cnbctv18.com/market/trade-setup-october-10-nifty-50-key-levels-midcap-banks-it-stocks-tcs-tata-elxsi-lg-wework-afcons-share-price-19710133.htm",
+          "content": "HomeMarket NewsTrade Setup for October 10: Nifty bulls aim to break above the 25,250 barrier after TCS resultsThe surge in IT stocks has taken the spotlight away from the Nifty Bank, which has remained away from the limelight for a better part of this week. Although the index made a lower high on the charts on Thursday, it made a higher low, and also managed to sustain above the 56,000 mark, which remains level on the downside for the index.While writing the setup for Thursday's trade, we told y",
+          "scraped_at": "2025-10-10T20:48:04.701131938+05:30"
+        },
+        {
+          "title": "Stocks to Watch: TCS, Tata Motors, NTPC Green, ICICI Prudential Life and more",
+          "url": "https://www.cnbctv18.com/photos/market/stocks-to-watch-tcs-tata-motors-ntpc-green-icici-prudential-life-and-more-19709728.htm",
+          "content": "TCS reported a Q2 net profit of ₹12,075 crore and announced major AI investments, including a 1 GW data center in India. Tata Elxsi’s profit rose 7.2% QoQ, while Afcons secured a ₹576 crore infra contract. NATCO Pharma won court approval to launch a generic SMA drug, and NTPC Green signed an MoU with Gujarat for 15 GW of renewables. Meanwhile, RailTel, Subex, Lloyds Engineering, and Jana SFB announced new contracts and capital plans. Here are few stocks to watch ahead of Friday's trading session",
+          "scraped_at": "2025-10-10T20:48:04.81218972+05:30"
+        },
+        {
+          "title": "TCS workforce falls below 6 lakh for the first time in over three years",
+          "url": "https://www.cnbctv18.com/market/tcs-workforce-falls-below-6-lakh-for-the-first-time-in-over-three-years-ws-l-19710076.htm",
+          "content": "HomeMarket NewsTCS workforce falls below 6 lakh for the first time in over three yearsTata Consultancy Services’ headcount fell below six lakh for the first time in over three years amid AI-focused restructuring, while quarterly revenue and margins beat expectations.Tata Consultancy Services (TCS) has seen its total workforce fall below the six-lakh mark for the first time in over three years, as India’s largest IT services firm accelerates its shift towards artificial intelligence (AI) and auto",
+          "scraped_at": "2025-10-10T20:48:04.947808175+05:30"
+        },
+        {
+          "title": "TCS acquires US-based ListEngage for $72.8 million to strengthen Salesforce and AI capabilities",
+          "url": "https://www.cnbctv18.com/market/stocks/tcs-share-price-acquires-us-based-listengage-for-72-8-million-to-strengthen-salesforce-and-ai-capabilities-19709564.htm",
+          "content": "HomeMarket NewsStocks NewsTCS acquires US-based ListEngage for $72.8 million to strengthen Salesforce and AI capabilitiesListEngage, a Delaware-based Salesforce Summit partner, specialises in digital marketing transformation through Salesforce platforms such as Marketing Cloud, Data Cloud, and Agentforce, along with AI advisory services. Shares of Tata Consultancy Services Ltd ended at ₹3,060.20, up by ₹33.00, or 1.09%, on the BSE.India's largest IT services firm, Tata Consultancy Services Ltd (",
+          "scraped_at": "2025-10-10T20:48:05.182709245+05:30"
+        },
+        {
+          "title": "TCS Dividend: Management announces second payout of ₹11 per share; check record date",
+          "url": "https://www.cnbctv18.com/market/tcs-dividend-q2-result-announces-second-payout-of-rs-11-per-share-check-record-date-ws-l-19709455.htm",
+          "content": "HomeMarket NewsTCS Dividend: Management announces second payout of ₹11 per share; check record dateTata Consultancy Services has declared a second interim dividend of ₹11 per share for FY26. The company made the announcement alongside its Q2 results. Read on for more details.\n\nTata Consultancy Services Ltd. (TCS) on Thursday declared a second interim dividend of ₹11 per equity share of ₹1 each. \n\nThe dividend will be paid on November 4, 2025, to shareholders whose names appear on the company’s r",
+          "scraped_at": "2025-10-10T20:48:06.246811535+05:30"
+        },
+        {
+          "title": "TCS Q2 Results: Revenue grows in constant currency terms for the first time in three quarters",
+          "url": "https://www.cnbctv18.com/market/tcs-q2-results-revenue-us-dollar-constant-currency-ebit-margins-deal-wins-layoffs-h1b-share-price-19709364.htm",
+          "content": "HomeMarket NewsTCS Q2 Results: Revenue grows in constant currency terms for the first time in three quartersTCS' revenue in rupee terms rose by 3.7% quarter-on-quarter to ₹65,799 crore. The CNBC-TV18 poll had projected a figure of ₹65,114 crore.Tata Consultancy Services Ltd. (TCS), the largest Indian IT services company, reported constant currency revenue growth for the September quarter for the first time in three quarters.\n\nRevenue growth in constant currency terms stood at 0.8% sequentially a",
+          "scraped_at": "2025-10-10T20:48:06.838798148+05:30"
+        },
+        {
+          "title": "Sensex, Nifty extend rebound as IT, metals shine; TCS up before Q2 results",
+          "url": "https://www.cnbctv18.com/market/sensex-nifty-extend-rebound-as-it-metals-shine-tcs-up-before-q2-results-19709410.htm",
+          "content": "HomeMarket NewsSensex, Nifty extend rebound as IT, metals shine; TCS up before Q2 resultsIT shares extended gains for a second straight session ahead of Tata Consultancy Services’ (TCS) September-quarter results, with the Nifty IT index up 1%. TCS rose 1% to end at the day’s high.The stock market ended higher on Thursday, led by gains in information technology and metal stocks, as investors positioned themselves ahead of TCS earnings and took comfort from a broad-based rebound across sectors.\n\nT",
+          "scraped_at": "2025-10-10T20:48:06.948912268+05:30"
+        },
+        {
+          "title": "TCS Q2 Results Highlights: USD revenue yet to be declared; deal wins in-line with estimates",
+          "url": "https://www.cnbctv18.com/market/tcs-q2-results-live-updates-fy26-deal-wins-margins-revenue-growth-outlook-dividend-share-price-reaction-liveblog-19708612.htm",
+          "content": "HomeMarket NewsTCS Q2 Results Highlights: USD revenue yet to be declared; deal wins in-line with estimatesTCS Q2 Results Highlights: Tata Consultancy Services Ltd. (TCS), the largest Indian IT services company, reported constant currency revenue growth for the September quarter for the first time in three quarters. Revenue growth in constant currency terms stood at 0.8% sequentially after two quarters of decline. Watch this space for all the live updates.TCS Q2 Results Highlights: Tata Consultan",
+          "scraped_at": "2025-10-10T20:48:07.410787773+05:30"
+        },
+        {
+          "title": "Top Stories | TCS Q2 beats lull, Tata Trusts close ranks, LG IPO smashes records and more",
+          "url": "https://www.cnbctv18.com/business/top-10-stories-today-tcs-q2-beats-lull-tata-trusts-close-ranks-lg-ipo-smashes-records-19710107.htm",
+          "content": "HomeBusiness NewsTop Stories | TCS Q2 beats lull, Tata Trusts close ranks, LG IPO smashes records and moreTop 10@10—CNBC-TV18’s daily newsletter featuring the top 10 stories on markets, corporate updates, economic insights, and financial highlights—delivered at 10 pm.A busy Thursday for markets and corporates—Tata Trusts insiders say members are optimistic about resolving their recent differences and moving forward with unity.\n\nMeanwhile, TCS returned to growth momentum, reporting a 0.8% sequent",
+          "scraped_at": "2025-10-10T20:48:08.610081583+05:30"
+        },
+        {
+          "title": "TCS acquires US-based ListEngage for $72.8 million to strengthen Salesforce and AI capabilities",
+          "url": "https://www.cnbctv18.com/market/stocks/tcs-share-price-acquires-us-based-listengage-for-72-8-million-to-strengthen-salesforce-and-ai-capabilities-19709564.htm",
+          "content": "HomeMarket NewsStocks NewsTCS acquires US-based ListEngage for $72.8 million to strengthen Salesforce and AI capabilitiesListEngage, a Delaware-based Salesforce Summit partner, specialises in digital marketing transformation through Salesforce platforms such as Marketing Cloud, Data Cloud, and Agentforce, along with AI advisory services. Shares of Tata Consultancy Services Ltd ended at ₹3,060.20, up by ₹33.00, or 1.09%, on the BSE.India's largest IT services firm, Tata Consultancy Services Ltd (",
+          "scraped_at": "2025-10-10T20:48:10.483340433+05:30"
+        },
+        {
+          "title": "TCS Q2 miss fails to rattle market; volatility stays low",
+          "url": "https://www.thehindubusinessline.com/markets/muted-market-reaction-to-tcs-results-traders-brace-for-calm-earnings-season/article70147470.ece",
+          "content": "TCS posted a 1.4% rise in net profit to ₹12,075 crore, missing estimates due to soft IT demand and concerns over US visa changes impacting outsourcing.\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t| Photo Credit:\n\t\t\t\t\t\t\t\t\t\t\t \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Tata Consultancy Services Ltd.’s earnings disappointment has failed to spook the market as traders bet on subdued moves among companies in India’s main equity index this reporting season.On the eve of TCS’s release, options were implying an average 2.3% earnings-day m",
+          "scraped_at": "2025-10-10T20:48:11.093199785+05:30"
+        },
+        {
+          "title": "Sensex gains over 540 pts intraday, realty & banking stocks lift market sentiment, TCS declines post Q2 results",
+          "url": "https://www.thehindubusinessline.com/markets/stock-markets/sensex-gains-over-540-pts-intraday-realty-banking-stocks-lift-market-sentiment-tcs-declines-post-q2-results/article70147261.ece",
+          "content": "Home \n                    \n                        Markets\n                    \n                        Stocks\n                    Cipla, SBI, Axis Bank, Maruti Suzuki and Bajaj Auto top Nifty 50 gainers, while Tata Steel, TCS, JSW Steel, Tech Mahindra and Hindalco become major losers Updated - October 10, 2025  at 01:06 PM.\n \n | \n         Bengaluru\n     \n\t\t\t\t\t\t\t\t\t\t Majority of the sectoral indices traded in the positive territory, except IT and metal. \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tThe equity ma",
+          "scraped_at": "2025-10-10T20:48:11.187134806+05:30"
+        },
+        {
+          "title": "TCS shares drop 1.45% despite strong Q2 results; analysts remain bullish on AI strategy",
+          "url": "https://www.thehindubusinessline.com/markets/stock-markets/tcs-shares-drop-145-despite-strong-q2-results-analysts-remain-bullish-on-ai-strategy/article70147169.ece",
+          "content": "Home \n                    \n                        Markets\n                    \n                        Stocks\n                    The stock, which opened at ₹3,050 against the previous close of ₹3,061.70, has recorded a traded volume of 63.45 lakh shares worth ₹1,925.53 crore  Updated - October 10, 2025  at 01:09 PM.\n\t\t\t\t\t\t\t\t\t\tTCS  plans to create 5,000 new jobs in the UK over the next three years, while launching an AI Experience Zone in London\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t| Photo Credit:\n\t\t",
+          "scraped_at": "2025-10-10T20:48:11.283799811+05:30"
+        },
+        {
+          "title": "Q2 Results Highlights: Elecon drops 8%, Indosolar surges; TCS, Tata Elxsi, GM Breweries shares fall",
+          "url": "https://www.thehindubusinessline.com/markets/q2-results-highlights-tcs-waaree-renewable-technologies-elecon-engineering-company-gk-energy-yash-highvoltage-bizotic-commercial-10-october-2025/article70146718.ece",
+          "content": "Home \n                    \n                        Markets\n                    \n Q2 Results October 10, 2025 highlights: Find all the latest Q2 results 2025 updates \n Updated - October 10, 2025  at 05:29 PM.2 Results October 10, 2025 highlights: Find all the latest Q2 results 2025 updates of companies such as Waaree Renewable Technologies, Elecon Engineering Company, GK Energy, Yash Highvoltage, Bizotic Commercial, Pro Fin Capital Services, Intense Technologies, Affordable Robotic & Automation, ",
+          "scraped_at": "2025-10-10T20:48:11.395428825+05:30"
+        },
+        {
+          "title": "TCS Q2 Results Highlights: Profit up 1.4% y-o-y",
+          "url": "https://www.thehindubusinessline.com/markets/tata-consultancy-service-q2-results-fy26-highlights/article70142762.ece",
+          "content": "SENSEX   82,172.10\n        + 398.44\n        \n        NIFTY   25,181.80\n        + 135.65\n        \n        CRUDEOIL   5,540.00\n         -36.00\n        \n        GOLD   123,280.00\n        + 71.00\n        \n        SILVER   149,827.00\n         -28.00\n        \n                 \n                 \n                       \n                         \n        SENSEX   82,172.10\n        + 398.44\n        \n        NIFTY   25,181.80\n        + 135.65\n        \n                       \n                       \n       ",
+          "scraped_at": "2025-10-10T20:48:11.498600836+05:30"
+        },
+        {
+          "title": "TCS bets $6 billion on AI data centers: Bold pivot or costly detour?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/tcs-bets-6-billion-on-ai-data-centers-bold-pivot-or-costly-detour/articleshow/124446232.cms",
+          "content": "India's IT bellwether Tata Consultancy Services has kicked off one of its most ambitious bets yet — a $6 billion foray into artificial intelligence infrastructure that marks a decisive pivot from its traditional services-led model toward the capital-heavy world of AI data centres. Just when India's IT services giants were being blamed widely for having been left out in the AI boom, TCS declared ambitions to become the world's largest AI-led technology services company.The company plans to build ",
+          "scraped_at": "2025-10-10T20:48:11.667843154+05:30"
+        },
+        {
+          "title": "Buy, Sell or Hold: JM Financial recommends buy on TCS post Q2 results; Motilal Oswal recommends Sell on Ta",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/buy-sell-or-hold-jm-financial-recommends-buy-on-tcs-post-q2-results-motilal-oswal-recommends-sell-on-tata-elxsi/articleshow/124443692.cms",
+          "content": "Brokerages have released their latest views on key companies across sectors, offering a mix of bullish and cautious tones. JM Financial remains optimistic on TCS, citing strong international growth prospects, margin improvement, and strategic investments in AI and digital infrastructure. Morgan Stanley continues to back Muthoot Finance with an Overweight rating, projecting robust loan growth and improved efficiency metrics. On the other hand, Motilal Oswal has turned cautious on Tata Elxsi, main",
+          "scraped_at": "2025-10-10T20:48:11.866217868+05:30"
+        },
+        {
+          "title": "Sensex climbs 300 pts, Nifty tops 25,250 as FPIs return to D-St; TCS caps gains",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/sensex-climbs-100-pts-nifty-tops-25200-as-fpis-return-to-d-st-tcs-caps-gains/articleshow/124443582.cms",
+          "content": "India’s equity indices Sensex and Nifty opened higher on Friday, driven by renewed foreign portfolio investor buying over the past three sessions. Gains were, however, tempered by losses in TCS after the company reported a weaker-than-expected September-quarter profit.The S&P BSE Sensex rose 162.33 points, or 0.2%, to 82,334.43, while the NSE Nifty 50 added 40.25 points, or 0.16%, to 25,222.05. At around 9:45 AM, BSE Sensex traded 340 pts or 0.42% to Rs 82, 513 where Nifty50 rose 92 or 0.37% to ",
+          "scraped_at": "2025-10-10T20:48:12.000344+05:30"
+        },
+        {
+          "title": "TCS shares fall 2% after Q2 miss; brokerages see up to 20% upside. Should you buy, sell or hold?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/tcs-shares-in-focus-after-q2-miss-brokerages-see-up-to-20-upside-should-you-buy-sell-or-hold/articleshow/124443444.cms",
+          "content": "Shares of Tata Consultancy Services edged lower by 1.5% to their day's low of Rs 3,014 per share on the NSE on Friday after India’s largest IT services exporter posted a weaker-than-expected September-quarter profit but announced an ambitious foray into artificial intelligence (AI) infrastructure. While the results fell short of analysts’ estimates, several brokerages maintained bullish views, citing long-term strategic positioning and new growth levers that could lift the stock by as much as 21",
+          "scraped_at": "2025-10-10T20:48:12.101023088+05:30"
+        }
+      ]
+    },
+    "HDFCBANK.NS": {
+      "2025-10-09": [
+        {
+          "title": "InCred Equities lists HDFC Bank, among 9 other stocks as top 10 high conviction picks. Check full list",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/incred-equities-lists-hdfc-bank-among-9-other-stocks-as-top-10-high-conviction-picks-check-full-list/slideshow/124403696.cms",
+          "content": "Oct 09, 2025, 08:52:51 AM ISTOn Wednesday, Indian equity benchmarks, Sensex and Nifty, ended their four-day winning streak, dragged down by profit booking, particularly in financial stocks. Despite gains in IT counters ahead of the quarterly earnings season, banking sector weakness led the decline.The domestic markets experienced a choppy session, marked by cautious investor sentiment and valuation reassessments following a recent rally. With the Q2 earnings season approaching, market participan",
+          "scraped_at": "2025-10-09T09:15:01.712179729+05:30"
+        },
+        {
+          "title": "Explained: Reliance Industries is India’s most valuable company but why isn’t it No.1 in Nifty50 weight?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/explained-reliance-industries-is-indias-most-valuable-company-but-why-isnt-it-no-1-in-nifty50-weight/articleshow/124403406.cms",
+          "content": "SynopsisReliance Industries, despite its massive market capitalization, ranks third in Nifty 50 index weight due to its lower free-float shares. Banks like HDFC Bank and ICICI Bank hold higher weights because a larger portion of their stock is available for public trading, influencing the index more significantly.ETMarkets.comReliance Industries Ltd, India's largest company, holds third place in the Nifty 50 index.Reliance Industries Ltd (RIL) may tower over India’s corporate landscape with the ",
+          "scraped_at": "2025-10-09T09:15:02.131134831+05:30"
+        },
+        {
+          "title": "TCS shares in focus ahead of Q2FY26 results today",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/tcs-shares-in-focus-ahead-of-q2fy26-results-today/articleshow/124403360.cms",
+          "content": "Shares of Tata Consultancy Services (TCS), India’s largest IT services company, will be in sharp focus on Thursday, October 9, ahead of the company’s Q2FY26 results announcement later in the day.Brokerages have released a wide range of estimates for the quarter, projecting net profit growth between 3.7% and 9.6% year-on-year (YoY). Profit after tax (PAT) is expected to fall in the range of Rs 12,346 crore to Rs 13,058 crore, while revenue estimates span from Rs 64,200 crore to Rs 65,700 crore, r",
+          "scraped_at": "2025-10-09T09:15:02.242613406+05:30"
+        },
+        {
+          "title": "HDFC Life Share Price Live Updates: HDFC Life Volume Analysis",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/hdfc-life-share-price-live-updates-09-oct-2025/liveblog/124403060.cms",
+          "content": "09 Oct 2025 | 08:41:28 AM ISTHDFC Life share price live updatesWelcome to the HDFC Life Stock Liveblog, your go-to platform for real-time updates and analysis on a top-performing stock. Stay ahead of the market with our in-depth coverage of HDFC Life, including: Last traded price 747.3, Market capitalization: 161020.27, Volume: 2259269, Price-to-earnings ratio 85.64, Earnings per share 8.73. Get a complete picture of HDFC Life's performance through our comprehensive blend of fundamental and tech",
+          "scraped_at": "2025-10-09T09:15:07.605385543+05:30"
+        },
+        {
+          "title": "HDFC Bank Share Price Live Updates: Explained: Reliance Industries is India’s most valuable company but why isn’t it No.1 in Nifty50 weight?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/hdfc-bank-stock-price-livestock-price-today-live-updates-09-oct-2025/liveblog/124403020.cms",
+          "content": "09 Oct 2025 | 08:42:41 AM ISTHDFC Bank share price live updatesStay informed with the HDFC Bank Stock Liveblog, your comprehensive resource for real-time updates and in-depth analysis of a leading stock. Get the latest details on HDFC Bank, including: Last traded price 978.7, Market capitalization: 1502703.76, Volume: 15939710, Price-to-earnings ratio 0.0, Earnings per share 0.0. Our liveblog combines fundamental and technical insights to provide a holistic view of HDFC Bank's performance. Stay ",
+          "scraped_at": "2025-10-09T09:15:15.338271657+05:30"
+        }
+      ],
+      "2025-10-10": [
+        {
+          "title": "TCS Q2 Results Live Updates: PAT at Rs 12,075 cr vs St est of Rs 12,573 cr; Rs 11 per share dividend declared",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/live-blog/tcs-q2-results-tata-consultancy-services-q2-fy26-revenue-earning-net-profit-dividend-date-time-09-october-2025/liveblog/124408861.cms",
+          "content": "09 Oct 2025 | 04:22:41 PM ISTTCS Q2 earnings preview: modest growth expected, brokerages split on outlook.SynopsisTCS Q2 Results FY26 Live: Indian IT leader Tata Consultancy Services reported a 1.3% YoY rise in Q2 net profit, reaching ₹12,075 crore compared with ₹11,909 crore a year earlier. The PAT attributable to shareholders fell short of analysts’ expectations, which had projected ₹12,573 crore.TCS Q2 Results FY26 Live: Revenue from operations rose 2.4% YoY to ₹65,799 crore, up from ₹64,259 ",
+          "scraped_at": "2025-10-10T01:50:46.264254881+05:30"
+        },
+        {
+          "title": "TCS Q2 Results Live Updates: PAT at Rs 12,075 cr vs St est of Rs 12,573 cr; Rs 11 per share dividend declared",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/live-blog/tcs-q2-results-tata-consultancy-services-q2-fy26-revenue-earning-net-profit-dividend-date-time-09-october-2025/liveblog/124408861.cms",
+          "content": "09 Oct 2025 | 04:22:41 PM ISTTCS Q2 earnings preview: modest growth expected, brokerages split on outlook.SynopsisTCS Q2 Results FY26 Live: Indian IT leader Tata Consultancy Services reported a 1.3% YoY rise in Q2 net profit, reaching ₹12,075 crore compared with ₹11,909 crore a year earlier. The PAT attributable to shareholders fell short of analysts’ expectations, which had projected ₹12,573 crore.TCS Q2 Results FY26 Live: Revenue from operations rose 2.4% YoY to ₹65,799 crore, up from ₹64,259 ",
+          "scraped_at": "2025-10-10T01:51:01.906408349+05:30"
+        },
+        {
+          "title": "TCS Q2 Results Live Updates: PAT at Rs 12,075 cr vs St est of Rs 12,573 cr; Rs 11 per share dividend declared",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/live-blog/tcs-q2-results-tata-consultancy-services-q2-fy26-revenue-earning-net-profit-dividend-date-time-09-october-2025/liveblog/124408861.cms",
+          "content": "09 Oct 2025 | 04:22:41 PM ISTTCS Q2 earnings preview: modest growth expected, brokerages split on outlook.SynopsisTCS Q2 Results FY26 Live: Indian IT leader Tata Consultancy Services reported a 1.3% YoY rise in Q2 net profit, reaching ₹12,075 crore compared with ₹11,909 crore a year earlier. The PAT attributable to shareholders fell short of analysts’ expectations, which had projected ₹12,573 crore.TCS Q2 Results FY26 Live: Revenue from operations rose 2.4% YoY to ₹65,799 crore, up from ₹64,259 ",
+          "scraped_at": "2025-10-10T02:09:41.594974415+05:30"
+        },
+        {
+          "title": "Trade Setup for October 10: Nifty bulls aim to break above the 25,250 barrier after TCS results",
+          "url": "https://www.cnbctv18.com/market/trade-setup-october-10-nifty-50-key-levels-midcap-banks-it-stocks-tcs-tata-elxsi-lg-wework-afcons-share-price-19710133.htm",
+          "content": "HomeMarket NewsTrade Setup for October 10: Nifty bulls aim to break above the 25,250 barrier after TCS resultsThe surge in IT stocks has taken the spotlight away from the Nifty Bank, which has remained away from the limelight for a better part of this week. Although the index made a lower high on the charts on Thursday, it made a higher low, and also managed to sustain above the 56,000 mark, which remains level on the downside for the index.While writing the setup for Thursday's trade, we told y",
+          "scraped_at": "2025-10-10T02:09:43.497488402+05:30"
+        },
+        {
+          "title": "TCS Q2 Results Live Updates: PAT at Rs 12,075 cr vs St est of Rs 12,573 cr; Rs 11 per share dividend declared",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/live-blog/tcs-q2-results-tata-consultancy-services-q2-fy26-revenue-earning-net-profit-dividend-date-time-09-october-2025/liveblog/124408861.cms",
+          "content": "09 Oct 2025 | 04:22:41 PM ISTTCS Q2 earnings preview: modest growth expected, brokerages split on outlook.SynopsisTCS Q2 Results FY26 Live: Indian IT leader Tata Consultancy Services reported a 1.3% YoY rise in Q2 net profit, reaching ₹12,075 crore compared with ₹11,909 crore a year earlier. The PAT attributable to shareholders fell short of analysts’ expectations, which had projected ₹12,573 crore.TCS Q2 Results FY26 Live: Revenue from operations rose 2.4% YoY to ₹65,799 crore, up from ₹64,259 ",
+          "scraped_at": "2025-10-10T02:09:46.712397528+05:30"
+        },
+        {
+          "title": "Canara HSBC Life Insurance Company collects Rs 750 crore from 33 anchor investors; ICICI Prudential and HD",
+          "url": "https://economictimes.indiatimes.com/markets/ipos/fpos/canara-hsbc-life-insurance-company-collects-rs-750-crore-from-33-anchor-investors-icici-prudential-and-hdfc-mutual-fund-among-top-investors/articleshow/124449334.cms",
+          "content": "Canara HSBC Life Insurance Company has allotted 7,07,85,000 equity shares to anchor investors, of which 4,26,93,840 Equity Shares (i.e. 60.31% of the total allocation to Anchor Investors) were allocated to eight domestic mutual funds, which applied through a total of 18 schemesThe company raised Rs 750.32 crore from anchor investors by allotting equity shares at the upper end of the price band — Rs 106 per share, including a share premium of Rs 96 per share on a face value of Rs 10 per share. Al",
+          "scraped_at": "2025-10-10T20:44:07.267828831+05:30"
+        },
+        {
+          "title": "TCS results, AI bets and metals rally: Parag Thakkar sees value across IT, metals and banking sector",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-results-ai-bets-and-metals-rally-parag-thakkar-sees-value-across-it-metals-and-banking-sector/articleshow/124447741.cms",
+          "content": "In an exclusive conversation with ET Now, Parag Thakkar, from Fort Capital shared his perspective on Tata Consultancy Services’ (TCS) latest quarterly results, the company’s strategic shift towards AI and data centre investments, and his bullish stance on the metals and banking sectors. “We have 2.5% weight in TCS and we are not going to sell at this price,” Thakkar began, making his position clear. “Whether we will add more depends... See, the two-three things which are positive is first of all",
+          "scraped_at": "2025-10-10T20:44:07.589746607+05:30"
+        },
+        {
+          "title": "HDFC Life Share Price Highlights: HDFC Life Stock Price History",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/hdfc-life-share-price-live-updates-10-oct-2025/liveblog/124442555.cms",
+          "content": "10 Oct 2025 | 06:33:23 PM ISTHDFC Life share price live updatesStay informed with the HDFC Life Stock Liveblog, your comprehensive resource for real-time updates and in-depth analysis of a leading stock. Get the latest details on HDFC Life, including: Last traded price 747.3, Market capitalization: 161020.27, Volume: 2771300, Price-to-earnings ratio 85.64, Earnings per share 8.73. Our liveblog combines fundamental and technical insights to provide a holistic view of HDFC Life's performance. Stay",
+          "scraped_at": "2025-10-10T20:44:16.558137904+05:30"
+        },
+        {
+          "title": "Canara HSBC Life Insurance Company collects Rs 750 crore from 33 anchor investors; ICICI Prudential and HD",
+          "url": "https://economictimes.indiatimes.com/markets/ipos/fpos/canara-hsbc-life-insurance-company-collects-rs-750-crore-from-33-anchor-investors-icici-prudential-and-hdfc-mutual-fund-among-top-investors/articleshow/124449334.cms",
+          "content": "Canara HSBC Life Insurance Company has allotted 7,07,85,000 equity shares to anchor investors, of which 4,26,93,840 Equity Shares (i.e. 60.31% of the total allocation to Anchor Investors) were allocated to eight domestic mutual funds, which applied through a total of 18 schemesThe company raised Rs 750.32 crore from anchor investors by allotting equity shares at the upper end of the price band — Rs 106 per share, including a share premium of Rs 96 per share on a face value of Rs 10 per share. Al",
+          "scraped_at": "2025-10-10T20:48:00.682822323+05:30"
+        },
+        {
+          "title": "TCS results, AI bets and metals rally: Parag Thakkar sees value across IT, metals and banking sector",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-results-ai-bets-and-metals-rally-parag-thakkar-sees-value-across-it-metals-and-banking-sector/articleshow/124447741.cms",
+          "content": "In an exclusive conversation with ET Now, Parag Thakkar, from Fort Capital shared his perspective on Tata Consultancy Services’ (TCS) latest quarterly results, the company’s strategic shift towards AI and data centre investments, and his bullish stance on the metals and banking sectors. “We have 2.5% weight in TCS and we are not going to sell at this price,” Thakkar began, making his position clear. “Whether we will add more depends... See, the two-three things which are positive is first of all",
+          "scraped_at": "2025-10-10T20:48:00.896733491+05:30"
+        },
+        {
+          "title": "Trade Setup for October 10: Nifty bulls aim to break above the 25,250 barrier after TCS results",
+          "url": "https://www.cnbctv18.com/market/trade-setup-october-10-nifty-50-key-levels-midcap-banks-it-stocks-tcs-tata-elxsi-lg-wework-afcons-share-price-19710133.htm",
+          "content": "HomeMarket NewsTrade Setup for October 10: Nifty bulls aim to break above the 25,250 barrier after TCS resultsThe surge in IT stocks has taken the spotlight away from the Nifty Bank, which has remained away from the limelight for a better part of this week. Although the index made a lower high on the charts on Thursday, it made a higher low, and also managed to sustain above the 56,000 mark, which remains level on the downside for the index.While writing the setup for Thursday's trade, we told y",
+          "scraped_at": "2025-10-10T20:48:04.701131938+05:30"
+        },
+        {
+          "title": "HDFC Life Share Price Highlights: HDFC Life Stock Price History",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/hdfc-life-share-price-live-updates-10-oct-2025/liveblog/124442555.cms",
+          "content": "10 Oct 2025 | 06:33:23 PM ISTHDFC Life share price live updatesStay informed with the HDFC Life Stock Liveblog, your comprehensive resource for real-time updates and in-depth analysis of a leading stock. Get the latest details on HDFC Life, including: Last traded price 747.3, Market capitalization: 161020.27, Volume: 2771300, Price-to-earnings ratio 85.64, Earnings per share 8.73. Our liveblog combines fundamental and technical insights to provide a holistic view of HDFC Life's performance. Stay",
+          "scraped_at": "2025-10-10T20:48:13.04978836+05:30"
+        }
+      ]
+    },
+    "ICICIBANK.NS": {
+      "2025-10-09": [
+        {
+          "title": "Explained: Reliance Industries is India’s most valuable company but why isn’t it No.1 in Nifty50 weight?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/explained-reliance-industries-is-indias-most-valuable-company-but-why-isnt-it-no-1-in-nifty50-weight/articleshow/124403406.cms",
+          "content": "SynopsisReliance Industries, despite its massive market capitalization, ranks third in Nifty 50 index weight due to its lower free-float shares. Banks like HDFC Bank and ICICI Bank hold higher weights because a larger portion of their stock is available for public trading, influencing the index more significantly.ETMarkets.comReliance Industries Ltd, India's largest company, holds third place in the Nifty 50 index.Reliance Industries Ltd (RIL) may tower over India’s corporate landscape with the ",
+          "scraped_at": "2025-10-09T09:15:02.131134831+05:30"
+        },
+        {
+          "title": "TCS to announce Q2 results today: 10 things to track and how to trade",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/earnings/tcs-to-announce-q2-results-today-10-things-to-track-and-how-to-trade/articleshow/124403310.cms",
+          "content": "Tata Consultancy Services (TCS) reports its Q2 results today with investors bracing for tepid growth and razor-thin margin movements as the country's largest software exporter navigates headwinds from a planned 12,000-employee separation program, wage revisions, an uncertain US demand and H-1B visa issue.“We expect muted growth from TCS in Q2 as positive momentum in BFSI and tech will be largely offset due to weakness in life science & healthcare and communications. We are also building in a 10b",
+          "scraped_at": "2025-10-09T09:15:02.488589374+05:30"
+        },
+        {
+          "title": "ICICI Bank Share Price Live Updates: Explained: Reliance Industries is India’s most valuable company but why isn’t it No.1 in Nifty50 weight?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/icici-bank-share-price-today-live-updates-09-oct-2025/liveblog/124403001.cms",
+          "content": "09 Oct 2025 | 08:43:18 AM ISTICICI Bank share price live updatesWelcome to the ICICI Bank Stock Liveblog, your real-time source for the latest updates and comprehensive analysis on a prominent stock. Dive into the current details of ICICI Bank, including: Last traded price 1370.3, Market capitalization: 977782.98, Volume: 8100832, Price-to-earnings ratio 18.49, Earnings per share 74.12. Our liveblog offers a complete overview of ICICI Bank through a blend of fundamental and technical indicators.",
+          "scraped_at": "2025-10-09T09:15:19.843969635+05:30"
+        }
+      ],
+      "2025-10-10": [
+        {
+          "title": "Stocks to Watch: TCS, Tata Motors, NTPC Green, ICICI Prudential Life and more",
+          "url": "https://www.cnbctv18.com/photos/market/stocks-to-watch-tcs-tata-motors-ntpc-green-icici-prudential-life-and-more-19709728.htm",
+          "content": "TCS reported a Q2 net profit of ₹12,075 crore and announced major AI investments, including a 1 GW data center in India. Tata Elxsi’s profit rose 7.2% QoQ, while Afcons secured a ₹576 crore infra contract. NATCO Pharma won court approval to launch a generic SMA drug, and NTPC Green signed an MoU with Gujarat for 15 GW of renewables. Meanwhile, RailTel, Subex, Lloyds Engineering, and Jana SFB announced new contracts and capital plans. Here are few stocks to watch ahead of Friday's trading session",
+          "scraped_at": "2025-10-10T02:09:43.632282562+05:30"
+        },
+        {
+          "title": "ICICI Prudential Life reports 6% rise in new business premium for September",
+          "url": "https://www.cnbctv18.com/market/icici-prudential-life-share-price-co-reports-rise-in-new-business-premium-for-sept-2025-ws-l-19709763.htm",
+          "content": "HomeMarket NewsICICI Prudential Life reports 6% rise in new business premium for SeptemberThe company’s Annualised Premium Equivalent (APE) — a key metric for new business growth — was ₹871 crore for the month, down 1.1% year-on-year, but higher than ₹722 crore in August.ICICI Prudential Life Insurance Company reported a 6.1% year-on-year (YoY) increase in its new business premium for September 2025, which stood at ₹1,761 crore, according to its monthly business update. On a sequential basis, th",
+          "scraped_at": "2025-10-10T02:09:43.857302092+05:30"
+        },
+        {
+          "title": "Canara HSBC Life Insurance Company collects Rs 750 crore from 33 anchor investors; ICICI Prudential and HD",
+          "url": "https://economictimes.indiatimes.com/markets/ipos/fpos/canara-hsbc-life-insurance-company-collects-rs-750-crore-from-33-anchor-investors-icici-prudential-and-hdfc-mutual-fund-among-top-investors/articleshow/124449334.cms",
+          "content": "Canara HSBC Life Insurance Company has allotted 7,07,85,000 equity shares to anchor investors, of which 4,26,93,840 Equity Shares (i.e. 60.31% of the total allocation to Anchor Investors) were allocated to eight domestic mutual funds, which applied through a total of 18 schemesThe company raised Rs 750.32 crore from anchor investors by allotting equity shares at the upper end of the price band — Rs 106 per share, including a share premium of Rs 96 per share on a face value of Rs 10 per share. Al",
+          "scraped_at": "2025-10-10T20:44:07.267828831+05:30"
+        },
+        {
+          "title": "TCS results, AI bets and metals rally: Parag Thakkar sees value across IT, metals and banking sector",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-results-ai-bets-and-metals-rally-parag-thakkar-sees-value-across-it-metals-and-banking-sector/articleshow/124447741.cms",
+          "content": "In an exclusive conversation with ET Now, Parag Thakkar, from Fort Capital shared his perspective on Tata Consultancy Services’ (TCS) latest quarterly results, the company’s strategic shift towards AI and data centre investments, and his bullish stance on the metals and banking sectors. “We have 2.5% weight in TCS and we are not going to sell at this price,” Thakkar began, making his position clear. “Whether we will add more depends... See, the two-three things which are positive is first of all",
+          "scraped_at": "2025-10-10T20:44:07.589746607+05:30"
+        },
+        {
+          "title": "Canara HSBC Life Insurance Company collects Rs 750 crore from 33 anchor investors; ICICI Prudential and HD",
+          "url": "https://economictimes.indiatimes.com/markets/ipos/fpos/canara-hsbc-life-insurance-company-collects-rs-750-crore-from-33-anchor-investors-icici-prudential-and-hdfc-mutual-fund-among-top-investors/articleshow/124449334.cms",
+          "content": "Canara HSBC Life Insurance Company has allotted 7,07,85,000 equity shares to anchor investors, of which 4,26,93,840 Equity Shares (i.e. 60.31% of the total allocation to Anchor Investors) were allocated to eight domestic mutual funds, which applied through a total of 18 schemesThe company raised Rs 750.32 crore from anchor investors by allotting equity shares at the upper end of the price band — Rs 106 per share, including a share premium of Rs 96 per share on a face value of Rs 10 per share. Al",
+          "scraped_at": "2025-10-10T20:48:00.682822323+05:30"
+        },
+        {
+          "title": "TCS results, AI bets and metals rally: Parag Thakkar sees value across IT, metals and banking sector",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-results-ai-bets-and-metals-rally-parag-thakkar-sees-value-across-it-metals-and-banking-sector/articleshow/124447741.cms",
+          "content": "In an exclusive conversation with ET Now, Parag Thakkar, from Fort Capital shared his perspective on Tata Consultancy Services’ (TCS) latest quarterly results, the company’s strategic shift towards AI and data centre investments, and his bullish stance on the metals and banking sectors. “We have 2.5% weight in TCS and we are not going to sell at this price,” Thakkar began, making his position clear. “Whether we will add more depends... See, the two-three things which are positive is first of all",
+          "scraped_at": "2025-10-10T20:48:00.896733491+05:30"
+        },
+        {
+          "title": "Stocks to Watch: TCS, Tata Motors, NTPC Green, ICICI Prudential Life and more",
+          "url": "https://www.cnbctv18.com/photos/market/stocks-to-watch-tcs-tata-motors-ntpc-green-icici-prudential-life-and-more-19709728.htm",
+          "content": "TCS reported a Q2 net profit of ₹12,075 crore and announced major AI investments, including a 1 GW data center in India. Tata Elxsi’s profit rose 7.2% QoQ, while Afcons secured a ₹576 crore infra contract. NATCO Pharma won court approval to launch a generic SMA drug, and NTPC Green signed an MoU with Gujarat for 15 GW of renewables. Meanwhile, RailTel, Subex, Lloyds Engineering, and Jana SFB announced new contracts and capital plans. Here are few stocks to watch ahead of Friday's trading session",
+          "scraped_at": "2025-10-10T20:48:04.81218972+05:30"
+        },
+        {
+          "title": "ICICI Prudential Life reports 6% rise in new business premium for September",
+          "url": "https://www.cnbctv18.com/market/icici-prudential-life-share-price-co-reports-rise-in-new-business-premium-for-sept-2025-ws-l-19709763.htm",
+          "content": "HomeMarket NewsICICI Prudential Life reports 6% rise in new business premium for SeptemberThe company’s Annualised Premium Equivalent (APE) — a key metric for new business growth — was ₹871 crore for the month, down 1.1% year-on-year, but higher than ₹722 crore in August.ICICI Prudential Life Insurance Company reported a 6.1% year-on-year (YoY) increase in its new business premium for September 2025, which stood at ₹1,761 crore, according to its monthly business update. On a sequential basis, th",
+          "scraped_at": "2025-10-10T20:48:05.076744386+05:30"
+        }
+      ]
+    },
+    "RELIANCE.NS": {
+      "2025-10-09": [
+        {
+          "title": "Explained: Reliance Industries is India’s most valuable company but why isn’t it No.1 in Nifty50 weight?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/explained-reliance-industries-is-indias-most-valuable-company-but-why-isnt-it-no-1-in-nifty50-weight/articleshow/124403406.cms",
+          "content": "SynopsisReliance Industries, despite its massive market capitalization, ranks third in Nifty 50 index weight due to its lower free-float shares. Banks like HDFC Bank and ICICI Bank hold higher weights because a larger portion of their stock is available for public trading, influencing the index more significantly.ETMarkets.comReliance Industries Ltd, India's largest company, holds third place in the Nifty 50 index.Reliance Industries Ltd (RIL) may tower over India’s corporate landscape with the ",
+          "scraped_at": "2025-10-09T09:15:02.131134831+05:30"
+        },
+        {
+          "title": "RIL Share Price Live Updates: RIL Trading Volume Insights",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/ril-stock-price-live-updates-09-oct-2025/liveblog/124403025.cms",
+          "content": "09 Oct 2025 | 08:44:45 AM ISTRIL share price live updatesDiscover the RIL Stock Liveblog, your ultimate resource for real-time updates and insightful analysis on a prominent stock. Keep track of RIL with the latest details, including: Last traded price 1367.4, Market capitalization: 1850430.31, Volume: 8525081, Price-to-earnings ratio 22.7, Earnings per share 60.23. Our comprehensive coverage combines fundamental and technical indicators to provide you with a comprehensive view of RIL's performa",
+          "scraped_at": "2025-10-09T09:15:13.426980931+05:30"
+        },
+        {
+          "title": "HDFC Bank Share Price Live Updates: Explained: Reliance Industries is India’s most valuable company but why isn’t it No.1 in Nifty50 weight?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/hdfc-bank-stock-price-livestock-price-today-live-updates-09-oct-2025/liveblog/124403020.cms",
+          "content": "09 Oct 2025 | 08:42:41 AM ISTHDFC Bank share price live updatesStay informed with the HDFC Bank Stock Liveblog, your comprehensive resource for real-time updates and in-depth analysis of a leading stock. Get the latest details on HDFC Bank, including: Last traded price 978.7, Market capitalization: 1502703.76, Volume: 15939710, Price-to-earnings ratio 0.0, Earnings per share 0.0. Our liveblog combines fundamental and technical insights to provide a holistic view of HDFC Bank's performance. Stay ",
+          "scraped_at": "2025-10-09T09:15:15.338271657+05:30"
+        },
+        {
+          "title": "ICICI Bank Share Price Live Updates: Explained: Reliance Industries is India’s most valuable company but why isn’t it No.1 in Nifty50 weight?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/icici-bank-share-price-today-live-updates-09-oct-2025/liveblog/124403001.cms",
+          "content": "09 Oct 2025 | 08:43:18 AM ISTICICI Bank share price live updatesWelcome to the ICICI Bank Stock Liveblog, your real-time source for the latest updates and comprehensive analysis on a prominent stock. Dive into the current details of ICICI Bank, including: Last traded price 1370.3, Market capitalization: 977782.98, Volume: 8100832, Price-to-earnings ratio 18.49, Earnings per share 74.12. Our liveblog offers a complete overview of ICICI Bank through a blend of fundamental and technical indicators.",
+          "scraped_at": "2025-10-09T09:15:19.843969635+05:30"
+        },
+        {
+          "title": "In Pics | India marks 93rd Air Force Day with stunning fly-pasts and parades",
+          "url": "https://www.cnbctv18.com/photos/india/indian-air-force-day-2025-celebrations-iaf-hindon-base-operations-sindoor-sindhu-19707323.htm",
+          "content": "India celebrated the 93rd Air Force Day on Wednesday, October 8, with pride and gratitude. The day was marked with grand celebrations, tributes, and displays of aerial strength by the Indian Air Force. Here's a look at the celebrations.1 / 8Celebrations Across the Nation | The 93rd Air Force Day was celebrated with grandeur at the Hindon Air Base, featuring breathtaking fly-pasts, aerobatic displays, and parades. Advanced fighter jets and helicopters showcased India’s aerial might, reflecting th",
+          "scraped_at": "2025-10-09T09:15:31.666558426+05:30"
+        },
+        {
+          "title": "Education ministry directs officials to use Zoho Office suite citing 'swadeshi movement'",
+          "url": "https://www.cnbctv18.com/education/education-ministry-directs-officials-to-use-zoho-office-suite-citing-swadeshi-movement-self-reliance-19707251.htm",
+          "content": "HomeEducation & Careers NewsEducation ministry directs officials to use Zoho Office suite citing 'swadeshi movement'Key tools provided by the company include Zoho Writer for documents, Zoho Sheet for spreadsheets, and Zoho Show for presentations, which are stored securely on Zoho WorkDrive.The Ministry of Education (MoE) has directed its officials to use Zoho Office Suite for official work in a push towards self-reliance and reducing dependency on foreign software, according to officials.\n\n\"By e",
+          "scraped_at": "2025-10-09T09:15:32.226734835+05:30"
+        },
+        {
+          "title": "India approves ₹24,634 crore rail projects to expand network in 4 states",
+          "url": "https://www.cnbctv18.com/india/government-approves-%25e2%2582%25b924634-crore-rail-projects-to-expand-network-in-4-states-19705559.htm",
+          "content": "HomeIndia NewsIndia approves ₹24,634 crore rail projects to expand network in 4 statesThe Cabinet Committee on Economic Affairs, led by PM Modi, has approved four railway multitracking projects worth ₹24,634 crore to expand India’s rail network by 894 km across four states.The Cabinet Committee on Economic Affairs (CCEA), chaired by Prime Minister Narendra Modi, on Tuesday, approved four railway multitracking projects worth about ₹24,634 crore.\n\nThe projects, covering 18 districts across Maharas",
+          "scraped_at": "2025-10-09T09:15:35.6565122+05:30"
+        },
+        {
+          "title": "Gadkari says farmers earn ₹45,000 crore from ethanol production",
+          "url": "https://www.cnbctv18.com/india/gadkari-says-farmers-earn-%25e2%2582%25b945000-crore-from-ethanol-production-19704141.htm",
+          "content": "HomeIndia NewsGadkari says farmers earn ₹45,000 crore from ethanol productionUnion Minister Nitin Gadkari said farmers earned ₹45,000 crore from ethanol and EV prices in India will reach parity with petrol vehicles within 4-6 months.Union Road Transport and Highways Minister Nitin Gadkari on Monday highlighted the economic benefits of ethanol production, stating that farmers have earned an additional ₹45,000 crore by producing ethanol from corn.\n\nSpeaking at the 20th FICCI Higher Education Summi",
+          "scraped_at": "2025-10-09T09:15:38.985571014+05:30"
+        },
+        {
+          "title": "Op Sindoor damaged F-16s, AWACS and radars in Pakistan, US stepped in for repairs",
+          "url": "https://www.cnbctv18.com/india/op-sindoor-damaged-f-16s-awacs-and-radars-in-pakistan-us-stepped-in-for-repairs-19703495.htm",
+          "content": "HomeIndia NewsOp Sindoor damaged F-16s, AWACS and radars in Pakistan, US stepped in for repairsUS sent special teams on Asim Munir’s request but reportedly blocked China from assisting in repairs over concerns of technology theft, particularly related to the F-16s and C-130From damaged F-16s and Swedish-made AWACS aircraft to shattered radar systems and command centres—India’s Operation Sindoor severely crippled multiple Pakistani Air Force bases in May this year, leaving the country scrambling ",
+          "scraped_at": "2025-10-09T09:15:43.56853503+05:30"
+        }
+      ],
+      "2025-10-10": [
+        {
+          "title": "Reliance Industries to announce Q2 results on October 17",
+          "url": "https://www.cnbctv18.com/market/earnings/reliance-industries-to-announce-q2-results-on-october-17-19710151.htm",
+          "content": "Reliance Industries Ltd (RIL) has scheduled its board meeting on October 17, 2025, to approve Q2 FY26 results. The company began the fiscal year with a record profit of ₹26,994 crore in first quarter, driven by strong growth in retail and consumer businesses.Reliance Industries Ltd (RIL) has announced that its board will meet on October 17, 2025, to consider and approve the standalone and consolidated unaudited financial results for the quarter and half-year ended September 30, 2025.\nThe company",
+          "scraped_at": "2025-10-10T02:09:43.367075951+05:30"
+        },
+        {
+          "title": "Reliance revives Tamil Nadu-based personal care brand Velvette, targets five ₹1,000-crore FMCG brands by 2027",
+          "url": "https://www.cnbctv18.com/business/reliance-revives-tamil-nadu-based-personal-care-brand-velvette-targets-five-%25e2%2582%25b91000-crore-fmcg-brands-by-2027-19709145.htm",
+          "content": "HomeBusiness NewsReliance revives Tamil Nadu-based personal care brand Velvette, targets five ₹1,000-crore FMCG brands by 2027Reliance Consumer, in collaboration with the CK Rajkumar family, has introduced a range of premium products such as soaps, shampoos, conditioners, shower gels, body lotions, and talcum powders.Reliance Consumer Products Limited (RCPL) has relaunched Velvette, the iconic haircare brand from the 1980s, in a new and contemporary avatar, in collaboration with the founding CK ",
+          "scraped_at": "2025-10-10T02:09:45.140505251+05:30"
+        },
+        {
+          "title": "Reliance Power shares soar 15%. Here’s what is fuelling the rally",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/reliance-power-shares-soar-15-heres-what-is-fuelling-the-rally/articleshow/124445314.cms",
+          "content": "Shares of Reliance Power gained as much as 15% to their day’s high of Rs 50.75 on the NSE on Friday, October 10, amid renewed buying interest and strong volumes. Data showed that around 7 crore equity shares of the company changed hands, compared to its one-week and one-month average trading volumes of 2 crore shares each.Last week, the company received Show Cause Notices from the Securities and Exchange Board of India (SEBI) related to matters concerning CLE Private Limited. The issue stems fro",
+          "scraped_at": "2025-10-10T20:44:08.741819084+05:30"
+        },
+        {
+          "title": "Reliance Industries to announce Q2 results on October 17",
+          "url": "https://www.cnbctv18.com/market/earnings/reliance-industries-to-announce-q2-results-on-october-17-19710151.htm",
+          "content": "Reliance Industries Ltd (RIL) has scheduled its board meeting on October 17, 2025, to approve Q2 FY26 results. The company began the fiscal year with a record profit of ₹26,994 crore in first quarter, driven by strong growth in retail and consumer businesses.Reliance Industries Ltd (RIL) has announced that its board will meet on October 17, 2025, to consider and approve the standalone and consolidated unaudited financial results for the quarter and half-year ended September 30, 2025.\nThe company",
+          "scraped_at": "2025-10-10T20:44:11.075441275+05:30"
+        },
+        {
+          "title": "Sensex gains over 540 pts intraday, realty & banking stocks lift market sentiment, TCS declines post Q2 results",
+          "url": "https://www.thehindubusinessline.com/markets/stock-markets/sensex-gains-over-540-pts-intraday-realty-banking-stocks-lift-market-sentiment-tcs-declines-post-q2-results/article70147261.ece",
+          "content": "Home \n                    \n                        Markets\n                    \n                        Stocks\n                    Cipla, SBI, Axis Bank, Maruti Suzuki and Bajaj Auto top Nifty 50 gainers, while Tata Steel, TCS, JSW Steel, Tech Mahindra and Hindalco become major losers Updated - October 10, 2025  at 01:06 PM.\n \n | \n         Bengaluru\n     \n\t\t\t\t\t\t\t\t\t\t Majority of the sectoral indices traded in the positive territory, except IT and metal. \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tThe equity ma",
+          "scraped_at": "2025-10-10T20:44:13.483288749+05:30"
+        },
+        {
+          "title": "Reliance Power shares soar 15%. Here’s what is fuelling the rally",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/reliance-power-shares-soar-15-heres-what-is-fuelling-the-rally/articleshow/124445314.cms",
+          "content": "Shares of Reliance Power gained as much as 15% to their day’s high of Rs 50.75 on the NSE on Friday, October 10, amid renewed buying interest and strong volumes. Data showed that around 7 crore equity shares of the company changed hands, compared to its one-week and one-month average trading volumes of 2 crore shares each.Last week, the company received Show Cause Notices from the Securities and Exchange Board of India (SEBI) related to matters concerning CLE Private Limited. The issue stems fro",
+          "scraped_at": "2025-10-10T20:44:14.286734411+05:30"
+        },
+        {
+          "title": "TCS shares fall 2% after Q2 miss; brokerages see up to 20% upside. Should you buy, sell or hold?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/tcs-shares-in-focus-after-q2-miss-brokerages-see-up-to-20-upside-should-you-buy-sell-or-hold/articleshow/124443444.cms",
+          "content": "Shares of Tata Consultancy Services edged lower by 1.5% to their day's low of Rs 3,014 per share on the NSE on Friday after India’s largest IT services exporter posted a weaker-than-expected September-quarter profit but announced an ambitious foray into artificial intelligence (AI) infrastructure. While the results fell short of analysts’ estimates, several brokerages maintained bullish views, citing long-term strategic positioning and new growth levers that could lift the stock by as much as 21",
+          "scraped_at": "2025-10-10T20:44:15.106763809+05:30"
+        },
+        {
+          "title": "Reliance Power shares soar 15%. Here’s what is fuelling the rally",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/reliance-power-shares-soar-15-heres-what-is-fuelling-the-rally/articleshow/124445314.cms",
+          "content": "Shares of Reliance Power gained as much as 15% to their day’s high of Rs 50.75 on the NSE on Friday, October 10, amid renewed buying interest and strong volumes. Data showed that around 7 crore equity shares of the company changed hands, compared to its one-week and one-month average trading volumes of 2 crore shares each.Last week, the company received Show Cause Notices from the Securities and Exchange Board of India (SEBI) related to matters concerning CLE Private Limited. The issue stems fro",
+          "scraped_at": "2025-10-10T20:48:01.26967804+05:30"
+        },
+        {
+          "title": "Reliance Industries to announce Q2 results on October 17",
+          "url": "https://www.cnbctv18.com/market/earnings/reliance-industries-to-announce-q2-results-on-october-17-19710151.htm",
+          "content": "Reliance Industries Ltd (RIL) has scheduled its board meeting on October 17, 2025, to approve Q2 FY26 results. The company began the fiscal year with a record profit of ₹26,994 crore in first quarter, driven by strong growth in retail and consumer businesses.Reliance Industries Ltd (RIL) has announced that its board will meet on October 17, 2025, to consider and approve the standalone and consolidated unaudited financial results for the quarter and half-year ended September 30, 2025.\nThe company",
+          "scraped_at": "2025-10-10T20:48:04.514847978+05:30"
+        },
+        {
+          "title": "Reliance revives Tamil Nadu-based personal care brand Velvette, targets five ₹1,000-crore FMCG brands by 2027",
+          "url": "https://www.cnbctv18.com/business/reliance-revives-tamil-nadu-based-personal-care-brand-velvette-targets-five-%25e2%2582%25b91000-crore-fmcg-brands-by-2027-19709145.htm",
+          "content": "HomeBusiness NewsReliance revives Tamil Nadu-based personal care brand Velvette, targets five ₹1,000-crore FMCG brands by 2027Reliance Consumer, in collaboration with the CK Rajkumar family, has introduced a range of premium products such as soaps, shampoos, conditioners, shower gels, body lotions, and talcum powders.Reliance Consumer Products Limited (RCPL) has relaunched Velvette, the iconic haircare brand from the 1980s, in a new and contemporary avatar, in collaboration with the founding CK ",
+          "scraped_at": "2025-10-10T20:48:08.690727987+05:30"
+        },
+        {
+          "title": "Sensex gains over 540 pts intraday, realty & banking stocks lift market sentiment, TCS declines post Q2 results",
+          "url": "https://www.thehindubusinessline.com/markets/stock-markets/sensex-gains-over-540-pts-intraday-realty-banking-stocks-lift-market-sentiment-tcs-declines-post-q2-results/article70147261.ece",
+          "content": "Home \n                    \n                        Markets\n                    \n                        Stocks\n                    Cipla, SBI, Axis Bank, Maruti Suzuki and Bajaj Auto top Nifty 50 gainers, while Tata Steel, TCS, JSW Steel, Tech Mahindra and Hindalco become major losers Updated - October 10, 2025  at 01:06 PM.\n \n | \n         Bengaluru\n     \n\t\t\t\t\t\t\t\t\t\t Majority of the sectoral indices traded in the positive territory, except IT and metal. \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tThe equity ma",
+          "scraped_at": "2025-10-10T20:48:11.187134806+05:30"
+        },
+        {
+          "title": "Reliance Power shares soar 15%. Here’s what is fuelling the rally",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/reliance-power-shares-soar-15-heres-what-is-fuelling-the-rally/articleshow/124445314.cms",
+          "content": "Shares of Reliance Power gained as much as 15% to their day’s high of Rs 50.75 on the NSE on Friday, October 10, amid renewed buying interest and strong volumes. Data showed that around 7 crore equity shares of the company changed hands, compared to its one-week and one-month average trading volumes of 2 crore shares each.Last week, the company received Show Cause Notices from the Securities and Exchange Board of India (SEBI) related to matters concerning CLE Private Limited. The issue stems fro",
+          "scraped_at": "2025-10-10T20:48:11.758559144+05:30"
+        },
+        {
+          "title": "TCS shares fall 2% after Q2 miss; brokerages see up to 20% upside. Should you buy, sell or hold?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/tcs-shares-in-focus-after-q2-miss-brokerages-see-up-to-20-upside-should-you-buy-sell-or-hold/articleshow/124443444.cms",
+          "content": "Shares of Tata Consultancy Services edged lower by 1.5% to their day's low of Rs 3,014 per share on the NSE on Friday after India’s largest IT services exporter posted a weaker-than-expected September-quarter profit but announced an ambitious foray into artificial intelligence (AI) infrastructure. While the results fell short of analysts’ estimates, several brokerages maintained bullish views, citing long-term strategic positioning and new growth levers that could lift the stock by as much as 21",
+          "scraped_at": "2025-10-10T20:48:12.101023088+05:30"
+        }
+      ]
+    },
+    "BHARTIARTL.NS": {
+      "2025-10-09": [
+        {
+          "title": "Explained: Reliance Industries is India’s most valuable company but why isn’t it No.1 in Nifty50 weight?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/explained-reliance-industries-is-indias-most-valuable-company-but-why-isnt-it-no-1-in-nifty50-weight/articleshow/124403406.cms",
+          "content": "SynopsisReliance Industries, despite its massive market capitalization, ranks third in Nifty 50 index weight due to its lower free-float shares. Banks like HDFC Bank and ICICI Bank hold higher weights because a larger portion of their stock is available for public trading, influencing the index more significantly.ETMarkets.comReliance Industries Ltd, India's largest company, holds third place in the Nifty 50 index.Reliance Industries Ltd (RIL) may tower over India’s corporate landscape with the ",
+          "scraped_at": "2025-10-09T09:15:02.131134831+05:30"
+        },
+        {
+          "title": "Bharti Airtel Share Price Live Updates: Bharti Airtel's Volume Performance",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/bharti-airtel-share-price-today-live-09-oct-2025/liveblog/124403005.cms",
+          "content": "09 Oct 2025 | 08:42:08 AM ISTBharti Airtel share price live updatesStay up-to-date with the Bharti Airtel Stock Liveblog, your trusted source for real-time updates and thorough analysis of a prominent stock. Explore the latest details on Bharti Airtel, including: Last traded price 1943.5, Market capitalization: 1184445.28, Volume: 4957406, Price-to-earnings ratio 33.51, Earnings per share 57.99. Get a comprehensive understanding of Bharti Airtel with our coverage of both fundamental and technica",
+          "scraped_at": "2025-10-09T09:15:19.164355632+05:30"
+        },
+        {
+          "title": "UP: High alert in Bareilly; drones deployed, internet services suspended for 48 hours",
+          "url": "https://www.cnbctv18.com/india/up-high-alert-in-bareilly-drones-deployed-internet-services-suspended-for-48-hours-ws-l-19700898.htm",
+          "content": "HomeIndia NewsUP: High alert in Bareilly; drones deployed, internet services suspended for 48 hoursBareilly division in Uttar Pradesh increases security and suspends internet for Dussehra amid unrest, with officials urging peace and vigilance.(Photo Credit : I Love Mohammad protests in Bareilly (PTI Photo) )Security was beefed up across four districts in Uttar Pradesh’s Bareilly division on Thursday in view of Dussehra, with security personnel out on the streets and drones in the air, while the ",
+          "scraped_at": "2025-10-09T09:15:51.824483912+05:30"
+        }
+      ]
+    },
+    "HINDUNILVR.NS": {
+      "2025-10-09": [
+        {
+          "title": "HUL Share Price Live Updates: HUL Trading Volume Report",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/hul-share-price-today-live-09-oct-2025/liveblog/124403047.cms",
+          "content": "09 Oct 2025 | 08:41:28 AM ISTHUL share price live updatesWelcome to the HUL Stock Liveblog, your ultimate source for real-time updates and analysis of one of the most prominent stocks in the market. Stay on top of the game with our comprehensive coverage, featuring the latest details on HUL stock, including: Last traded price 2500.1, Market capitalization: 587421.31, Volume: 1225123, Price-to-earnings ratio 54.42, Earnings per share 45.94. Get a holistic view of HUL with our expert insights into",
+          "scraped_at": "2025-10-09T09:15:09.319789061+05:30"
+        }
+      ]
+    },
+    "ITC.NS": {
+      "2025-10-09": [
+        {
+          "title": "ITC Share Price Live Updates: ITC Trading Volume Insights",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/itc-share-price-today-live-09-oct-2025/liveblog/124403057.cms",
+          "content": "09 Oct 2025 | 08:43:29 AM ISTITC share price live updatesWelcome to the ITC Stock Liveblog, your go-to platform for real-time updates and analysis on a top-performing stock. Stay ahead of the market with our in-depth coverage of ITC, including: Last traded price 399.75, Market capitalization: 500388.75, Volume: 8402463, Price-to-earnings ratio 14.34, Earnings per share 27.88. Get a complete picture of ITC's performance through our comprehensive blend of fundamental and technical indicators. Stay",
+          "scraped_at": "2025-10-09T09:15:08.302325965+05:30"
+        }
+      ],
+      "2025-10-10": [
+        {
+          "title": "ITC Share Price Highlights: ITC Stock Price History",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/itc-stock-price-livestock-price-today-live-updates-10-oct-2025/liveblog/124442548.cms",
+          "content": "10 Oct 2025 | 06:34:06 PM ISTITC share price live updatesJoin us on the ITC Stock Liveblog, your hub for real-time updates and comprehensive analysis on a prominent stock. Stay in the know with the latest information about ITC, including: Last traded price 402.8, Market capitalization: 504206.6, Volume: 15085738, Price-to-earnings ratio 14.45, Earnings per share 27.88. Our liveblog provides a well-rounded view of ITC by incorporating both fundamental and technical indicators. Be the first to rec",
+          "scraped_at": "2025-10-10T20:44:17.361825401+05:30"
+        },
+        {
+          "title": "ITC Share Price Highlights: ITC Stock Price History",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/stock-liveblog/itc-stock-price-livestock-price-today-live-updates-10-oct-2025/liveblog/124442548.cms",
+          "content": "10 Oct 2025 | 06:34:06 PM ISTITC share price live updatesJoin us on the ITC Stock Liveblog, your hub for real-time updates and comprehensive analysis on a prominent stock. Stay in the know with the latest information about ITC, including: Last traded price 402.8, Market capitalization: 504206.6, Volume: 15085738, Price-to-earnings ratio 14.45, Earnings per share 27.88. Our liveblog provides a well-rounded view of ITC by incorporating both fundamental and technical indicators. Be the first to rec",
+          "scraped_at": "2025-10-10T20:48:14.062665519+05:30"
+        }
+      ]
+    },
+    "SBIN.NS": {
+      "2025-10-09": [
+        {
+          "title": "Explained: Reliance Industries is India’s most valuable company but why isn’t it No.1 in Nifty50 weight?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/explained-reliance-industries-is-indias-most-valuable-company-but-why-isnt-it-no-1-in-nifty50-weight/articleshow/124403406.cms",
+          "content": "SynopsisReliance Industries, despite its massive market capitalization, ranks third in Nifty 50 index weight due to its lower free-float shares. Banks like HDFC Bank and ICICI Bank hold higher weights because a larger portion of their stock is available for public trading, influencing the index more significantly.ETMarkets.comReliance Industries Ltd, India's largest company, holds third place in the Nifty 50 index.Reliance Industries Ltd (RIL) may tower over India’s corporate landscape with the ",
+          "scraped_at": "2025-10-09T09:15:02.131134831+05:30"
+        },
+        {
+          "title": "Karur stampede: Madras HC constitutes SIT; PIL petitioner alleges death threat from Vijay's TVK",
+          "url": "https://www.cnbctv18.com/india/vijay-tvk-karur-stampede-madras-high-court-constitutes-sit-pil-petitioner-alleges-death-threat-cbi-probe-dismissed-19701888.htm",
+          "content": "HomeIndia NewsKarur stampede: Madras HC constitutes SIT; PIL petitioner alleges death threat from Vijay's TVKAnother bench, hearing various petitions seeking that the probe in the Karur stampede be heard by the Central Bureau of India (CBI), noted that the investigation in the matter by the Tamil Nadu Police is still in the early stages and dismissed the pleas. Read on:(Photo Credit : Actor-turned politician Vijay's TVK rally in Tamil Nadu's Karur on  September 27 (Photo via News18) )The Madras ",
+          "scraped_at": "2025-10-09T09:15:48.799831766+05:30"
+        }
+      ],
+      "2025-10-10": [
+        {
+          "title": "Sensex, Nifty extend rebound as IT, metals shine; TCS up before Q2 results",
+          "url": "https://www.cnbctv18.com/market/sensex-nifty-extend-rebound-as-it-metals-shine-tcs-up-before-q2-results-19709410.htm",
+          "content": "HomeMarket NewsSensex, Nifty extend rebound as IT, metals shine; TCS up before Q2 resultsIT shares extended gains for a second straight session ahead of Tata Consultancy Services’ (TCS) September-quarter results, with the Nifty IT index up 1%. TCS rose 1% to end at the day’s high.The stock market ended higher on Thursday, led by gains in information technology and metal stocks, as investors positioned themselves ahead of TCS earnings and took comfort from a broad-based rebound across sectors.\n\nT",
+          "scraped_at": "2025-10-10T02:09:44.332210534+05:30"
+        },
+        {
+          "title": "State Bank of India plans rupee debt sale after year-long hiatus, sources say",
+          "url": "https://economictimes.indiatimes.com/markets/bonds/state-bank-of-india-plans-rupee-debt-sale-after-year-long-hiatus-sources-say/articleshow/124452274.cms",
+          "content": "India's largest bank is set to return to the rupee debt market after a year with plans to raise funds through Basel III-compliant tier II bonds this month, three sources familiar with the matter said on Friday. State Bank of India is in advanced stages of issuing the bonds with a 10-year duration to raise as much as 75 billion rupees (about $845.7 million), the sources said. The lender may invite bids before the end of the month, they added. SBI did not immediately respond to a Reuters request f",
+          "scraped_at": "2025-10-10T20:44:06.439276314+05:30"
+        },
+        {
+          "title": "TCS results, AI bets and metals rally: Parag Thakkar sees value across IT, metals and banking sector",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-results-ai-bets-and-metals-rally-parag-thakkar-sees-value-across-it-metals-and-banking-sector/articleshow/124447741.cms",
+          "content": "In an exclusive conversation with ET Now, Parag Thakkar, from Fort Capital shared his perspective on Tata Consultancy Services’ (TCS) latest quarterly results, the company’s strategic shift towards AI and data centre investments, and his bullish stance on the metals and banking sectors. “We have 2.5% weight in TCS and we are not going to sell at this price,” Thakkar began, making his position clear. “Whether we will add more depends... See, the two-three things which are positive is first of all",
+          "scraped_at": "2025-10-10T20:44:07.589746607+05:30"
+        },
+        {
+          "title": "SBI, UCO Bank, other PSU lenders surge up to 4% on the latest banking sector reform",
+          "url": "https://www.cnbctv18.com/market/psu-bank-stocks-sbi-pnb-canara-bob-uco-bank-share-price-directors-pvt-sector-impact-19710679.htm",
+          "content": "HomeMarket NewsSBI, UCO Bank, other PSU lenders surge up to 4% on the latest banking sector reformUCO Bank is the top gainer on the PSU Bank index, currently trading with gains of over 3%, followed by Indian Overseas Bank, which has gained 2.4%.Shares of State Bank of India Ltd., UCO Bank Ltd., and every constituent of the Nifty PSU Bank index has surged up to 4% on Friday, October 10, in response to the latest banking sector reform.\n\nAccording to the Appoints Committee of the Cabinet has approv",
+          "scraped_at": "2025-10-10T20:44:10.61102873+05:30"
+        },
+        {
+          "title": "India opens SBI's MD role to private sector for the first time",
+          "url": "https://www.cnbctv18.com/business/finance/india-opens-sbi-md-role-to-private-sector-for-the-first-time-report-19710301.htm",
+          "content": "The revised consolidated guidelines, which supersede all previous ACC directives on PSB appointments, allow private-sector candidates with at least 21 years of professional experience, including 15 years in banking, to compete for top roles.The Government of India has opened senior leadership positions in public sector banks (PSBs), including the Managing Director (MD) post at the State Bank of India (SBI), to private-sector professionals, according to an official communication from the Appointm",
+          "scraped_at": "2025-10-10T20:44:11.420436196+05:30"
+        },
+        {
+          "title": "Sensex gains over 540 pts intraday, realty & banking stocks lift market sentiment, TCS declines post Q2 results",
+          "url": "https://www.thehindubusinessline.com/markets/stock-markets/sensex-gains-over-540-pts-intraday-realty-banking-stocks-lift-market-sentiment-tcs-declines-post-q2-results/article70147261.ece",
+          "content": "Home \n                    \n                        Markets\n                    \n                        Stocks\n                    Cipla, SBI, Axis Bank, Maruti Suzuki and Bajaj Auto top Nifty 50 gainers, while Tata Steel, TCS, JSW Steel, Tech Mahindra and Hindalco become major losers Updated - October 10, 2025  at 01:06 PM.\n \n | \n         Bengaluru\n     \n\t\t\t\t\t\t\t\t\t\t Majority of the sectoral indices traded in the positive territory, except IT and metal. \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tThe equity ma",
+          "scraped_at": "2025-10-10T20:44:13.483288749+05:30"
+        },
+        {
+          "title": "TCS shares fall 2% after Q2 miss; brokerages see up to 20% upside. Should you buy, sell or hold?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/tcs-shares-in-focus-after-q2-miss-brokerages-see-up-to-20-upside-should-you-buy-sell-or-hold/articleshow/124443444.cms",
+          "content": "Shares of Tata Consultancy Services edged lower by 1.5% to their day's low of Rs 3,014 per share on the NSE on Friday after India’s largest IT services exporter posted a weaker-than-expected September-quarter profit but announced an ambitious foray into artificial intelligence (AI) infrastructure. While the results fell short of analysts’ estimates, several brokerages maintained bullish views, citing long-term strategic positioning and new growth levers that could lift the stock by as much as 21",
+          "scraped_at": "2025-10-10T20:44:15.106763809+05:30"
+        },
+        {
+          "title": "State Bank of India plans rupee debt sale after year-long hiatus, sources say",
+          "url": "https://economictimes.indiatimes.com/markets/bonds/state-bank-of-india-plans-rupee-debt-sale-after-year-long-hiatus-sources-say/articleshow/124452274.cms",
+          "content": "India's largest bank is set to return to the rupee debt market after a year with plans to raise funds through Basel III-compliant tier II bonds this month, three sources familiar with the matter said on Friday. State Bank of India is in advanced stages of issuing the bonds with a 10-year duration to raise as much as 75 billion rupees (about $845.7 million), the sources said. The lender may invite bids before the end of the month, they added. SBI did not immediately respond to a Reuters request f",
+          "scraped_at": "2025-10-10T20:48:00.017892334+05:30"
+        },
+        {
+          "title": "TCS results, AI bets and metals rally: Parag Thakkar sees value across IT, metals and banking sector",
+          "url": "https://economictimes.indiatimes.com/markets/expert-view/tcs-results-ai-bets-and-metals-rally-parag-thakkar-sees-value-across-it-metals-and-banking-sector/articleshow/124447741.cms",
+          "content": "In an exclusive conversation with ET Now, Parag Thakkar, from Fort Capital shared his perspective on Tata Consultancy Services’ (TCS) latest quarterly results, the company’s strategic shift towards AI and data centre investments, and his bullish stance on the metals and banking sectors. “We have 2.5% weight in TCS and we are not going to sell at this price,” Thakkar began, making his position clear. “Whether we will add more depends... See, the two-three things which are positive is first of all",
+          "scraped_at": "2025-10-10T20:48:00.896733491+05:30"
+        },
+        {
+          "title": "SBI, UCO Bank, other PSU lenders surge up to 4% on the latest banking sector reform",
+          "url": "https://www.cnbctv18.com/market/psu-bank-stocks-sbi-pnb-canara-bob-uco-bank-share-price-directors-pvt-sector-impact-19710679.htm",
+          "content": "HomeMarket NewsSBI, UCO Bank, other PSU lenders surge up to 4% on the latest banking sector reformUCO Bank is the top gainer on the PSU Bank index, currently trading with gains of over 3%, followed by Indian Overseas Bank, which has gained 2.4%.Shares of State Bank of India Ltd., UCO Bank Ltd., and every constituent of the Nifty PSU Bank index has surged up to 4% on Friday, October 10, in response to the latest banking sector reform.\n\nAccording to the Appoints Committee of the Cabinet has approv",
+          "scraped_at": "2025-10-10T20:48:03.597517866+05:30"
+        },
+        {
+          "title": "Sensex, Nifty extend rebound as IT, metals shine; TCS up before Q2 results",
+          "url": "https://www.cnbctv18.com/market/sensex-nifty-extend-rebound-as-it-metals-shine-tcs-up-before-q2-results-19709410.htm",
+          "content": "HomeMarket NewsSensex, Nifty extend rebound as IT, metals shine; TCS up before Q2 resultsIT shares extended gains for a second straight session ahead of Tata Consultancy Services’ (TCS) September-quarter results, with the Nifty IT index up 1%. TCS rose 1% to end at the day’s high.The stock market ended higher on Thursday, led by gains in information technology and metal stocks, as investors positioned themselves ahead of TCS earnings and took comfort from a broad-based rebound across sectors.\n\nT",
+          "scraped_at": "2025-10-10T20:48:06.948912268+05:30"
+        },
+        {
+          "title": "India opens SBI's MD role to private sector for the first time",
+          "url": "https://www.cnbctv18.com/business/finance/india-opens-sbi-md-role-to-private-sector-for-the-first-time-report-19710301.htm",
+          "content": "The revised consolidated guidelines, which supersede all previous ACC directives on PSB appointments, allow private-sector candidates with at least 21 years of professional experience, including 15 years in banking, to compete for top roles.The Government of India has opened senior leadership positions in public sector banks (PSBs), including the Managing Director (MD) post at the State Bank of India (SBI), to private-sector professionals, according to an official communication from the Appointm",
+          "scraped_at": "2025-10-10T20:48:08.468267191+05:30"
+        },
+        {
+          "title": "Sensex gains over 540 pts intraday, realty & banking stocks lift market sentiment, TCS declines post Q2 results",
+          "url": "https://www.thehindubusinessline.com/markets/stock-markets/sensex-gains-over-540-pts-intraday-realty-banking-stocks-lift-market-sentiment-tcs-declines-post-q2-results/article70147261.ece",
+          "content": "Home \n                    \n                        Markets\n                    \n                        Stocks\n                    Cipla, SBI, Axis Bank, Maruti Suzuki and Bajaj Auto top Nifty 50 gainers, while Tata Steel, TCS, JSW Steel, Tech Mahindra and Hindalco become major losers Updated - October 10, 2025  at 01:06 PM.\n \n | \n         Bengaluru\n     \n\t\t\t\t\t\t\t\t\t\t Majority of the sectoral indices traded in the positive territory, except IT and metal. \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tThe equity ma",
+          "scraped_at": "2025-10-10T20:48:11.187134806+05:30"
+        },
+        {
+          "title": "TCS shares fall 2% after Q2 miss; brokerages see up to 20% upside. Should you buy, sell or hold?",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/news/tcs-shares-in-focus-after-q2-miss-brokerages-see-up-to-20-upside-should-you-buy-sell-or-hold/articleshow/124443444.cms",
+          "content": "Shares of Tata Consultancy Services edged lower by 1.5% to their day's low of Rs 3,014 per share on the NSE on Friday after India’s largest IT services exporter posted a weaker-than-expected September-quarter profit but announced an ambitious foray into artificial intelligence (AI) infrastructure. While the results fell short of analysts’ estimates, several brokerages maintained bullish views, citing long-term strategic positioning and new growth levers that could lift the stock by as much as 21",
+          "scraped_at": "2025-10-10T20:48:12.101023088+05:30"
+        }
+      ]
+    },
+    "LICI.NS": {}
+  }
+}
