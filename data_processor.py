@@ -127,7 +127,7 @@ def add_technical_indicators(df):
     df['SMA_200'] = df['Close'].rolling(window=200).mean()
     
     # Fill NaNs (caused by rolling windows)
-    df.fillna(method='bfill', inplace=True)
+    df.bfill(inplace=True)
     df.fillna(0, inplace=True) # Final fallback
     
     return df

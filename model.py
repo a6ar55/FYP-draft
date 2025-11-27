@@ -120,6 +120,15 @@ def load_data(file_path, ticker):
 
 # ... (PortfolioManager init remains same) ...
 
+class PortfolioManager:
+    def __init__(self, tickers, lookback=60, horizon=30):
+        self.tickers = tickers
+        self.lookback = lookback
+        self.horizon = horizon
+        self.models = {}
+        self.scalers = {}
+        self.data_store = {}
+        
     def train_all(self):
         print("\n" + "="*50)
         print(f"TRAINING PHASE (Horizon={self.horizon} days)")
