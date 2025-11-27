@@ -1,0 +1,69 @@
+{
+  "creation_date": "2025-11-27T14:07:37.368831",
+  "total_records": 24952,
+  "total_features": 16,
+  "feature_names": [
+    "ticker",
+    "Date",
+    "Open",
+    "High",
+    "Low",
+    "Close",
+    "Volume",
+    "returns",
+    "ma_5",
+    "ma_20",
+    "volatility",
+    "volume_ma",
+    "sentiment_score",
+    "article_count",
+    "positive_ratio",
+    "negative_ratio"
+  ],
+  "ticker_counts": {
+    "INFY.NS": {
+      "total_days": 2677,
+      "days_with_news": 0
+    },
+    "TCS.NS": {
+      "total_days": 2677,
+      "days_with_news": 0
+    },
+    "HDFCBANK.NS": {
+      "total_days": 2677,
+      "days_with_news": 0
+    },
+    "ICICIBANK.NS": {
+      "total_days": 2677,
+      "days_with_news": 0
+    },
+    "RELIANCE.NS": {
+      "total_days": 2677,
+      "days_with_news": 0
+    },
+    "BHARTIARTL.NS": {
+      "total_days": 2677,
+      "days_with_news": 0
+    },
+    "HINDUNILVR.NS": {
+      "total_days": 2677,
+      "days_with_news": 0
+    },
+    "ITC.NS": {
+      "total_days": 2677,
+      "days_with_news": 0
+    },
+    "SBIN.NS": {
+      "total_days": 2677,
+      "days_with_news": 0
+    },
+    "LICI.NS": {
+      "total_days": 859,
+      "days_with_news": 0
+    }
+  },
+  "date_range": {
+    "min": "2014-12-31T18:30:00+00:00",
+    "max": "2025-11-03T18:30:00+00:00"
+  }
+}
