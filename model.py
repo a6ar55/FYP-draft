@@ -114,7 +114,13 @@ def load_data(file_path, ticker):
             
     return df[required_cols]
 
-# ... (create_sequences remains same) ...
+def create_sequences(data, target, lookback, horizon=1):
+    X, y = [], []
+    # We need to ensure we have data for i+horizon
+    for i in range(lookback, len(data) - horizon):
+        X.append(data[i-lookback:i])
+        y.append(target[i + horizon]) # Target is 'horizon' steps ahead
+    return np.array(X), np.array(y)
 
 # ... (build_model remains same) ...
 
