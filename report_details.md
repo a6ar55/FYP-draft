@@ -131,3 +131,31 @@ The simulation tracks the **Daily Realized Return** of the selected asset:
 $$ \text{Profit}_t = \frac{P_{i^*_t, t+1} - P_{i^*_t, t}}{P_{i^*_t, t}} $$
 *Note: Even though we predict 30 days out, we re-evaluate daily to ensure we are always in the best asset.*
 
+## 5. Risk Management (ATR Trailing Stop)
+
+To protect capital from significant drawdowns, we implement a dynamic **Volatility-Based Stop Loss** (Chandelier Exit).
+
+### Concept
+Fixed percentage stop-losses (e.g., 5%) are often inefficient because they don't account for the asset's natural volatility. A 5% drop in a stable stock is a crash, but in a volatile stock, it's noise.
+We use the **Average True Range (ATR)** to adapt the stop-loss distance to the current market volatility.
+
+### Mathematical Formulation
+We maintain a **Trailing Stop Price** ($P_{stop}$) that only moves *up*, never down.
+
+$$ P_{stop, t} = \max(P_{stop, t-1}, P_{close, t} - k \cdot \text{ATR}_t) $$
+
+Where:
+*   $k$: Multiplier (typically 2.0 to 3.0). We use **2.0**.
+*   $\text{ATR}_t$: The 14-day Average True Range at time $t$.
+
+### Execution Logic
+At each time step $t$:
+1.  **Check Stop Condition**: If $P_{low, t} < P_{stop, t-1}$:
+    *   **SELL IMMEDIATELY** (Stop Loss Triggered).
+    *   Move to **Cash** for the remainder of the day.
+    *   Reset holding.
+2.  **Update Stop Price**: If still holding, update $P_{stop, t}$ using the formula above.
+3.  **Model Re-evaluation**: If not stopped out, check if the model predicts a better asset. If so, switch (Sell current, Buy new).
+
+This ensures we let profits run (by trailing the price up) but cut losses quickly when the trend breaks by more than $2 \times$ Volatility.
+

@@ -213,9 +213,8 @@ class PortfolioManager:
         print("="*50)
         
         # 1. BATCH PREDICTION
-        # Pre-calculate predictions for all tickers to avoid tf.function retracing in loop
         print("Generating batch predictions...")
-        all_predictions = {} # Key: ticker, Value: DataFrame(Date, PredPrice)
+        all_predictions = {} 
         
         common_dates = None
         
@@ -225,14 +224,6 @@ class PortfolioManager:
             df = self.data_store[ticker]
             train_len = int(len(df) * (1 - TEST_SPLIT))
             
-            # We want to predict for the test period
-            # Input sequences start from train_len - lookback
-            # to produce predictions starting at train_len
-            
-            # However, we need to be careful. 
-            # We want to simulate day-by-day.
-            # For day 't', we use data [t-lookback : t] to predict t+horizon.
-            
             test_data_start = train_len - self.lookback
             if test_data_start < 0: test_data_start = 0
             
@@ -240,53 +231,24 @@ class PortfolioManager:
             scaler = self.scalers[ticker]
             test_scaled = scaler.transform(raw_test_data)
             
-            # Create X_test (no y needed for prediction)
             X_test = []
             valid_dates = []
             
-            # We iterate through the test portion
-            # The first prediction corresponds to date = df.index[train_len]
-            # The input for that is df[train_len-lookback : train_len]
-            
             for i in range(self.lookback, len(test_scaled)):
                 X_test.append(test_scaled[i-self.lookback:i])
-                # The date this prediction is made ON is df.index[test_data_start + i - 1]
-                # (The last data point used is i-1)
-                # Wait, let's align with the simulation loop.
-                # In simulation: loc is the current day index. We use [loc-lookback:loc].
-                # So here, 'i' corresponds to 'loc'.
-                # The date is df.index[test_data_start + i] ?? No.
-                # Let's just store by Date index.
-                
-                # Correct indexing:
-                # i goes from lookback to end.
-                # The sequence ends at index i-1 (relative to test_scaled).
-                # The corresponding date in the original DF is:
-                # absolute_index = test_data_start + i - 1
-                # This is the "Current Date" (t)
-                
                 abs_idx = test_data_start + i 
-                if abs_idx >= len(df): break # Should not happen
-                
-                # Actually, simulate_trading uses: df.iloc[loc-self.lookback:loc]
-                # So 'loc' corresponds to 'i' in this loop relative to raw_test_data?
-                # Yes.
-                
+                if abs_idx >= len(df): break
                 valid_dates.append(df.index[abs_idx-1]) # Date t
             
             if not X_test: continue
             
             X_test = np.array(X_test)
-            
-            # Predict batch
             preds_scaled = self.models[ticker].predict(X_test, batch_size=BATCH_SIZE, verbose=0)
             
-            # Inverse transform
             dummy = np.zeros((len(preds_scaled), raw_test_data.shape[1]))
             dummy[:, 3] = preds_scaled.flatten()
             preds_price = scaler.inverse_transform(dummy)[:, 3]
             
-            # Store
             pred_df = pd.DataFrame({
                 'Date': valid_dates,
                 'PredPrice_Horizon': preds_price
@@ -308,64 +270,121 @@ class PortfolioManager:
         total_profit = 0.0
         history = []
         
-        # 2. SIMULATION LOOP (Fast)
+        # State Variables for Risk Management
+        current_holding = None # Ticker
+        stop_price = 0.0
+        ATR_MULTIPLIER = 2.0
+        
+        # 2. SIMULATION LOOP
         for date in common_dates:
+            # --- A. Check Stop Loss on Current Holding ---
+            stop_triggered = False
+            if current_holding:
+                try:
+                    df_hold = self.data_store[current_holding]
+                    curr_close = df_hold.loc[date, 'Close']
+                    curr_low = df_hold.loc[date, 'Low']
+                    curr_atr = df_hold.loc[date, 'ATR']
+                    
+                    # Check if Low dipped below Stop Price
+                    if curr_low < stop_price:
+                        # STOP LOSS TRIGGERED
+                        # We assume execution at Stop Price (or Close if gap down, but let's say Stop Price for simplicity)
+                        # Actually, to be conservative, let's use min(Stop Price, Close)
+                        exit_price = min(stop_price, curr_close) 
+                        
+                        # Calculate return from yesterday's close (since we mark-to-market daily)
+                        prev_close = df_hold.iloc[df_hold.index.get_loc(date)-1]['Close']
+                        daily_return = (exit_price - prev_close) / prev_close
+                        
+                        total_profit += daily_return
+                        history.append({
+                            'Date': date,
+                            'Action': 'STOP_LOSS',
+                            'Ticker': current_holding,
+                            'Return%': daily_return*100,
+                            'Cumulative%': total_profit*100
+                        })
+                        
+                        current_holding = None # Go to Cash
+                        stop_triggered = True
+                    else:
+                        # Update Trailing Stop (Only move UP)
+                        new_stop = curr_close - (ATR_MULTIPLIER * curr_atr)
+                        stop_price = max(stop_price, new_stop)
+                        
+                except Exception as e:
+                    print(f"Error checking stop loss: {e}")
+                    current_holding = None
+
+            if stop_triggered:
+                continue # Stay in cash for rest of day
+                
+            # --- B. Ranking & Selection ---
             candidates = []
-            
             for ticker in self.tickers:
                 if ticker not in all_predictions: continue
-                
                 try:
-                    # Get predicted price at t+horizon
                     pred_future = all_predictions[ticker].loc[date, 'PredPrice_Horizon']
-                    
-                    # Get current price at t
-                    # We need to look up in data_store
                     curr_price = self.data_store[ticker].loc[date, 'Close']
-                    
-                    # Expected Return over Horizon
                     exp_return = (pred_future - curr_price) / curr_price
-                    
-                    candidates.append({
-                        'ticker': ticker,
-                        'exp_return': exp_return,
-                        'curr_price': curr_price
-                    })
-                except KeyError:
-                    continue
+                    candidates.append({'ticker': ticker, 'exp_return': exp_return})
+                except: continue
             
             if not candidates: continue
             
-            # STRATEGY: Long-Term Trend Following
-            # Pick Top 1 stock with best 30-day potential
+            # Pick Top 1
             candidates.sort(key=lambda x: x['exp_return'], reverse=True)
-            best_pick = candidates[0]
+            best_pick = candidates[0]['ticker']
             
-            # We "hold" this stock for 1 day (until next re-evaluation)
-            # Calculate 1-day return for this stock
-            # We need price at t+1
-            
-            # Find next date for this ticker
-            df = self.data_store[best_pick['ticker']]
-            try:
-                loc = df.index.get_loc(date)
-                if loc + 1 >= len(df): continue # End of data
+            # --- C. Rebalancing ---
+            # If we are holding something different, switch
+            if current_holding != best_pick:
+                # Sell old (if any) - already accounted for in daily return tracking?
+                # Wait, we need to track daily return of 'current_holding' if it wasn't stopped out.
                 
-                next_price = df.iloc[loc+1]['Close']
-                daily_return = (next_price - best_pick['curr_price']) / best_pick['curr_price']
+                if current_holding:
+                    # We held 'current_holding' through today. Calculate today's return.
+                    # We sell at Close to switch.
+                    df_hold = self.data_store[current_holding]
+                    curr_close = df_hold.loc[date, 'Close']
+                    prev_close = df_hold.iloc[df_hold.index.get_loc(date)-1]['Close']
+                    daily_return = (curr_close - prev_close) / prev_close
+                    total_profit += daily_return
+                    
+                    history.append({
+                        'Date': date,
+                        'Action': 'SWITCH_SELL',
+                        'Ticker': current_holding,
+                        'Return%': daily_return*100,
+                        'Cumulative%': total_profit*100
+                    })
                 
+                # Buy new
+                current_holding = best_pick
+                # Initialize Stop Price for new holding
+                df_new = self.data_store[current_holding]
+                curr_close = df_new.loc[date, 'Close']
+                curr_atr = df_new.loc[date, 'ATR']
+                stop_price = curr_close - (ATR_MULTIPLIER * curr_atr)
+                
+                # We don't record "Buy" return today, we capture it tomorrow.
+                
+            else:
+                # Holding the same stock. Record daily return (Mark-to-Market).
+                df_hold = self.data_store[current_holding]
+                curr_close = df_hold.loc[date, 'Close']
+                prev_close = df_hold.iloc[df_hold.index.get_loc(date)-1]['Close']
+                daily_return = (curr_close - prev_close) / prev_close
                 total_profit += daily_return
                 
                 history.append({
                     'Date': date,
-                    'Selected': best_pick['ticker'],
-                    'Predicted_30Day_Return%': best_pick['exp_return']*100,
-                    'Actual_1Day_Return%': daily_return*100,
-                    'Cumulative_Return%': total_profit*100
+                    'Action': 'HOLD',
+                    'Ticker': current_holding,
+                    'Return%': daily_return*100,
+                    'Cumulative%': total_profit*100
                 })
-                
-            except Exception:
-                continue
         
         # Summary
         hist_df = pd.DataFrame(history)
@@ -374,14 +393,14 @@ class PortfolioManager:
             return
 
         print("\nSimulation Results (Sample):")
-        print(hist_df.head())
+        print(hist_df.tail())
         print(f"\nTotal Cumulative Return: {total_profit*100:.2f}%")
         print(f"Average Daily Return: {(total_profit/len(common_dates))*100:.2f}%")
         
         # Plot
         plt.figure(figsize=(12, 6))
-        plt.plot(hist_df['Date'], hist_df['Cumulative_Return%'], label='Long-Term Trend Strategy')
-        plt.title(f'Portfolio Performance (Horizon={self.horizon} Days)')
+        plt.plot(hist_df['Date'], hist_df['Cumulative%'], label='Risk-Managed Strategy (ATR Stop)')
+        plt.title(f'Portfolio Performance (Horizon={self.horizon}d, ATR Stop={ATR_MULTIPLIER}x)')
         plt.xlabel('Date')
         plt.ylabel('Cumulative Return (%)')
         plt.legend()
