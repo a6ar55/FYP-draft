@@ -87,6 +87,51 @@ def load_and_process_news():
     
     return daily_news
 
+def add_technical_indicators(df):
+    # Ensure sorted by date
+    df = df.sort_index()
+    
+    # 1. RSI (14)
+    delta = df['Close'].diff()
+    gain = (delta.where(delta > 0, 0)).rolling(window=14).mean()
+    loss = (-delta.where(delta < 0, 0)).rolling(window=14).mean()
+    rs = gain / loss
+    df['RSI'] = 100 - (100 / (1 + rs))
+    df['RSI'] = df['RSI'].fillna(50)
+    
+    # 2. MACD (12, 26, 9)
+    exp1 = df['Close'].ewm(span=12, adjust=False).mean()
+    exp2 = df['Close'].ewm(span=26, adjust=False).mean()
+    df['MACD'] = exp1 - exp2
+    df['Signal_Line'] = df['MACD'].ewm(span=9, adjust=False).mean()
+    
+    # 3. Bollinger Bands (20, 2)
+    df['SMA_20'] = df['Close'].rolling(window=20).mean()
+    df['BB_Std'] = df['Close'].rolling(window=20).std()
+    df['BB_Upper'] = df['SMA_20'] + (df['BB_Std'] * 2)
+    df['BB_Lower'] = df['SMA_20'] - (df['BB_Std'] * 2)
+    
+    # 4. ATR (14)
+    high_low = df['High'] - df['Low']
+    high_close = np.abs(df['High'] - df['Close'].shift())
+    low_close = np.abs(df['Low'] - df['Close'].shift())
+    ranges = pd.concat([high_low, high_close, low_close], axis=1)
+    true_range = np.max(ranges, axis=1)
+    df['ATR'] = true_range.rolling(window=14).mean()
+    
+    # 5. OBV (On-Balance Volume)
+    df['OBV'] = (np.sign(df['Close'].diff()) * df['Volume']).fillna(0).cumsum()
+    
+    # 6. SMA Trends
+    df['SMA_50'] = df['Close'].rolling(window=50).mean()
+    df['SMA_200'] = df['Close'].rolling(window=200).mean()
+    
+    # Fill NaNs (caused by rolling windows)
+    df.fillna(method='bfill', inplace=True)
+    df.fillna(0, inplace=True) # Final fallback
+    
+    return df
+
 def process_stock_data(news_df):
     print("Processing stock data...")
     combined_frames = []
@@ -101,6 +146,11 @@ def process_stock_data(news_df):
         df['Date'] = pd.to_datetime(df['Date'], utc=True).dt.normalize()
         df.set_index('Date', inplace=True)
         df.sort_index(inplace=True)
+        
+        # Calculate Technical Indicators BEFORE merging
+        df = add_technical_indicators(df)
+        
+        # Merge with news
         
         # Merge with news
         if not news_df.empty:
