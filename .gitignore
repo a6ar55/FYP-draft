@@ -41,9 +41,6 @@ wheels/
 .installed.cfg
 *.egg
 
-# Temporary Python scripts
-backend-node/temp_*.py
-
 # IDEs
 .vscode/
 .idea/
@@ -51,8 +48,6 @@ backend-node/temp_*.py
 *.swo
 *~
 .DS_Store
-.cursor/
-.claude/
 
 # Testing
 /coverage
@@ -75,10 +70,5 @@ tmp/
 # MongoDB
 data/
 
-# Backup files
-*.bak
-*.backup
-
-# OS Files
-Thumbs.db
-desktop.ini
+# Model checkpoints (optional - uncomment if models are large)
+# models/*.keras

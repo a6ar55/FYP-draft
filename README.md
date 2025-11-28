@@ -1,54 +1,102 @@
 # StockAI - AI-Powered Stock Prediction Platform
 
-Professional stock prediction and backtesting platform using LSTM neural networks to predict stock prices and compare with actual results.
+Professional stock prediction and backtesting platform with AI-powered recommendations using LSTM neural networks.
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-## 🚀 Quick Start
+## Features
+
+✅ **AI Stock Predictions** - LSTM-based predictions for 10 major Indian stocks  
+✅ **Backtesting** - Compare predictions with actual historical data  
+✅ **User Authentication** - Secure MongoDB-based user management  
+✅ **Professional UI** - Modern, clean interface  
+✅ **Multi-Stock Analysis** - Analyzes all stocks and recommends the best one  
+✅ **Maximum Purchase Calculation** - Buys as many stocks as possible with your budget  
+
+## Tech Stack
+
+### Frontend
+- React 18
+- Tailwind CSS
+- React Router v6
+- Axios
+
+### Backend
+- Node.js + Express
+- MongoDB + Mongoose
+- JWT Authentication
+- Python (ML Engine)
+
+### Machine Learning
+- TensorFlow/Keras
+- LSTM Neural Networks
+- Technical Indicators (RSI, MACD, Bollinger Bands)
+
+## Quick Start
 
 ### Prerequisites
-- Node.js 16+
+- Node.js 16+ and npm
 - Python 3.8+
-- MongoDB (optional - works without it)
+- MongoDB instance
 
-### Installation & Run
-
-```bash
-# Start everything (auto-installs dependencies)
-./start.sh          # Mac/Linux
-start.bat           # Windows
-```
-
-That's it! Open http://localhost:3000
-
-### Stop Application
+### 1. Clone and Setup
 
 ```bash
-./stop.sh           # Mac/Linux
-stop.bat            # Windows
+cd FYP-draft
 ```
 
-## 📋 Features
+### 2. Configure Environment
 
-- ✅ **AI Stock Predictions** - LSTM neural networks analyze 10 major Indian stocks
-- ✅ **Backtesting** - Compare AI predictions with actual historical results
-- ✅ **Beautiful UI** - Step-by-step guided flow with smooth animations
-- ✅ **Authentication** - Optional MongoDB user management (works without it)
-- ✅ **Real-time Analysis** - Instant predictions using pre-trained models
-- ✅ **Portfolio Simulation** - See how investments would have performed
+Create a `.env` file in the root directory:
 
-## 🏗️ Tech Stack
+```env
+# MongoDB Configuration
+MONGODB_URI=your_mongodb_connection_string_here
 
-**Frontend**: React 18, Tailwind CSS, React Router v6  
-**Backend**: Node.js + Express (port 5001)  
-**Database**: MongoDB (optional)  
-**ML Engine**: Python + TensorFlow/Keras  
-**Authentication**: JWT (optional)
+# JWT Secret
+JWT_SECRET=your_secure_random_string_here
 
-## 📊 Available Stocks
+# Server Configuration
+PORT=5001
+NODE_ENV=development
+
+# Frontend URL
+FRONTEND_URL=http://localhost:3000
+```
+
+### 3. Start Application
+
+**Mac/Linux:**
+```bash
+./start.sh
+```
+
+**Windows:**
+```batch
+start.bat
+```
+
+The application will be available at:
+- **Frontend:** http://localhost:3000
+- **Backend:** http://localhost:5001
+
+### 4. Stop Application
+
+**Mac/Linux:**
+```bash
+./stop.sh
+```
+
+**Windows:**
+```batch
+stop.bat
+```
+
+## Available Stocks
+
+The AI analyzes these 10 major Indian stocks:
 
 1. HDFC Bank (HDFCBANK.NS)
 2. ICICI Bank (ICICIBANK.NS)
@@ -61,183 +109,159 @@ stop.bat            # Windows
 9. Bharti Airtel (BHARTIARTL.NS)
 10. LIC (LICI.NS)
 
-## 🎯 How It Works
+## How It Works
 
-### Step 1: Select Year
-Choose investment year (2015-2024)
+### 1. User Authentication
+- Sign up or log in securely
+- JWT-based authentication
+- Protected API endpoints
 
-### Step 2: Enter Amount
-Specify investment amount in ₹
+### 2. Input Parameters
+- **Year:** Select a year (2015-2024)
+- **Investment Amount:** How much to invest
+- **Holding Period:** Days, months, or years
 
-### Step 3: Choose Period
-Select holding period (days, months, years)
+### 3. AI Analysis
+- Loads pre-trained LSTM models
+- Analyzes all 10 stocks
+- Predicts prices 30 days ahead
+- Calculates expected returns
+- **Selects the best stock**
 
-### Step 4: View Results
-- AI recommends best stock
-- Shows predicted price & returns
-- Compares with actual results (backtesting)
-- Displays model accuracy
+### 4. Investment Calculation
+- Determines maximum stocks to buy
+- Shows actual investment vs budget
+- Displays remaining cash
 
-## 🔧 Configuration
+### 5. Results
+- Shows AI recommendation
+- Displays investment details
+- Provides backtesting comparison
 
-### Optional: MongoDB Setup
-
-Create `.env` file in project root:
-
-```env
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_secure_random_string
-PORT=5001
-NODE_ENV=development
-FRONTEND_URL=http://localhost:3000
-```
-
-**Note:** Works perfectly without MongoDB in demo mode!
-
-### MongoDB Atlas (Free)
-1. Sign up at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-2. Create free cluster
-3. Get connection string
-4. Add to `.env` file
-
-## 📁 Project Structure
+## Project Structure
 
 ```
 FYP-draft/
-├── backend-node/       # Node.js API server
-├── frontend/           # React application
-├── models/            # Pre-trained AI models (*.keras)
-├── model.py           # ML training script
-├── combined_data.csv  # Historical stock data
-├── start.sh/bat       # Startup scripts
-├── stop.sh/bat        # Stop scripts
-├── .env               # Configuration (create this)
-└── .cursorrules       # AI agent guidelines
+├── backend-node/          # Node.js API server
+│   ├── models/           # MongoDB models
+│   ├── routes/           # API routes
+│   ├── middleware/       # Auth middleware
+│   └── server.js         # Main server file
+├── backend/              # Python ML engine
+│   └── api.py           # Flask API (called by Node.js)
+├── frontend/            # React application
+│   ├── src/
+│   │   ├── components/  # React components
+│   │   ├── pages/       # Page components
+│   │   └── services/    # API services
+│   └── package.json
+├── models/              # Pre-trained AI models (*.keras)
+├── model.py            # Model training script
+├── combined_data.csv   # Historical stock data
+├── start.sh            # Start script (Mac/Linux)
+├── start.bat           # Start script (Windows)
+├── stop.sh             # Stop script (Mac/Linux)
+├── stop.bat            # Stop script (Windows)
+└── .env                # Environment variables (create this)
 ```
 
-## 🛠️ Development
+## API Endpoints
 
-### Manual Installation
+### Authentication
+- `POST /api/auth/signup` - Create new account
+- `POST /api/auth/login` - User login
+- `GET /api/auth/me` - Get current user (protected)
 
+### Stock Predictions
+- `GET /api/health` - System health check
+- `GET /api/available-years` - Get available years (protected)
+- `POST /api/recommend` - Get stock recommendation (protected)
+- `POST /api/backtest` - Get backtest results (protected)
+
+## Model Details
+
+### Architecture
+- **Type:** LSTM (Long Short-Term Memory)
+- **Input:** 60 days × 13 features
+- **Output:** Predicted price 30 days ahead
+- **Parameters:** 56,129 per model
+- **Total:** 561,290 parameters (all 10 models)
+
+### Features Used
+1. Open, High, Low, Close prices
+2. Volume
+3. RSI (Relative Strength Index)
+4. MACD & Signal
+5. Bollinger Bands (Upper/Lower)
+6. SMA (20, 50)
+7. Sentiment Score
+
+### Performance
+- Average accuracy: 75-85%
+- Direction accuracy: 80-90%
+- Best for medium-term predictions (3-12 months)
+
+## Development
+
+### Install Dependencies
 ```bash
-# Install Python dependencies
+# Python dependencies
 pip install -r requirements.txt
 
-# Install backend dependencies
+# Backend dependencies
 cd backend-node && npm install
 
-# Install frontend dependencies
+# Frontend dependencies
 cd frontend && npm install
 ```
 
-### Run Separately
+### Run Development Servers
 
+**Backend:**
 ```bash
-# Backend (port 5001)
-cd backend-node && node server.js
-
-# Frontend (port 3000)
-cd frontend && npm start
+cd backend-node
+node server.js
 ```
 
-## 📖 API Endpoints
+**Frontend:**
+```bash
+cd frontend
+npm start
+```
 
-### Public
-- `GET /api/health` - System health check
-- `POST /api/auth/signup` - Create account (if MongoDB)
-- `POST /api/auth/login` - User login (if MongoDB)
+## Security Notes
 
-### Protected (or open if no MongoDB)
-- `GET /api/available-years` - Get available years
-- `POST /api/recommend` - Get stock recommendation
-- `POST /api/backtest` - Get backtest results
+- All prediction endpoints require authentication
+- JWT tokens expire in 7 days
+- Passwords are hashed using bcrypt
+- MongoDB connection is secured with authentication
 
-## 🎨 UI Features
-
-- **Step-by-step Flow**: Guided experience
-- **Smooth Animations**: Professional transitions
-- **Loading States**: AI-themed loading quotes
-- **Error Handling**: Clear, helpful messages
-- **Responsive Design**: Works on all devices
-- **Light Theme**: Clean, professional appearance
-
-## 🧪 Testing
-
-### Test Prediction
-1. Open http://localhost:3000
-2. Select year: 2020
-3. Amount: ₹100,000
-4. Period: 3 years
-5. Click "Get Prediction"
-6. View AI recommendation and backtesting results
-
-## 🔒 Security
-
-- JWT authentication (optional)
-- bcrypt password hashing
-- CORS configured
-- Input validation
-- MongoDB optional (works without auth)
-
-## 📊 Model Details
-
-- **Architecture**: LSTM Neural Networks
-- **Training Data**: 2015-2024 historical data
-- **Input**: 60-day lookback window
-- **Output**: 30-day ahead prediction
-- **Parameters**: 56,129 per model
-- **Accuracy**: 75-85% average
-
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Port Already in Use
 ```bash
+# Mac/Linux
 lsof -ti:5001 | xargs kill -9
 lsof -ti:3000 | xargs kill -9
+
+# Windows
+taskkill /F /IM node.exe /T
 ```
 
 ### Models Not Loading
-Check `models/` folder contains 10 `.keras` files
+Ensure the `models/` folder contains all 10 `.keras` files.
 
-### MongoDB Issues
-System works without MongoDB - just skip authentication
+### MongoDB Connection Failed
+Check your `MONGODB_URI` in `.env` file.
 
-## 🤝 Contributing
+## License
 
-1. Fork the repository
-2. Create feature branch
-3. Make changes
-4. Test thoroughly
-5. Submit pull request
+MIT License - See LICENSE file for details
 
-## 📄 License
+## Support
 
-MIT License - See LICENSE file
-
-## 🙏 Acknowledgments
-
-- TensorFlow/Keras for ML framework
-- React & Tailwind for beautiful UI
-- MongoDB for database (optional)
-- NSE India for stock data
-
-## 📞 Support
-
-- Check `.cursorrules` for detailed guidelines
-- Review code comments
-- Test in demo mode first
-- MongoDB is optional - works without it!
+For issues and questions, please create an issue on the repository.
 
 ---
 
-**Made with ❤️ for backtesting and educational purposes**
-
-⚠️ **Disclaimer**: This is for educational and backtesting purposes only. Not financial advice.
-
----
-
-**Quick Links:**
-- Frontend: http://localhost:3000
-- Backend: http://localhost:5001
-- Start: `./start.sh` or `start.bat`
-- Stop: `./stop.sh` or `stop.bat`
+**Built with ❤️ using React, Node.js, Python, and TensorFlow**
