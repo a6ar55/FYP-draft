@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans antialiased bg-gray-50;
+  }
+}
+
+/* Zerodha-inspired professional trading platform styles */
+@layer components {
+  .trading-card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow;
+  }
+  
+  .trading-button-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-md transition-all;
+  }
+  
+  .trading-button-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium px-6 py-3 rounded-md transition-all;
+  }
+  
+  .trading-input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  }
+  
+  .trading-badge-profit {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800;
+  }
+  
+  .trading-badge-loss {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800;
+  }
+  
+  .trading-header {
+    @apply text-2xl font-bold text-gray-900;
+  }
+  
+  .trading-subheader {
+    @apply text-lg font-semibold text-gray-700;
+  }
+  
+  .metric-value-positive {
+    @apply text-green-600 font-semibold;
+  }
+  
+  .metric-value-negative {
+    @apply text-red-600 font-semibold;
+  }
+}
