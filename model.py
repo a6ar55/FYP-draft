@@ -49,101 +49,9 @@ if gpus:
         print(e)
 
 from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, LSTM, Dense, Dropout, Concatenate, Add, LayerNormalization
-from tensorflow.keras.optimizers import Adam
-from sklearn.preprocessing import MinMaxScaler
+from tensorflow.keras.layers import Input, LSTM, Dense, Dropout, Concatenate, Add, LayerNormalization, Bidirectional
 
-# ==========================================
-# 1. CONFIGURATION
-# ==========================================
-LOOKBACK = 60
-PREDICTION_HORIZON = 1 
-TEST_SPLIT = 0.2
-EPOCHS = 50 
-BATCH_SIZE = 128 # Reduced from 512 to prevent OOM
-ROLLOUT_STEPS = 64 # Reduced from 128
-MINI_BATCH_SIZE = 2048 # Process updates in chunks
-GAMMA = 0.99 
-ENTROPY_BETA = 0.01 
-VALUE_COEF = 0.5
-AUX_LOSS_COEF = 0.5 
-
-# ==========================================
-# 2. VECTORIZED ENVIRONMENT
-# ==========================================
-class VectorTradingEnv:
-    """
-    Vectorized trading environment for high GPU utilization.
-    Simulates `num_envs` independent trajectories in parallel.
-    """
-    def __init__(self, data, lookback=60, num_envs=128):
-        self.data = data # Shape (N, Features)
-        self.lookback = lookback
-        self.num_envs = num_envs
-        self.n_samples = len(data)
-        
-        # Current step index for each environment
-        # Initialize randomly to decorrelate samples
-        self.current_steps = np.random.randint(
-            lookback, self.n_samples - 1, size=num_envs
-        )
-        
-    def reset(self):
-        # Reset to random positions
-        self.current_steps = np.random.randint(
-            self.lookback, self.n_samples - 1, size=self.num_envs
-        )
-        return self._get_states()
-        
-    def step(self, actions):
-        """
-        actions: (num_envs,) array of 0 or 1
-        """
-        # 1. Calculate Rewards for current steps
-        curr_prices = self.data[self.current_steps, 3] # Close is index 3
-        next_prices = self.data[self.current_steps + 1, 3]
-        
-        raw_returns = next_prices - curr_prices
-        rewards = np.where(actions == 1, raw_returns * 100, 0.0)
-        
-        # 2. Advance steps
-        self.current_steps += 1
-        
-        # 3. Check Done & Auto-Reset
-        # If an env reaches end, reset it immediately (infinite horizon approximation)
-        dones = self.current_steps >= (self.n_samples - 1)
-        if np.any(dones):
-            # Reset done envs to random positions
-            self.current_steps[dones] = np.random.randint(
-                self.lookback, self.n_samples - 1, size=np.sum(dones)
-            )
-            
-        # 4. Get Next States
-        next_states = self._get_states()
-        
-        # Return true next prices for aux loss (handle resets carefully? 
-        # For aux loss, we want prediction of *actual* next step. 
-        # If reset, next_price is from new start. That's fine.)
-        true_next_prices = self.data[self.current_steps, 3] # After increment, this is next
-        
-        return next_states, rewards, dones, true_next_prices
-        
-    def _get_states(self):
-        # Efficiently gather slices
-        # This might be slow in pure numpy loop, but let's try.
-        # Ideally we'd use stride_tricks or pre-generated windows if memory allows.
-        # Given 24GB VRAM, we can pre-generate all windows?
-        # Data len ~2000-5000? 5000 * 60 * 16 * 4 bytes ~ 19MB. Tiny.
-        # Let's pre-generate windows for speed!
-        
-        # NOTE: If data is huge, this is bad. But for single stock daily data, it's fine.
-        # Actually, let's stick to slicing for generality, it's not THAT slow compared to model fwd.
-        
-        states = np.empty((self.num_envs, self.lookback, self.data.shape[1]), dtype=np.float32)
-        for i in range(self.num_envs):
-            idx = self.current_steps[i]
-            states[i] = self.data[idx-self.lookback : idx]
-        return states
+# ... (rest of imports) ...
 
 # ==========================================
 # 3. MODEL (ACTOR-CRITIC)
@@ -151,12 +59,12 @@ class VectorTradingEnv:
 def build_actor_critic(input_shape):
     inputs = Input(shape=input_shape)
     
-    # Shared Backbone (xLSTM-like)
-    x = LSTM(64, return_sequences=True)(inputs)
+    # Shared Backbone (Bi-LSTM)
+    x = Bidirectional(LSTM(64, return_sequences=True))(inputs)
     x = LayerNormalization()(x)
     x = Dropout(0.2)(x)
     
-    x = LSTM(64, return_sequences=False)(x)
+    x = Bidirectional(LSTM(64, return_sequences=False))(x)
     x = LayerNormalization()(x)
     x = Dropout(0.2)(x)
     
