@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 import random
 import os
+import tensorflow_probability as tfp
+from tqdm import tqdm
 
 # ==========================================
 # 0. REPRODUCIBILITY SETUP
@@ -28,427 +30,451 @@ set_global_determinism(42)
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 tf.get_logger().setLevel('ERROR')
 
+# ==========================================
+# GPU SETUP (L4 24GB Optimization)
+# ==========================================
+gpus = tf.config.list_physical_devices('GPU')
+if gpus:
+    try:
+        for gpu in gpus:
+            tf.config.experimental.set_memory_growth(gpu, True)
+        print(f"Found {len(gpus)} GPU(s). Memory growth enabled.")
+        
+        # Enable Mixed Precision for L4 (Ampere/Ada architecture benefits)
+        from tensorflow.keras import mixed_precision
+        policy = mixed_precision.Policy('mixed_float16')
+        mixed_precision.set_global_policy(policy)
+        print("Mixed precision (float16) enabled.")
+    except RuntimeError as e:
+        print(e)
+
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, LSTM, Dense, Dropout, Concatenate, Add, LayerNormalization
 from tensorflow.keras.optimizers import Adam
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-import math
-from tensorflow.keras import mixed_precision
 
 # ==========================================
 # 1. CONFIGURATION
 # ==========================================
-from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
-
 LOOKBACK = 60
-PREDICTION_HORIZON = 30 # Predict 30 days into the future
+PREDICTION_HORIZON = 1 
 TEST_SPLIT = 0.2
-EPOCHS = 50
-BATCH_SIZE = 1024
-RL_LAMBDA = 2.0
+EPOCHS = 50 
+BATCH_SIZE = 128 # Reduced from 512 to prevent OOM
+ROLLOUT_STEPS = 64 # Reduced from 128
+MINI_BATCH_SIZE = 2048 # Process updates in chunks
+GAMMA = 0.99 
+ENTROPY_BETA = 0.01 
+VALUE_COEF = 0.5
+AUX_LOSS_COEF = 0.5 
 
 # ==========================================
-# 2. CUSTOM LOSS (RL COMPONENT)
+# 2. VECTORIZED ENVIRONMENT
 # ==========================================
-def directional_loss(y_true, y_pred):
+class VectorTradingEnv:
     """
-    Reinforcement Learning-inspired loss.
-    Penalizes predictions that have the wrong direction compared to the previous step.
+    Vectorized trading environment for high GPU utilization.
+    Simulates `num_envs` independent trajectories in parallel.
     """
-    # y_true and y_pred are shape (batch, 1)
-    # We need the difference from the previous time step.
-    # Since we don't have t-1 in the loss function easily without state,
-    # we can approximate direction by comparing y_pred vs y_true directly if they are returns.
-    # BUT, we are predicting prices.
-    # A common trick is to use the difference between adjacent elements in the batch
-    # OR pass the previous price as an input.
-    # For simplicity in this Keras implementation, we will assume the batch is sequential
-    # and approximate diffs, OR we focus on the sign of the error relative to the trend.
-    
-    # Better approach for "RL":
-    # We want to minimize MSE but ALSO maximize directional accuracy.
-    # Loss = MSE + lambda * (1 - Directional_Match)
-    
-    # Differentiable approximation of direction matching:
-    # diff_true = y_true[t] - y_true[t-1]
-    # diff_pred = y_pred[t] - y_pred[t-1]
-    # match = sign(diff_true) * sign(diff_pred)
-    # We want match to be positive.
-    
-    # Implementation using batch slicing (t vs t-1)
-    y_true_next = y_true[1:]
-    y_true_prev = y_true[:-1]
-    y_pred_next = y_pred[1:]
-    y_pred_prev = y_pred[:-1]
-    
-    diff_true = y_true_next - y_true_prev
-    diff_pred = y_pred_next - y_pred_prev
-    
-    # Tanh as soft sign
-    sign_true = tf.math.tanh(diff_true * 10) # Steep tanh
-    sign_pred = tf.math.tanh(diff_pred * 10)
-    
-    # Product: 1 if same sign, -1 if opposite
-    # We want to minimize: 1 - product (range 0 to 2)
-    dir_penalty = tf.reduce_mean(1 - (sign_true * sign_pred))
-    
-    mse = tf.reduce_mean(tf.square(y_true - y_pred))
-    
-    return mse + (RL_LAMBDA * dir_penalty)
-
-# ==========================================
-# 3. DATA LOADING & PREP
-# ==========================================
-def load_data(file_path, ticker):
-    if not os.path.exists(file_path):
-        print(f"File not found: {file_path}")
-        return None
+    def __init__(self, data, lookback=60, num_envs=128):
+        self.data = data # Shape (N, Features)
+        self.lookback = lookback
+        self.num_envs = num_envs
+        self.n_samples = len(data)
         
-    df = pd.read_csv(file_path)
-    df = df[df['Ticker'] == ticker].copy()
-    
-    if df.empty:
-        print(f"No data for {ticker}")
-        return None
+        # Current step index for each environment
+        # Initialize randomly to decorrelate samples
+        self.current_steps = np.random.randint(
+            lookback, self.n_samples - 1, size=num_envs
+        )
         
-    df['Date'] = pd.to_datetime(df['Date'])
-    df = df.sort_values('Date')
-    df.set_index('Date', inplace=True)
-    
-    # Features: OHLCV + Sentiment + Tech Indicators
-    # Ensure columns exist
-    required_cols = [
-        'Open', 'High', 'Low', 'Close', 'Volume', 
-        'Sentiment', 'Subjectivity',
-        'RSI', 'MACD', 'Signal_Line', 'BB_Upper', 'BB_Lower', 'ATR', 'OBV', 'SMA_50', 'SMA_200'
-    ]
-    for col in required_cols:
-        if col not in df.columns:
-            # If columns are missing (e.g. if data_processor wasn't run yet), warn user
-            if col not in ['Sentiment', 'Subjectivity']: # News cols might be missing legitimately
-                print(f"Warning: Column {col} missing for {ticker}. Run data_processor.py first.")
-            df[col] = 0.0
+    def reset(self):
+        # Reset to random positions
+        self.current_steps = np.random.randint(
+            self.lookback, self.n_samples - 1, size=self.num_envs
+        )
+        return self._get_states()
+        
+    def step(self, actions):
+        """
+        actions: (num_envs,) array of 0 or 1
+        """
+        # 1. Calculate Rewards for current steps
+        curr_prices = self.data[self.current_steps, 3] # Close is index 3
+        next_prices = self.data[self.current_steps + 1, 3]
+        
+        raw_returns = next_prices - curr_prices
+        rewards = np.where(actions == 1, raw_returns * 100, 0.0)
+        
+        # 2. Advance steps
+        self.current_steps += 1
+        
+        # 3. Check Done & Auto-Reset
+        # If an env reaches end, reset it immediately (infinite horizon approximation)
+        dones = self.current_steps >= (self.n_samples - 1)
+        if np.any(dones):
+            # Reset done envs to random positions
+            self.current_steps[dones] = np.random.randint(
+                self.lookback, self.n_samples - 1, size=np.sum(dones)
+            )
             
-    return df[required_cols]
+        # 4. Get Next States
+        next_states = self._get_states()
+        
+        # Return true next prices for aux loss (handle resets carefully? 
+        # For aux loss, we want prediction of *actual* next step. 
+        # If reset, next_price is from new start. That's fine.)
+        true_next_prices = self.data[self.current_steps, 3] # After increment, this is next
+        
+        return next_states, rewards, dones, true_next_prices
+        
+    def _get_states(self):
+        # Efficiently gather slices
+        # This might be slow in pure numpy loop, but let's try.
+        # Ideally we'd use stride_tricks or pre-generated windows if memory allows.
+        # Given 24GB VRAM, we can pre-generate all windows?
+        # Data len ~2000-5000? 5000 * 60 * 16 * 4 bytes ~ 19MB. Tiny.
+        # Let's pre-generate windows for speed!
+        
+        # NOTE: If data is huge, this is bad. But for single stock daily data, it's fine.
+        # Actually, let's stick to slicing for generality, it's not THAT slow compared to model fwd.
+        
+        states = np.empty((self.num_envs, self.lookback, self.data.shape[1]), dtype=np.float32)
+        for i in range(self.num_envs):
+            idx = self.current_steps[i]
+            states[i] = self.data[idx-self.lookback : idx]
+        return states
 
-def create_sequences(data, target, lookback, horizon=1):
-    X, y = [], []
-    # We need to ensure we have data for i+horizon
-    for i in range(lookback, len(data) - horizon):
-        X.append(data[i-lookback:i])
-        y.append(target[i + horizon]) # Target is 'horizon' steps ahead
-    return np.array(X), np.array(y)
-
-def build_model(input_shape):
-    # Inputs
+# ==========================================
+# 3. MODEL (ACTOR-CRITIC)
+# ==========================================
+def build_actor_critic(input_shape):
     inputs = Input(shape=input_shape)
     
-    # xLSTM Block 1 (Simulated with Res-LSTM + LayerNorm)
+    # Shared Backbone (xLSTM-like)
     x = LSTM(64, return_sequences=True)(inputs)
     x = LayerNormalization()(x)
     x = Dropout(0.2)(x)
     
-    # xLSTM Block 2
     x = LSTM(64, return_sequences=False)(x)
     x = LayerNormalization()(x)
     x = Dropout(0.2)(x)
     
-    # Dense Heads
-    # 1. Price Prediction (Regression)
-    price_out = Dense(32, activation='relu')(x)
-    price_out = Dense(1, name='price')(price_out)
+    # 1. Policy Head (Actor) -> Logits for [Cash, Long]
+    policy_logits = Dense(2, name='policy_logits')(x)
     
-    # 2. Direction Prediction (Classification/Auxiliary)
-    # We implicitly train this via the custom loss on price, 
-    # but we could add an explicit head. 
-    # For this task, we stick to the single output with RL loss.
+    # 2. Value Head (Critic) -> Expected Return
+    value = Dense(1, name='value')(x)
     
-    model = Model(inputs=inputs, outputs=price_out)
-    model.compile(optimizer=Adam(learning_rate=0.001), loss=directional_loss)
+    # 3. Auxiliary Head -> Next Price Prediction (Supervised helper)
+    price_pred = Dense(1, name='price_pred')(x)
+    
+    model = Model(inputs=inputs, outputs=[policy_logits, value, price_pred])
     return model
 
+# ==========================================
+# 4. TRAINING LOGIC (A2C)
+# ==========================================
 class PortfolioManager:
-    def __init__(self, tickers, lookback=60, horizon=30):
+    def __init__(self, tickers, lookback=60):
         self.tickers = tickers
         self.lookback = lookback
-        self.horizon = horizon
         self.models = {}
         self.scalers = {}
         self.data_store = {}
+        self.optimizers = {}
         
-        # Create models directory
         if not os.path.exists('models'):
             os.makedirs('models')
+            
+    def load_data(self, file_path, ticker):
+        if not os.path.exists(file_path): return None
+        df = pd.read_csv(file_path)
+        df = df[df['Ticker'] == ticker].copy()
+        if df.empty: return None
+        df['Date'] = pd.to_datetime(df['Date'])
+        df = df.sort_values('Date').set_index('Date')
         
+        required_cols = [
+            'Open', 'High', 'Low', 'Close', 'Volume', 
+            'Sentiment', 'Subjectivity',
+            'RSI', 'MACD', 'Signal_Line', 'BB_Upper', 'BB_Lower', 'ATR', 'OBV', 'SMA_50', 'SMA_200'
+        ]
+        for col in required_cols:
+            if col not in df.columns: df[col] = 0.0
+        return df[required_cols]
+
     def train_all(self):
         print("\n" + "="*50)
-        print(f"TRAINING PHASE (Horizon={self.horizon} days)")
+        print(f"RL TRAINING PHASE (A2C) - Vectorized")
         print("="*50)
         
+        self.metrics_history = {
+            'reward': [], 'policy_loss': [], 'value_loss': [], 'aux_loss': []
+        }
+        
         for ticker in self.tickers:
-            print(f"Training model for {ticker}...")
-            # Load and prep data
-            df = load_data('combined_data.csv', ticker)
+            print(f"Training Agent for {ticker}...")
+            
+            # Data Prep
+            df = self.load_data('combined_data.csv', ticker)
             if df is None: continue
             
             data = df.values
             train_len = int(len(data) * (1 - TEST_SPLIT))
             train_data = data[:train_len]
             
-            # --- FIX: Check for sufficient data ---
-            if len(train_data) < (self.lookback + self.horizon + 10):
-                print(f"Skipping {ticker}: Insufficient training data ({len(train_data)} samples).")
+            if len(train_data) < self.lookback + 100:
+                print(f"Skipping {ticker}: Insufficient data.")
                 continue
-            
+                
             scaler = MinMaxScaler()
-            scaler.fit(train_data)
-            
-            # Store for inference
+            train_scaled = scaler.fit_transform(train_data)
             self.scalers[ticker] = scaler
-            self.data_store[ticker] = df 
+            self.data_store[ticker] = df
             
-            # Train
-            train_scaled = scaler.transform(train_data)
-            # Create sequences with HORIZON
-            X_train, y_train = create_sequences(train_scaled, train_scaled[:, 3], self.lookback, self.horizon)
+            # Initialize Vector Environment and Model
+            # Use BATCH_SIZE as num_envs to fill GPU
+            env = VectorTradingEnv(train_scaled, self.lookback, num_envs=BATCH_SIZE)
+            model = build_actor_critic((self.lookback, train_scaled.shape[1]))
+            optimizer = Adam(learning_rate=0.0005)
+            self.optimizers[ticker] = optimizer
             
-            if len(X_train) == 0:
-                print(f"Not enough sequences for {ticker}")
-                continue
-
-            model = build_model((X_train.shape[1], X_train.shape[2]))
+            # Training Loop
+            ticker_rewards = []
             
-            # Callbacks
-            early_stop = EarlyStopping(monitor='loss', patience=10, restore_best_weights=True)
-            reduce_lr = ReduceLROnPlateau(monitor='loss', factor=0.5, patience=3, min_lr=1e-6)
-            checkpoint = ModelCheckpoint(
-                f'models/{ticker}.keras', 
-                monitor='loss', 
-                save_best_only=True,
-                save_weights_only=False
-            )
+            pbar = tqdm(range(EPOCHS), desc=f"Training {ticker}", unit="epoch")
+            for epoch in pbar:
+                # Reset envs at start of epoch? 
+                # No, keep them running for continuity, just reset internal state if needed.
+                # Actually, VectorEnv handles resets. We just get initial state.
+                if epoch == 0:
+                    states = env.reset()
+                
+                # Rollout buffers
+                # We collect ROLLOUT_STEPS for ALL BATCH_SIZE envs
+                # Shape: [ROLLOUT_STEPS, BATCH_SIZE, ...]
+                mb_states = []
+                mb_actions = []
+                mb_rewards = []
+                mb_values = []
+                mb_dones = []
+                mb_next_prices = []
+                
+                # 1. Collect Trajectories
+                for _ in range(ROLLOUT_STEPS):
+                    states_tensor = tf.convert_to_tensor(states, dtype=tf.float32)
+                    logits, values, _ = model(states_tensor)
+                    
+                    # Sample Actions
+                    action_probs = tf.nn.softmax(logits)
+                    dist = tfp.distributions.Categorical(probs=action_probs)
+                    actions = dist.sample().numpy() # Shape (BATCH_SIZE,)
+                    
+                    next_states, rewards, dones, true_next_prices = env.step(actions)
+                    
+                    mb_states.append(states_tensor)
+                    mb_actions.append(actions)
+                    mb_rewards.append(rewards)
+                    mb_values.append(values[:, 0])
+                    mb_dones.append(dones)
+                    mb_next_prices.append(true_next_prices)
+                    
+                    states = next_states
+                    
+                # 2. Compute Returns & Advantages (GAE)
+                # Bootstrap value
+                last_state_tensor = tf.convert_to_tensor(states, dtype=tf.float32)
+                _, last_values, _ = model(last_state_tensor)
+                last_values = last_values[:, 0].numpy()
+                
+                mb_returns = np.zeros_like(mb_rewards)
+                mb_advantages = np.zeros_like(mb_rewards)
+                
+                lastgaelam = 0
+                for t in reversed(range(ROLLOUT_STEPS)):
+                    if t == ROLLOUT_STEPS - 1:
+                        nextnonterminal = 1.0 - mb_dones[t]
+                        nextvalues = last_values
+                    else:
+                        nextnonterminal = 1.0 - mb_dones[t]
+                        nextvalues = mb_values[t+1]
+                        
+                    delta = mb_rewards[t] + GAMMA * nextvalues * nextnonterminal - mb_values[t]
+                    lastgaelam = delta + GAMMA * 0.95 * nextnonterminal * lastgaelam
+                    mb_advantages[t] = lastgaelam
+                    mb_returns[t] = mb_advantages[t] + mb_values[t]
+                    
+                # Flatten batches for training
+                # [ROLLOUT_STEPS, BATCH_SIZE] -> [ROLLOUT_STEPS * BATCH_SIZE]
+                flat_states = tf.concat(mb_states, axis=0) # [Steps*Batch, Lookback, Feats]
+                flat_actions = np.concatenate(mb_actions)
+                flat_returns = np.concatenate(mb_returns)
+                flat_next_prices = np.concatenate(mb_next_prices)
+                
+                # Shuffle for mini-batch training
+                indices = np.arange(len(flat_actions))
+                np.random.shuffle(indices)
+                
+                epoch_policy_loss = []
+                epoch_value_loss = []
+                epoch_aux_loss = []
+                
+                # Mini-batch Update Loop
+                for start_idx in range(0, len(indices), MINI_BATCH_SIZE):
+                    end_idx = start_idx + MINI_BATCH_SIZE
+                    batch_indices = indices[start_idx:end_idx]
+                    
+                    mb_states_t = tf.gather(flat_states, batch_indices)
+                    mb_actions_t = tf.convert_to_tensor(flat_actions[batch_indices], dtype=tf.int32)
+                    mb_returns_t = tf.convert_to_tensor(flat_returns[batch_indices], dtype=tf.float32)
+                    mb_next_prices_t = tf.convert_to_tensor(flat_next_prices[batch_indices], dtype=tf.float32)
+                    
+                    # 3. Update Step
+                    with tf.GradientTape() as tape:
+                        logits, values_pred, price_preds = model(mb_states_t)
+                        
+                        # Cast to float32
+                        logits = tf.cast(logits, tf.float32)
+                        values_pred = tf.cast(values_pred, tf.float32)
+                        price_preds = tf.cast(price_preds, tf.float32)
+                        
+                        values_pred = tf.squeeze(values_pred)
+                        price_preds = tf.squeeze(price_preds)
+                        
+                        # Policy Loss
+                        action_probs = tf.nn.softmax(logits)
+                        dist = tfp.distributions.Categorical(probs=action_probs)
+                        log_probs = dist.log_prob(mb_actions_t)
+                        advantages = mb_returns_t - values_pred
+                        policy_loss = -tf.reduce_mean(log_probs * tf.stop_gradient(advantages))
+                        
+                        # Value Loss
+                        value_loss = tf.reduce_mean(tf.square(mb_returns_t - values_pred))
+                        
+                        # Entropy Loss
+                        entropy_loss = -tf.reduce_mean(dist.entropy())
+                        
+                        # Aux Loss
+                        aux_loss = tf.reduce_mean(tf.square(mb_next_prices_t - price_preds))
+                        
+                        total_loss = policy_loss + (VALUE_COEF * value_loss) + (ENTROPY_BETA * entropy_loss) + (AUX_LOSS_COEF * aux_loss)
+                    
+                    grads = tape.gradient(total_loss, model.trainable_variables)
+                    optimizer.apply_gradients(zip(grads, model.trainable_variables))
+                    
+                    epoch_policy_loss.append(policy_loss.numpy())
+                    epoch_value_loss.append(value_loss.numpy())
+                    epoch_aux_loss.append(aux_loss.numpy())
+                
+                # Metrics
+                avg_ep_reward = np.mean(mb_rewards) * ROLLOUT_STEPS # Approx episodic reward
+                ticker_rewards.append(avg_ep_reward)
+                self.metrics_history['reward'].append(avg_ep_reward)
+                self.metrics_history['policy_loss'].append(np.mean(epoch_policy_loss))
+                self.metrics_history['value_loss'].append(np.mean(epoch_value_loss))
+                self.metrics_history['aux_loss'].append(np.mean(epoch_aux_loss))
+                
+                # Update progress bar
+                avg_reward = np.mean(ticker_rewards[-5:]) if len(ticker_rewards) >= 5 else np.mean(ticker_rewards)
+                pbar.set_postfix({'AvgRew': f"{avg_reward:.2f}", 'Loss': f"{np.mean(epoch_value_loss):.2f}"})
             
-            model.fit(
-                X_train, y_train, 
-                epochs=EPOCHS, 
-                batch_size=BATCH_SIZE, 
-                verbose=0,
-                callbacks=[early_stop, reduce_lr, checkpoint],
-                shuffle=True # Seeded shuffle
-            )
             self.models[ticker] = model
-            print(f"✓ {ticker} Ready (Best weights saved)")
+            model.save_weights(f'models/{ticker}_rl.weights.h5')
+            print(f"✓ {ticker} Trained")
+            
+        self.plot_metrics()
+
+    def plot_metrics(self):
+        print("\nGenerating RL Training Plots...")
+        plt.figure(figsize=(15, 10))
+        
+        metrics = ['reward', 'policy_loss', 'value_loss', 'aux_loss']
+        titles = ['Avg Reward', 'Policy Loss', 'Value Loss', 'Aux (Price) Loss']
+        
+        for i, (key, title) in enumerate(zip(metrics, titles)):
+            plt.subplot(2, 2, i+1)
+            data = self.metrics_history[key]
+            if len(data) > 100:
+                kernel_size = 50
+                kernel = np.ones(kernel_size) / kernel_size
+                data = np.convolve(data, kernel, mode='valid')
+            plt.plot(data)
+            plt.title(title)
+            plt.grid(True, alpha=0.3)
+            
+        plt.tight_layout()
+        plt.savefig('rl_training_metrics.png')
+        print("Saved rl_training_metrics.png")
 
     def simulate_trading(self):
         print("\n" + "="*50)
-        print("PORTFOLIO SIMULATION (TEST PHASE)")
+        print("RL POLICY SIMULATION")
         print("="*50)
         
-        # 1. BATCH PREDICTION
-        print("Generating batch predictions...")
-        all_predictions = {} 
-        
-        common_dates = None
+        total_profit = 0.0
         
         for ticker in self.tickers:
             if ticker not in self.models: continue
             
             df = self.data_store[ticker]
-            train_len = int(len(df) * (1 - TEST_SPLIT))
-            
-            test_data_start = train_len - self.lookback
-            if test_data_start < 0: test_data_start = 0
-            
-            raw_test_data = df.iloc[test_data_start:].values
+            data = df.values
             scaler = self.scalers[ticker]
-            test_scaled = scaler.transform(raw_test_data)
             
-            X_test = []
-            valid_dates = []
+            train_len = int(len(data) * (1 - TEST_SPLIT))
+            test_data = data[train_len:]
+            test_scaled = scaler.transform(test_data)
             
-            for i in range(self.lookback, len(test_scaled)):
-                X_test.append(test_scaled[i-self.lookback:i])
-                abs_idx = test_data_start + i 
-                if abs_idx >= len(df): break
-                valid_dates.append(df.index[abs_idx-1]) # Date t
+            if len(test_scaled) < self.lookback: continue
             
-            if not X_test: continue
+            model = self.models[ticker]
             
-            X_test = np.array(X_test)
-            preds_scaled = self.models[ticker].predict(X_test, batch_size=BATCH_SIZE, verbose=0)
+            cash = 10000.0
+            holdings = 0.0
+            portfolio_values = []
             
-            dummy = np.zeros((len(preds_scaled), raw_test_data.shape[1]))
-            dummy[:, 3] = preds_scaled.flatten()
-            preds_price = scaler.inverse_transform(dummy)[:, 3]
+            curr_step = self.lookback
             
-            pred_df = pd.DataFrame({
-                'Date': valid_dates,
-                'PredPrice_Horizon': preds_price
-            })
-            pred_df.set_index('Date', inplace=True)
-            all_predictions[ticker] = pred_df
-            
-            if common_dates is None:
-                common_dates = pred_df.index
-            else:
-                common_dates = common_dates.intersection(pred_df.index)
-
-        if common_dates is None or len(common_dates) == 0:
-            print("No overlapping test dates found.")
-            return
-
-        print(f"Simulating over {len(common_dates)} trading days...")
-        
-        total_profit = 0.0
-        history = []
-        
-        # Strategy State
-        current_holding = None 
-        stop_price = 0.0
-        days_held = 0
-        
-        # Strategy Parameters
-        ATR_MULTIPLIER = 2.0
-        MIN_RETURN_THRESHOLD = 0.02 # 2%
-        MAX_HOLDING_DAYS = 30 # Fixed Horizon
-        
-        # 2. SIMULATION LOOP
-        for date in common_dates:
-            # --- STAGE 1: MANAGEMENT (If Holding) ---
-            if current_holding:
-                try:
-                    df_hold = self.data_store[current_holding]
-                    curr_close = df_hold.loc[date, 'Close']
-                    curr_low = df_hold.loc[date, 'Low']
-                    curr_atr = df_hold.loc[date, 'ATR']
-                    
-                    # 1. Check Stop Loss
-                    if curr_low < stop_price:
-                        exit_price = min(stop_price, curr_close)
-                        prev_close = df_hold.iloc[df_hold.index.get_loc(date)-1]['Close']
-                        daily_return = (exit_price - prev_close) / prev_close
-                        total_profit += daily_return
-                        
-                        history.append({
-                            'Date': date, 'Action': 'STOP_LOSS', 'Ticker': current_holding,
-                            'Return%': daily_return*100, 'Cumulative%': total_profit*100
-                        })
-                        current_holding = None
-                        days_held = 0
-                        continue # Done for today
-                        
-                    # 2. Check Time Exit
-                    days_held += 1
-                    if days_held >= MAX_HOLDING_DAYS:
-                        prev_close = df_hold.iloc[df_hold.index.get_loc(date)-1]['Close']
-                        daily_return = (curr_close - prev_close) / prev_close
-                        total_profit += daily_return
-                        
-                        history.append({
-                            'Date': date, 'Action': 'TIME_EXIT', 'Ticker': current_holding,
-                            'Return%': daily_return*100, 'Cumulative%': total_profit*100
-                        })
-                        current_holding = None
-                        days_held = 0
-                        # We can look for new trades immediately? Yes.
-                    
-                    else:
-                        # 3. Hold & Update Stop
-                        prev_close = df_hold.iloc[df_hold.index.get_loc(date)-1]['Close']
-                        daily_return = (curr_close - prev_close) / prev_close
-                        total_profit += daily_return
-                        
-                        # Trailing Stop (Only moves up)
-                        new_stop = curr_close - (ATR_MULTIPLIER * curr_atr)
-                        stop_price = max(stop_price, new_stop)
-                        
-                        history.append({
-                            'Date': date, 'Action': 'HOLD', 'Ticker': current_holding,
-                            'Return%': daily_return*100, 'Cumulative%': total_profit*100
-                        })
-                        continue # Stay in holding, don't look for new
-                        
-                except Exception as e:
-                    print(f"Error managing trade: {e}")
-                    current_holding = None
-            
-            # --- STAGE 2: SELECTION (If Cash) ---
-            if current_holding is None:
-                candidates = []
-                for ticker in self.tickers:
-                    if ticker not in all_predictions: continue
-                    try:
-                        pred_future = all_predictions[ticker].loc[date, 'PredPrice_Horizon']
-                        curr_price = self.data_store[ticker].loc[date, 'Close']
-                        exp_return = (pred_future - curr_price) / curr_price
-                        candidates.append({'ticker': ticker, 'exp_return': exp_return})
-                    except: continue
+            while curr_step < len(test_scaled) - 1:
+                state = test_scaled[curr_step-self.lookback : curr_step]
+                state_tensor = tf.convert_to_tensor([state], dtype=tf.float32)
                 
-                if not candidates: 
-                    # Stay in Cash
-                    history.append({
-                        'Date': date, 'Action': 'CASH', 'Ticker': 'CASH',
-                        'Return%': 0.0, 'Cumulative%': total_profit*100
-                    })
-                    continue
+                logits, _, _ = model(state_tensor)
+                action_probs = tf.nn.softmax(logits).numpy()[0]
+                action = np.argmax(action_probs)
                 
-                # Pick Best
-                candidates.sort(key=lambda x: x['exp_return'], reverse=True)
-                best_candidate = candidates[0]
+                curr_price = test_data[curr_step, 3]
                 
-                # Entry Condition
-                if best_candidate['exp_return'] > MIN_RETURN_THRESHOLD:
-                    current_holding = best_candidate['ticker']
-                    days_held = 0
+                if action == 1 and cash > 0: # Buy
+                    holdings = cash / curr_price
+                    cash = 0.0
+                elif action == 0 and holdings > 0: # Sell
+                    cash = holdings * curr_price
+                    holdings = 0.0
                     
-                    # Initialize Stop
-                    df_new = self.data_store[current_holding]
-                    curr_close = df_new.loc[date, 'Close']
-                    curr_atr = df_new.loc[date, 'ATR']
-                    stop_price = curr_close - (ATR_MULTIPLIER * curr_atr)
-                    
-                    # Record Entry (No return on day 0)
-                    history.append({
-                        'Date': date, 'Action': 'BUY', 'Ticker': current_holding,
-                        'Return%': 0.0, 'Cumulative%': total_profit*100
-                    })
-                else:
-                    # Stay in Cash
-                    history.append({
-                        'Date': date, 'Action': 'CASH', 'Ticker': 'CASH',
-                        'Return%': 0.0, 'Cumulative%': total_profit*100
-                    })
-        
-        # Summary
-        hist_df = pd.DataFrame(history)
-        if hist_df.empty:
-            print("No trades executed.")
-            return
-
-        print("\nSimulation Results (Sample):")
-        print(hist_df.tail())
-        print(f"\nTotal Cumulative Return: {total_profit*100:.2f}%")
-        print(f"Average Daily Return: {(total_profit/len(common_dates))*100:.2f}%")
-        
-        # Plot
-        plt.figure(figsize=(12, 6))
-        plt.plot(hist_df['Date'], hist_df['Cumulative%'], label='Optimized Strategy')
-        plt.title(f'Portfolio Performance (Horizon={self.horizon}d, Threshold={MIN_RETURN_THRESHOLD*100}%)')
-        plt.xlabel('Date')
-        plt.ylabel('Cumulative Return (%)')
-        plt.legend()
-        plt.grid(True)
-        plt.savefig('portfolio_performance.png')
-        print("Performance plot saved to portfolio_performance.png")
+                curr_val = cash + (holdings * curr_price)
+                portfolio_values.append(curr_val)
+                
+                curr_step += 1
+                
+            final_val = portfolio_values[-1] if portfolio_values else 10000.0
+            ret = (final_val - 10000.0) / 10000.0
+            total_profit += ret
+            
+            print(f"{ticker}: Return = {ret*100:.2f}%")
+            
+            plt.figure(figsize=(10, 4))
+            plt.plot(portfolio_values)
+            plt.title(f"{ticker} RL Strategy Performance")
+            plt.savefig(f"models/{ticker}_perf.png")
+            plt.close()
 
 if __name__ == "__main__":
     try:
         df = pd.read_csv('combined_data.csv')
         tickers = df['Ticker'].unique()
         
-        # Initialize with Horizon=30
-        pm = PortfolioManager(tickers, lookback=LOOKBACK, horizon=PREDICTION_HORIZON)
+        pm = PortfolioManager(tickers, lookback=LOOKBACK)
         pm.train_all()
         pm.simulate_trading()
             
