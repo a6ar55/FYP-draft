@@ -1,0 +1,22 @@
+{
+  "name": "stock-prediction-backtesting",
+  "version": "1.0.0",
+  "description": "Stock Prediction Backtesting Platform - Unified project",
+  "scripts": {
+    "start": "./run_all.sh",
+    "start:quick": "./start.sh",
+    "start:backend": "cd backend && python3 api.py",
+    "start:frontend": "cd frontend && npm start",
+    "install:all": "pip install -r requirements.txt && cd frontend && npm install",
+    "build": "cd frontend && npm run build"
+  },
+  "keywords": [
+    "stock",
+    "prediction",
+    "backtesting",
+    "machine-learning"
+  ],
+  "author": "",
+  "license": "ISC"
+}
+

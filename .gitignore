@@ -1,1 +1,74 @@
-GoScrapper
+# Environment Variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/tmp/*.log
+
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+/coverage
+.nyc_output
+
+# Production
+/frontend/build
+
+# Misc
+.cache/
+.parcel-cache/
+.npm
+.eslintcache
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+
+# MongoDB
+data/
+
+# Model checkpoints (optional - uncomment if models are large)
+# models/*.keras
